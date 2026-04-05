@@ -61,7 +61,6 @@
   background: rgba(250, 251, 247, 0.92) !important;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0,0,0,0.04) !important;
 }
 
 /* FAQ accordion */

@@ -28,20 +28,12 @@ import { url } from '../utils/url';
 
         <!-- Photo -->
         <div class="reveal lg:col-span-2">
-          <div
-            class="rounded-2xl overflow-hidden"
-            style="aspect-ratio: 3/4; background: var(--color-light); border: 1px solid rgba(0,0,0,0.06);"
-          >
-            <!-- Photo: replace this div with <img> when Iwan's photo is available -->
-            <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);">
-              <div class="w-28 h-28 rounded-full flex items-center justify-center" style="background: rgba(46,204,113,0.15);">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Profielfoto Iwan Stepanova">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-            </div>
-          </div>
+          <img
+            src={url('/iwan-stepanova.png')}
+            alt="Iwan Stepanova, oprichter van Bureau Intake"
+            class="rounded-2xl"
+            style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block;"
+          />
 
           <!-- Name card -->
           <div class="mt-6 p-5 rounded-xl" style="background: var(--color-light);">

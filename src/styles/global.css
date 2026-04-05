@@ -212,6 +212,36 @@
   }
 }
 
+/* Mobile: hide vine / leaf-branch background visuals */
+@media (max-width: 768px) {
+  #vine-left,
+  #vine-right {
+    display: none;
+  }
+
+  /* Compensate: ambient radial glow on the body edges so the page
+     doesn't feel too bare without the vines */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 0% 0%, rgba(46, 204, 113, 0.035) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(46, 204, 113, 0.025) 0%, transparent 70%);
+  }
+
+  /* Slightly larger body line-height and section text on mobile */
+  body {
+    line-height: 1.7;
+  }
+
+  section p {
+    line-height: 1.75;
+  }
+}
+
 /* Hero card — desktop size boost */
 @media (min-width: 1024px) {
   .hero-card-wrap {

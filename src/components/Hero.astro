@@ -21,7 +21,7 @@ import { url } from '../utils/url';
       </p>
 
       <!-- Headline -->
-      <h1 class="hero-h1 mb-6" style="font-size: clamp(2rem, 5vw, 3.75rem); line-height: 1.1;">
+      <h1 class="hero-h1 mb-6" style="font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
         97% van je potentiële patiënten zoekt online.<br />
         <span style="color: var(--color-accent);">Vinden ze jou</span> — of je concurrent?
       </h1>
@@ -74,51 +74,75 @@ import { url } from '../utils/url';
 
     <!-- Right: animated Google Maps pin visual -->
     <div class="hidden lg:flex items-center justify-center relative" aria-hidden="true">
-      <div class="relative w-64 h-64">
+      <div class="relative" style="width: 320px; height: 320px;">
 
-        <!-- Pulse ring -->
+        <!-- Outer glow ring -->
+        <div
+          class="absolute rounded-full"
+          style="
+            width: 200px; height: 200px;
+            border: 1.5px solid rgba(46,204,113,0.2);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ringExpand 3s ease-in-out 1.5s infinite;
+          "
+        ></div>
+        <div
+          class="absolute rounded-full"
+          style="
+            width: 260px; height: 260px;
+            border: 1px solid rgba(46,204,113,0.08);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ringExpand 3s ease-in-out 2s infinite;
+          "
+        ></div>
+
+        <!-- Pulse ring behind pin -->
         <div
           class="hero-pulse absolute rounded-full"
           style="
-            width: 120px;
-            height: 120px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 80px; height: 80px;
+            background: rgba(46,204,113,0.25);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -20%);
           "
         ></div>
 
         <!-- Map pin SVG -->
-        <div class="hero-pin absolute bottom-20 left-1/2" style="transform: translateX(-50%);">
-          <svg width="80" height="96" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google Maps locatiepin">
+        <div class="hero-pin absolute" style="top: 50%; left: 50%; transform: translate(-50%, -70%);">
+          <svg width="72" height="88" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google Maps locatiepin">
             <path d="M40 0C20.12 0 4 16.12 4 36C4 60 40 96 40 96C40 96 76 60 76 36C76 16.12 59.88 0 40 0Z" fill="var(--color-accent)"/>
             <circle cx="40" cy="36" r="16" fill="white" />
             <path d="M40 28v16M32 36h16" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
 
-        <!-- Floating labels -->
+        <!-- Honest floating context cards -->
+        <!-- Google Maps label -->
         <div
-          class="absolute text-xs font-semibold px-3 py-1.5 rounded-lg"
-          style="background: white; color: var(--color-primary); top: 30px; right: -20px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); animation: fadeSlideUp 0.6s ease-out 1.4s both;"
+          class="absolute flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg"
+          style="background: white; color: var(--color-primary); top: 48px; right: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); animation: fadeSlideUp 0.6s ease-out 1.4s both;"
         >
-          ★★★★★ 4.9
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Google Maps
         </div>
 
+        <!-- Location tag -->
         <div
-          class="absolute text-xs font-semibold px-3 py-1.5 rounded-lg"
-          style="background: white; color: var(--color-primary); top: 70px; left: -30px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); animation: fadeSlideUp 0.6s ease-out 1.6s both;"
+          class="absolute text-xs font-medium px-3 py-2 rounded-lg"
+          style="background: white; color: var(--color-muted); top: 88px; left: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); animation: fadeSlideUp 0.6s ease-out 1.65s both;"
         >
-          #1 in Alkmaar
+          Alkmaar &amp; omgeving
         </div>
 
+        <!-- Zichtbaar badge -->
         <div
-          class="absolute text-xs font-semibold px-3 py-1.5 rounded-lg"
-          style="background: var(--color-accent); color: white; top: 10px; left: -10px; animation: fadeSlideUp 0.6s ease-out 1.8s both;"
+          class="absolute flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg"
+          style="background: var(--color-accent); color: white; top: 28px; left: 20px; animation: fadeSlideUp 0.6s ease-out 1.9s both;"
         >
-          Gevonden!
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Zichtbaar
         </div>
       </div>
     </div>

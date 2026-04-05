@@ -4,25 +4,29 @@ const services = [
     number: '01',
     title: 'Zichtbaar in Google Maps',
     body: 'Wij optimaliseren je Google Bedrijfsprofiel zodat patiënten je vinden als ze zoeken in jouw regio — volledig, up-to-date, en beter dan je concurrent.',
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    wide: true,
   },
   {
     number: '02',
     title: 'Meer en betere reviews',
     body: 'Wij helpen je met een strategie om reviews te verzamelen en reageren namens je praktijk — zodat nieuwe patiënten direct vertrouwen voelen.',
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    wide: false,
   },
   {
     number: '03',
     title: 'Overal dezelfde gegevens',
     body: 'Wij zorgen dat je naam, adres en telefoonnummer overal correct en consistent staan — van Zorgkaart Nederland tot Google en online gidsen.',
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
+    wide: false,
   },
   {
     number: '04',
     title: 'Een website die werkt',
     body: 'Wij optimaliseren je bestaande site zodat Google én patiënten je beter vinden. Sneller, technisch correct, en met de juiste zoektermen voor jouw regio.',
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><circle cx="7.5" cy="6" r="1" fill="currentColor"/><circle cx="10.5" cy="6" r="1" fill="currentColor"/></svg>`,
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><circle cx="7.5" cy="6" r="1" fill="currentColor"/><circle cx="10.5" cy="6" r="1" fill="currentColor"/></svg>`,
+    wide: true,
   },
 ];
 ---
@@ -30,53 +34,68 @@ const services = [
 <section class="py-24 md:py-32" style="background: var(--color-white);" aria-labelledby="diensten-heading">
   <div class="max-w-[1200px] mx-auto px-6">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-      <!-- Left: sticky heading -->
-      <div class="lg:sticky lg:top-32">
+    <!-- Section header — left-aligned, not centred -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20 items-end">
+      <div>
         <p class="reveal text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Wat wij doen</p>
-        <h2 class="reveal reveal-delay-1 mb-6" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem);" id="diensten-heading">
-          Meer patiënten zonder dat je er zelf aan hoeft te denken
+        <h2 class="reveal reveal-delay-1" style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);" id="diensten-heading">
+          Meer patiënten zonder<br />dat je er zelf aan hoeft<br />te denken
         </h2>
-        <p class="reveal reveal-delay-2 text-base leading-relaxed mb-8" style="color: var(--color-muted);">
+      </div>
+      <div class="reveal reveal-delay-2 lg:pl-8">
+        <p class="text-base leading-relaxed mb-6" style="color: var(--color-muted);">
           Jij behandelt — wij zorgen dat je gevonden wordt. Alles wat wij doen is gericht op één ding: een vollere agenda.
         </p>
-
         <!-- AI subtext -->
-        <div class="reveal reveal-delay-3 flex items-start gap-3 p-5 rounded-xl" style="background: rgba(46,204,113,0.06); border: 1px solid rgba(46,204,113,0.15);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 16v-4M12 8h.01"/>
+        <div class="flex items-start gap-3 p-4 rounded-xl" style="background: rgba(46,204,113,0.06); border: 1px solid rgba(46,204,113,0.15);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
           </svg>
           <p class="text-sm leading-relaxed" style="color: var(--color-primary);">
             Plus: wij bereiden je praktijk voor op AI-zoekmachines — de volgende generatie vindbaarheid.
           </p>
         </div>
       </div>
+    </div>
 
-      <!-- Right: service cards -->
-      <div class="space-y-4">
-        {services.map((service, i) => (
-          <div
-            class={`reveal reveal-delay-${i + 1} service-card p-6 rounded-xl`}
-            style="background: var(--color-light); box-shadow: 0 2px 8px rgba(0,0,0,0.04);"
-          >
-            <div class="flex items-start gap-4">
-              <div
-                class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
-                style="background: rgba(46,204,113,0.1); color: var(--color-accent);"
-                set:html={service.icon}
-              />
-              <div>
-                <div class="flex items-center gap-3 mb-2">
-                  <span class="text-xs font-bold" style="color: rgba(46,204,113,0.5); font-family: var(--font-heading);">{service.number}</span>
-                  <h3 class="text-base font-semibold" style="font-family: var(--font-heading);">{service.title}</h3>
-                </div>
-                <p class="text-sm leading-relaxed" style="color: var(--color-muted);">{service.body}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+    <!-- Asymmetric service grid -->
+    <!-- Row 1: wide card (01) spans 3 cols, narrow card (02) spans 2 cols -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-5 mb-5">
+
+      <!-- 01 — wide -->
+      <div class="reveal service-card md:col-span-3 p-8 rounded-2xl relative overflow-hidden" style="background: var(--color-light);">
+        <div class="absolute top-6 right-6 text-5xl font-bold" style="color: rgba(46,204,113,0.08); font-family: var(--font-heading); line-height: 1; letter-spacing: -0.04em;">01</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-6" style="background: rgba(46,204,113,0.1); color: var(--color-accent);" set:html={services[0].icon} />
+        <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.01em;">{services[0].title}</h3>
+        <p class="text-sm leading-relaxed max-w-sm" style="color: var(--color-muted);">{services[0].body}</p>
+      </div>
+
+      <!-- 02 — narrow, dark accent -->
+      <div class="reveal reveal-delay-1 service-card md:col-span-2 p-8 rounded-2xl relative overflow-hidden" style="background: var(--color-dark);">
+        <div class="absolute top-6 right-6 text-5xl font-bold" style="color: rgba(255,255,255,0.04); font-family: var(--font-heading); line-height: 1; letter-spacing: -0.04em;">02</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-6" style="background: rgba(46,204,113,0.15); color: var(--color-accent);" set:html={services[1].icon} />
+        <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-heading); color: white; letter-spacing: -0.01em;">{services[1].title}</h3>
+        <p class="text-sm leading-relaxed" style="color: rgba(224,224,224,0.65);">{services[1].body}</p>
+      </div>
+    </div>
+
+    <!-- Row 2: narrow card (03) spans 2 cols, wide card (04) spans 3 cols -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-5">
+
+      <!-- 03 — narrow, accent border -->
+      <div class="reveal service-card md:col-span-2 p-8 rounded-2xl relative overflow-hidden" style="background: var(--color-light); border: 1.5px solid rgba(46,204,113,0.2);">
+        <div class="absolute top-6 right-6 text-5xl font-bold" style="color: rgba(46,204,113,0.08); font-family: var(--font-heading); line-height: 1; letter-spacing: -0.04em;">03</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-6" style="background: rgba(46,204,113,0.1); color: var(--color-accent);" set:html={services[2].icon} />
+        <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.01em;">{services[2].title}</h3>
+        <p class="text-sm leading-relaxed" style="color: var(--color-muted);">{services[2].body}</p>
+      </div>
+
+      <!-- 04 — wide -->
+      <div class="reveal reveal-delay-1 service-card md:col-span-3 p-8 rounded-2xl relative overflow-hidden" style="background: var(--color-light);">
+        <div class="absolute top-6 right-6 text-5xl font-bold" style="color: rgba(46,204,113,0.08); font-family: var(--font-heading); line-height: 1; letter-spacing: -0.04em;">04</div>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-6" style="background: rgba(46,204,113,0.1); color: var(--color-accent);" set:html={services[3].icon} />
+        <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.01em;">{services[3].title}</h3>
+        <p class="text-sm leading-relaxed max-w-sm" style="color: var(--color-muted);">{services[3].body}</p>
       </div>
     </div>
   </div>

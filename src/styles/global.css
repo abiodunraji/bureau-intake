@@ -234,6 +234,29 @@
   }
 }
 
+/* Bridge section background */
+.bridge-section {
+  padding: 120px 20px;
+  text-align: center;
+  position: relative;
+  background-color: var(--color-light);
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 28px,
+      rgba(46, 204, 113, 0.055) 28px,
+      rgba(46, 204, 113, 0.055) 29px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 28px,
+      rgba(46, 204, 113, 0.03) 28px,
+      rgba(46, 204, 113, 0.03) 29px
+    );
+}
+
 /* Bridge section — staggered fade-in (900ms, slower than default 800ms) */
 .bridge-symbol,
 .bridge-quote,

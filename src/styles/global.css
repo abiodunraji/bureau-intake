@@ -212,6 +212,48 @@
   }
 }
 
+/* Hero card — desktop size boost */
+@media (min-width: 1024px) {
+  .hero-card-wrap {
+    flex-basis: 420px !important;
+  }
+}
+
+/* Problem section — desktop visual */
+.problem-visual-col {
+  flex: 0 0 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 72px;
+}
+
+@media (max-width: 900px) {
+  .problem-visual-col {
+    display: none;
+  }
+}
+
+/* Problem rings pulse */
+@keyframes problemRingPulse {
+  0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.25); }
+}
+
+.problem-ring-1 { animation: problemRingPulse 3s ease-out infinite; }
+.problem-ring-2 { animation: problemRingPulse 3s ease-out 1s infinite; }
+.problem-ring-3 { animation: problemRingPulse 3s ease-out 2s infinite; }
+
+/* Problem chips float */
+@keyframes problemChipFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+.problem-chip-1 { animation: problemChipFloat 5s ease-in-out infinite; }
+.problem-chip-2 { animation: problemChipFloat 6s ease-in-out 0.8s infinite; }
+.problem-chip-3 { animation: problemChipFloat 4.5s ease-in-out 1.5s infinite; }
+
 /* Grain overlay */
 .grain-overlay {
   position: fixed;

@@ -11,89 +11,133 @@
   <!-- Morph blob -->
   <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 400px; height: 400px; top: -10%; right: -5%; background: var(--color-accent); opacity: 0.04; pointer-events: none;"></div>
 
-  <div style="max-width: 900px; margin: 0 auto; position: relative;">
+  <div style="max-width: 1200px; margin: 0 auto; position: relative; display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap;">
 
-    <!-- Section label -->
-    <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-      <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
-      <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Herkenbaar?</span>
-    </div>
+    <!-- Left: text content -->
+    <div style="flex: 1 1 480px; min-width: 0;">
 
-    <!-- Heading -->
-    <h2 class="reveal reveal-delay-1" id="probleem-heading" style="font-size: clamp(26px, 4vw, 44px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 64px; max-width: 600px; color: white;">
-      Terwijl jij behandelt, loopt de agenda van je concurrent vol.
-      <span style="color: rgba(255,255,255,0.3); font-style: italic; font-weight: 400;"> Niet door beter te zijn.</span>
-    </h2>
-
-    <!-- Three problem items — vertical list with connectors -->
-    <div class="reveal reveal-delay-2" style="display: flex; gap: 24px; margin-bottom: 48px; align-items: flex-start; padding-left: 8px;">
-      <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
-        <div style="width: 3px; height: 3px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 12px rgba(239,68,68,0.6); margin-top: 12px;"></div>
-        <div style="width: 1px; height: 48px; background: rgba(255,255,255,0.06); margin-top: 12px;"></div>
+      <!-- Section label -->
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Herkenbaar?</span>
       </div>
-      <div>
-        <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;">01</span>
-        <h3 style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: white; margin-top: 4px; margin-bottom: 8px;">Je bent onzichtbaar</h3>
-        <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0;">
-          Patiënten zoeken op 'fysiotherapeut' + jouw stad. Jij staat niet op pagina 1. Je concurrent wel — alleen omdat diens profiel completer is.
-        </p>
-      </div>
-    </div>
 
-    <div class="reveal reveal-delay-3" style="display: flex; gap: 24px; margin-bottom: 48px; align-items: flex-start; padding-left: 8px;">
-      <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
-        <div style="width: 3px; height: 3px; border-radius: 50%; background: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.5); margin-top: 12px;"></div>
-        <div style="width: 1px; height: 48px; background: rgba(255,255,255,0.06); margin-top: 12px;"></div>
-      </div>
-      <div>
-        <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;">02</span>
-        <h3 style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: white; margin-top: 4px; margin-bottom: 8px;">Je concurrent profiteert daarvan</h3>
-        <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0;">
-          Ze zijn niet beter dan jij. Ze worden alleen beter gevonden. Betere foto's, meer reviews, een compleet profiel. Patiënten kiezen wat ze kunnen vinden.
-        </p>
-      </div>
-    </div>
+      <!-- Heading -->
+      <h2 class="reveal reveal-delay-1" id="probleem-heading" style="font-size: clamp(26px, 4vw, 44px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 64px; max-width: 600px; color: white;">
+        Wat patiënten niet kunnen vinden,
+        <span style="color: rgba(255,255,255,0.3); font-style: italic; font-weight: 400;"> kunnen ze niet kiezen.</span>
+      </h2>
 
-    <div class="reveal reveal-delay-4" style="display: flex; gap: 24px; align-items: flex-start; padding-left: 8px;">
-      <div style="flex-shrink: 0; margin-top: 12px; width: 3px; height: 3px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 12px rgba(239,68,68,0.6);"></div>
-      <div>
-        <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;">03</span>
-        <h3 style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: white; margin-top: 4px; margin-bottom: 8px;">Elke dag verlies je patiënten</h3>
-        <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0;">
-          Dit is geen toekomstig probleem. Het gebeurt nu. Elke dag zoeken mensen in jouw regio naar een fysiotherapeut — en bellen iemand anders.
-        </p>
-      </div>
-    </div>
-
-    <!-- CountUp stats block -->
-    <div class="reveal reveal-delay-5" style="margin-top: 64px; display: flex; gap: 40px; flex-wrap: wrap; padding: 32px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);">
-      <div>
-        <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: var(--color-accent);">
-          <span
-            data-count-up
-            data-target="97"
-            data-suffix="%"
-            class="count-up-target"
-          >97%</span>
+      <!-- Three problem items — vertical list with connectors -->
+      <div class="reveal reveal-delay-2" style="display: flex; gap: 24px; margin-bottom: 48px; align-items: flex-start; padding-left: 8px;">
+        <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+          <div style="width: 3px; height: 3px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 12px rgba(239,68,68,0.6); margin-top: 12px;"></div>
+          <div style="width: 1px; height: 48px; background: rgba(255,255,255,0.06); margin-top: 12px;"></div>
         </div>
-        <div style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px;">zoekt online naar een fysiotherapeut</div>
-      </div>
-      <div>
-        <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: white;">
-          <span
-            data-count-up
-            data-target="10350"
-            class="count-up-target"
-          >10.350</span>
+        <div>
+          <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;">01</span>
+          <h3 style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: white; margin-top: 4px; margin-bottom: 8px;">Gaten in de agenda die je niet kunt verklaren</h3>
+          <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0;">
+            Je hebt weken waarin het druk is en weken waarin de agenda halfleeg blijft. Nieuwe patiënten komen via mond‑t‑mond, maar dat is onvoorspelbaar. Je wilt meer controle, maar weet niet waar je moet beginnen.
+          </p>
         </div>
-        <div style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px;">fysiotherapiepraktijken in Nederland</div>
       </div>
-      <div>
-        <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: rgba(255,255,255,0.6);">
-          9 op 10
+
+      <div class="reveal reveal-delay-3" style="display: flex; gap: 24px; margin-bottom: 48px; align-items: flex-start; padding-left: 8px;">
+        <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+          <div style="width: 3px; height: 3px; border-radius: 50%; background: #f59e0b; box-shadow: 0 0 12px rgba(245,158,11,0.5); margin-top: 12px;"></div>
+          <div style="width: 1px; height: 48px; background: rgba(255,255,255,0.06); margin-top: 12px;"></div>
         </div>
-        <div style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px;">leest reviews voor het kiezen</div>
+        <div>
+          <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;">02</span>
+          <h3 style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: white; margin-top: 4px; margin-bottom: 8px;">Patiënten zoeken, maar vinden jou niet</h3>
+          <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0;">
+            Elke dag zoeken mensen in jouw regio naar een fysiotherapeut. Ze zien praktijken met reviews, foto's en een compleet profiel — en kiezen die. Niet omdat ze beter zijn, maar omdat ze zichtbaar zijn.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-4" style="display: flex; gap: 24px; align-items: flex-start; padding-left: 8px;">
+        <div style="flex-shrink: 0; margin-top: 12px; width: 3px; height: 3px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 12px rgba(239,68,68,0.6);"></div>
+        <div>
+          <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;">03</span>
+          <h3 style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: white; margin-top: 4px; margin-bottom: 8px;">Afhankelijk van verwijzers en toeval</h3>
+          <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0;">
+            Huisartsverwijzingen schommelen. Mond‑t‑mond is traag. Je hebt geen eigen kanaal dat structureel nieuwe patiënten oplevert. Dat maakt je kwetsbaar — vooral bij personeelskosten van 50‑60% van je omzet.
+          </p>
+        </div>
+      </div>
+
+      <!-- CountUp stats block -->
+      <div class="reveal reveal-delay-5" style="margin-top: 64px; display: flex; gap: 40px; flex-wrap: wrap; padding: 32px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);">
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: var(--color-accent);">
+            <span
+              data-count-up
+              data-target="97"
+              data-suffix="%"
+              class="count-up-target"
+            >97%</span>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px;">zoekt online naar een fysiotherapeut</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: white;">
+            <span
+              data-count-up
+              data-target="10350"
+              class="count-up-target"
+            >10.350</span>
+          </div>
+          <div style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px;">fysiotherapiepraktijken in Nederland</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: rgba(255,255,255,0.6);">
+            9 op 10
+          </div>
+          <div style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px;">leest reviews voor het kiezen</div>
+        </div>
       </div>
     </div>
+
+    <!-- Right: visual (desktop only) -->
+    <div class="problem-visual-col" aria-hidden="true">
+      <div style="position: relative; width: 300px; height: 340px; display: flex; align-items: center; justify-content: center;">
+
+        <!-- Pulsing rings -->
+        <div class="problem-ring problem-ring-1" style="position: absolute; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.22); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="problem-ring problem-ring-2" style="position: absolute; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.13); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="problem-ring problem-ring-3" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.07); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+
+        <!-- Center: map pin -->
+        <div style="position: relative; z-index: 2; width: 72px; height: 72px; border-radius: 50%; background: rgba(46,204,113,0.1); border: 1.5px solid rgba(46,204,113,0.35); display: flex; align-items: center; justify-content: center;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2ECC71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+
+        <!-- Floating chip: Google Maps -->
+        <div class="problem-chip problem-chip-1" style="position: absolute; top: 10px; right: -10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
+          <div style="font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 3px; letter-spacing: 0.06em; text-transform: uppercase;">Google Maps</div>
+          <div style="font-family: var(--font-body); font-size: 13px; font-weight: 600; color: #2ECC71;">Gevonden</div>
+        </div>
+
+        <!-- Floating chip: Reviews -->
+        <div class="problem-chip problem-chip-2" style="position: absolute; bottom: 50px; left: -20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
+          <div style="font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 4px; letter-spacing: 0.06em; text-transform: uppercase;">Reviews</div>
+          <div style="display: flex; gap: 2px; align-items: center;">
+            <span style="color: #f59e0b; font-size: 13px; letter-spacing: 1px;">★★★★★</span>
+          </div>
+        </div>
+
+        <!-- Floating chip: New patients -->
+        <div class="problem-chip problem-chip-3" style="position: absolute; bottom: 10px; right: -10px; background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.25); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
+          <div style="font-family: var(--font-body); font-size: 12px; color: #2ECC71; font-weight: 600;">+12 nieuwe patiënten</div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>

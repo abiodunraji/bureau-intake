@@ -75,40 +75,95 @@ const siteUrl = 'https://bureauintake.nl';
           "@type": "OfferCatalog",
           "name": "Lokale SEO voor fysiotherapiepraktijken",
           "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Google Bedrijfsprofiel optimalisatie"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Review strategie"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "NAP-consistentie"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Website vindbaarheid"
-              }
-            }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Bedrijfsprofiel optimalisatie" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Review strategie" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "NAP-consistentie" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website vindbaarheid" } }
           ]
         }
       }
     </script>
   </head>
   <body>
+    <!-- Grain overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Growing vine — left -->
+    <div
+      id="vine-left"
+      aria-hidden="true"
+      style="position: fixed; top: 0; left: 0; width: 80px; height: 100vh; pointer-events: none; z-index: 10; opacity: 0.6; overflow: visible;"
+    >
+      <svg id="vine-svg-left" width="80" height="800" style="overflow: visible;" aria-hidden="true">
+        <path
+          id="vine-path-left"
+          d="M 20 0 C 20 160, 60 240, 40 360 S 10 520, 30 640 S 50 760, 25 800"
+          fill="none"
+          stroke="#2ECC71"
+          stroke-width="1.5"
+          opacity="0.15"
+          stroke-dasharray="1600"
+          stroke-dashoffset="1600"
+        />
+        <!-- Leaf 1 -->
+        <g id="vine-leaf-left-1" style="opacity:0; transition: opacity 0.8s ease 0.1s;">
+          <path d="M 44 160 C 49 152, 59 148, 64 152 C 59 156, 49 158, 44 160Z" fill="#2ECC71" opacity="0.35" transform="rotate(30, 44, 160)" />
+        </g>
+        <!-- Leaf 2 -->
+        <g id="vine-leaf-left-2" style="opacity:0; transition: opacity 0.8s ease 0.2s;">
+          <path d="M 36 300 C 31 292, 21 288, 16 292 C 21 296, 31 298, 36 300Z" fill="#2ECC71" opacity="0.3" transform="rotate(-20, 36, 300)" />
+        </g>
+        <!-- Leaf 3 -->
+        <g id="vine-leaf-left-3" style="opacity:0; transition: opacity 0.8s ease 0.3s;">
+          <path d="M 42 430 C 47 422, 57 418, 62 422 C 57 426, 47 428, 42 430Z" fill="#2ECC71" opacity="0.25" transform="rotate(25, 42, 430)" />
+        </g>
+        <!-- Leaf 4 -->
+        <g id="vine-leaf-left-4" style="opacity:0; transition: opacity 0.8s ease 0.4s;">
+          <path d="M 32 560 C 27 552, 17 548, 12 552 C 17 556, 27 558, 32 560Z" fill="#2ECC71" opacity="0.25" transform="rotate(-15, 32, 560)" />
+        </g>
+        <!-- Leaf 5 -->
+        <g id="vine-leaf-left-5" style="opacity:0; transition: opacity 0.8s ease 0.5s;">
+          <path d="M 38 680 C 43 672, 53 668, 58 672 C 53 676, 43 678, 38 680Z" fill="#2ECC71" opacity="0.2" transform="rotate(20, 38, 680)" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Growing vine — right -->
+    <div
+      id="vine-right"
+      aria-hidden="true"
+      style="position: fixed; top: 0; right: 0; width: 80px; height: 100vh; pointer-events: none; z-index: 10; opacity: 0.4; overflow: visible;"
+    >
+      <svg id="vine-svg-right" width="80" height="700" style="overflow: visible;" aria-hidden="true">
+        <path
+          id="vine-path-right"
+          d="M 60 0 C 60 140, 20 210, 40 315 S 70 455, 50 560 S 30 665, 55 700"
+          fill="none"
+          stroke="#2ECC71"
+          stroke-width="1.5"
+          opacity="0.12"
+          stroke-dasharray="1400"
+          stroke-dashoffset="1400"
+        />
+        <!-- Leaf 1 -->
+        <g id="vine-leaf-right-1" style="opacity:0; transition: opacity 0.8s ease 0.15s;">
+          <path d="M 36 140 C 31 132, 21 128, 16 132 C 21 136, 31 138, 36 140Z" fill="#2ECC71" opacity="0.3" transform="rotate(-30, 36, 140)" />
+        </g>
+        <!-- Leaf 2 -->
+        <g id="vine-leaf-right-2" style="opacity:0; transition: opacity 0.8s ease 0.3s;">
+          <path d="M 44 270 C 49 262, 59 258, 64 262 C 59 266, 49 268, 44 270Z" fill="#2ECC71" opacity="0.25" transform="rotate(20, 44, 270)" />
+        </g>
+        <!-- Leaf 3 -->
+        <g id="vine-leaf-right-3" style="opacity:0; transition: opacity 0.8s ease 0.45s;">
+          <path d="M 38 390 C 33 382, 23 378, 18 382 C 23 386, 33 388, 38 390Z" fill="#2ECC71" opacity="0.2" transform="rotate(-25, 38, 390)" />
+        </g>
+        <!-- Leaf 4 -->
+        <g id="vine-leaf-right-4" style="opacity:0; transition: opacity 0.8s ease 0.6s;">
+          <path d="M 46 510 C 51 502, 61 498, 66 502 C 61 506, 51 508, 46 510Z" fill="#2ECC71" opacity="0.2" transform="rotate(15, 46, 510)" />
+        </g>
+      </svg>
+    </div>
+
     <Header />
     <main>
       <slot />
@@ -117,8 +172,8 @@ const siteUrl = 'https://bureauintake.nl';
 
     <!-- Scroll reveal -->
     <script>
-      const revealElements = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver(
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObs = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -128,7 +183,73 @@ const siteUrl = 'https://bureauintake.nl';
         },
         { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
       );
-      revealElements.forEach((el) => observer.observe(el));
+      revealEls.forEach((el) => revealObs.observe(el));
+    </script>
+
+    <!-- Growing vine scroll animation -->
+    <script>
+      const vinePathLeft  = document.getElementById('vine-path-left')  as SVGPathElement | null;
+      const vinePathRight = document.getElementById('vine-path-right') as SVGPathElement | null;
+      const leftLeaves  = [1,2,3,4,5].map(i => document.getElementById(`vine-leaf-left-${i}`));
+      const rightLeaves = [1,2,3,4].map(i => document.getElementById(`vine-leaf-right-${i}`));
+
+      const leftTotal  = 1600;
+      const rightTotal = 1400;
+
+      function updateVines() {
+        const scrollY   = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        // Start vine after 200px scroll, complete over next 1200px
+        const raw  = Math.max(0, (scrollY - 200) / 1200);
+        const pLeft  = Math.min(1, raw);
+        const pRight = Math.min(1, raw * 0.85);
+
+        if (vinePathLeft)  vinePathLeft.style.strokeDashoffset  = String(leftTotal  * (1 - pLeft));
+        if (vinePathRight) vinePathRight.style.strokeDashoffset = String(rightTotal * (1 - pRight));
+
+        // Leaves appear at fractional milestones
+        const leftThresholds  = [0.18, 0.36, 0.52, 0.68, 0.84];
+        const rightThresholds = [0.2,  0.4,  0.58, 0.76];
+        leftLeaves.forEach((el, i)  => { if (el) el.style.opacity = pLeft  > leftThresholds[i]  + 0.05 ? '1' : '0'; });
+        rightLeaves.forEach((el, i) => { if (el) el.style.opacity = pRight > rightThresholds[i] + 0.05 ? '1' : '0'; });
+      }
+
+      window.addEventListener('scroll', updateVines, { passive: true });
+      updateVines();
+    </script>
+
+    <!-- CountUp animation -->
+    <script>
+      function runCountUp(el: Element) {
+        const target   = parseInt(el.getAttribute('data-target') || '0', 10);
+        const suffix   = el.getAttribute('data-suffix')   || '';
+        const prefix   = el.getAttribute('data-prefix')   || '';
+        const duration = parseInt(el.getAttribute('data-duration') || '2000', 10);
+        let start: number | null = null;
+
+        function step(ts: number) {
+          if (!start) start = ts;
+          const progress = Math.min((ts - start) / duration, 1);
+          const value    = Math.floor(progress * target);
+          el.textContent = prefix + value.toLocaleString('nl-NL') + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const countEls = document.querySelectorAll('[data-count-up]');
+      const countObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runCountUp(entry.target);
+              countObs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      countEls.forEach((el) => countObs.observe(el));
     </script>
   </body>
 </html>

@@ -2,63 +2,48 @@
 import { url } from '../utils/url';
 ---
 
-<section class="py-24 md:py-32" style="background: var(--color-light);" aria-labelledby="oprichter-heading">
-  <div class="max-w-[1200px] mx-auto px-6">
+<section style="padding: 100px 24px; background: var(--color-white);" aria-labelledby="oprichter-heading">
+  <div style="max-width: 1100px; margin: 0 auto;">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal" style="display: flex; gap: 48px; align-items: center; flex-wrap: wrap;">
 
-      <!-- Photo placeholder -->
-      <div class="reveal order-2 lg:order-1">
-        <div
-          class="relative rounded-2xl overflow-hidden"
-          style="aspect-ratio: 4/5; background: var(--color-light); border: 1px solid rgba(0,0,0,0.06);"
-        >
-          <!-- Photo: replace this div with <img> when Iwan's photo is available -->
-          <div class="absolute inset-0 flex items-center justify-center" style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);">
-            <div
-              class="w-24 h-24 rounded-full flex items-center justify-center"
-              style="background: rgba(46,204,113,0.15);"
-            >
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Profielfoto oprichter">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-          </div>
+      <!-- Photo placeholder with IS initials + morph blob -->
+      <div style="position: relative; width: 200px; flex-shrink: 0;">
+        <!-- Morph blob behind placeholder -->
+        <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 150px; height: 150px; top: -20px; left: -20px; background: var(--color-accent); opacity: 0.06; pointer-events: none;"></div>
 
-          <div
-            class="absolute bottom-6 right-6 w-16 h-16 rounded-full"
-            style="background: var(--color-accent); opacity: 0.15;"
-            aria-hidden="true"
-          ></div>
+        <div style="width: 200px; height: 250px; border-radius: 20px; background: linear-gradient(160deg, rgba(46,204,113,0.08), rgba(46,204,113,0.02)); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(46,204,113,0.1); position: relative; overflow: hidden;">
+          <!-- IS initials — replace with <img> when photo available -->
+          <!-- Photo: replace this entire div with <img src="..." alt="Iwan Stepanova" style="width:200px;height:250px;object-fit:cover;border-radius:20px;" /> -->
+          <span style="font-family: var(--font-heading); font-size: 42px; font-weight: 700; color: rgba(46,204,113,0.25); position: relative; z-index: 1;">IS</span>
         </div>
       </div>
 
       <!-- Copy -->
-      <div class="reveal reveal-delay-2 order-1 lg:order-2">
-        <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Over de oprichter</p>
-        <h2 class="mb-6" style="font-size: clamp(1.75rem, 3.5vw, 2.25rem);" id="oprichter-heading">
+      <div style="flex: 1; min-width: 260px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+          <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Over de oprichter</span>
+        </div>
+
+        <h2 id="oprichter-heading" style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--color-primary); margin-bottom: 16px; letter-spacing: -0.02em;">
           Iwan Stepanova
         </h2>
 
-        <div class="space-y-4 mb-8">
-          <p class="text-base leading-relaxed" style="color: var(--color-primary);">
-            Bureau Intake is opgericht door Iwan Stepanova — marketingspecialist met een focus op de zorgsector. Wij geloven dat fysiotherapeuten hun energie moeten steken in behandelen, niet in marketing.
-          </p>
-          <p class="text-base leading-relaxed" style="color: var(--color-muted);">
-            Na jaren in de zorgsector te hebben gewerkt, weet Iwan precies waar de knelpunten zitten: drukke praktijken die nauwelijks tijd hebben voor hun eigen vindbaarheid, terwijl patiënten wél online zoeken.
-          </p>
-        </div>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--color-muted); margin-bottom: 12px;">
+          Bureau Intake is opgericht door Iwan Stepanova — marketingspecialist met een focus op de zorgsector. Wij geloven dat fysiotherapeuten hun energie moeten steken in behandelen, niet in marketing.
+        </p>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--color-muted); margin-bottom: 24px;">
+          Tijdens mijn werk bij een marketingbureau zag ik keer op keer hoe slecht fysiotherapiepraktijken online zichtbaar waren — terwijl het juist die praktijken zijn waar patiënten elke dag naar zoeken.
+        </p>
 
         <a
           href={url('/over')}
-          class="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent-hover)]"
-          style="color: var(--color-accent);"
+          style="font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-accent); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s ease;"
+          onmouseover="this.style.color='var(--color-accent-hover)'"
+          onmouseout="this.style.color='var(--color-accent)'"
         >
-          Lees meer over ons
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+          Lees meer over ons →
         </a>
       </div>
     </div>

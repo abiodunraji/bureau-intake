@@ -2,48 +2,44 @@
 import { url } from '../utils/url';
 ---
 
-<section class="py-24 md:py-32" style="background: var(--color-dark);" aria-labelledby="cta-heading">
-  <div class="max-w-[1200px] mx-auto px-6 text-center">
+<section
+  id="contact-cta"
+  style="padding: 110px 24px; background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%); text-align: center; position: relative; overflow: hidden;"
+  aria-labelledby="cta-heading"
+>
+  <!-- Dot grid -->
+  <div aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.02; background-image: radial-gradient(rgba(46,204,113,0.5) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
 
-    <div
-      class="reveal w-12 h-1 rounded-full mx-auto mb-8"
-      style="background: var(--color-accent);"
-      aria-hidden="true"
-    ></div>
+  <!-- Morph blob centered -->
+  <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--color-accent); opacity: 0.05; pointer-events: none;"></div>
 
-    <h2
-      class="reveal reveal-delay-1 mx-auto mb-6"
-      style="font-size: clamp(2rem, 4vw, 3rem); color: white; max-width: 640px;"
-      id="cta-heading"
-    >
+  <div style="position: relative; max-width: 520px; margin: 0 auto;">
+
+    <h2 class="reveal" id="cta-heading" style="font-family: var(--font-heading); font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: white; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.02em;">
       Benieuwd wat jouw praktijk online laat liggen?
     </h2>
 
-    <p
-      class="reveal reveal-delay-2 text-base leading-relaxed mx-auto mb-10"
-      style="color: var(--color-dark-text); max-width: 520px;"
-    >
+    <p class="reveal reveal-delay-1" style="font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 40px; max-width: 420px; margin-left: auto; margin-right: auto;">
       Plan een vrijblijvende kennismaking. We komen langs, bekijken je situatie en laten zien wat er mogelijk is.
     </p>
 
-    <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+    <div class="reveal reveal-delay-2">
       <a
         href={url('/contact')}
-        class="inline-block text-base font-semibold px-10 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
-        style="background: var(--color-accent); color: white;"
-        onmouseover="this.style.background='var(--color-accent-hover)'"
-        onmouseout="this.style.background='var(--color-accent)'"
+        style="font-family: var(--font-body); font-size: 16px; font-weight: 600; color: #1a1a2e; background: var(--color-accent); padding: 18px 48px; border-radius: 12px; text-decoration: none; display: inline-block; box-shadow: 0 4px 24px rgba(46,204,113,0.3); transition: all 0.25s ease;"
+        onmouseover="this.style.background='var(--color-accent-hover)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 32px rgba(46,204,113,0.4)';"
+        onmouseout="this.style.background='var(--color-accent)'; this.style.transform=''; this.style.boxShadow='0 4px 24px rgba(46,204,113,0.3)';"
       >
         Plan een kennismaking
       </a>
     </div>
 
-    <div class="reveal reveal-delay-4 flex flex-wrap items-center justify-center gap-6 mt-10">
-      <span class="text-xs" style="color: rgba(224,224,224,0.4);">Gratis proefmaand</span>
-      <span class="text-xs" style="color: rgba(224,224,224,0.2);">·</span>
-      <span class="text-xs" style="color: rgba(224,224,224,0.4);">Maandelijks opzegbaar</span>
-      <span class="text-xs" style="color: rgba(224,224,224,0.2);">·</span>
-      <span class="text-xs" style="color: rgba(224,224,224,0.4);">Geen opstartkosten</span>
-    </div>
+    <p class="reveal reveal-delay-3" style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 20px;">
+      Geen verplichtingen. Geen verkooppraatje. Gewoon een eerlijk gesprek.
+    </p>
+
+    <p class="reveal reveal-delay-4" style="font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.2); margin-top: 12px;">
+      Maandelijks opzegbaar · Geen opstartkosten
+    </p>
   </div>
 </section>

@@ -7,73 +7,101 @@ import { url } from '../utils/url';
   title="Over ons — Bureau Intake"
   description="Leer Iwan Stepanova kennen — de oprichter van Bureau Intake. Marketingspecialist met focus op de zorgsector en een persoonlijke aanpak."
 >
-  <!-- Page hero -->
-  <section class="pt-40 pb-20 md:pt-48 md:pb-28" style="background: var(--color-white);">
-    <div class="max-w-[1200px] mx-auto px-6">
-      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Over ons</p>
-      <h1 class="mb-4 max-w-2xl" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">
+
+  <!-- Page hero — tighter bottom padding -->
+  <section class="over-hero" style="padding-top: 132px; padding-bottom: 0; background: var(--color-white); position: relative; overflow: hidden;">
+
+    <!-- Subtle background blobs -->
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 480px; height: 480px; top: -80px; right: -100px; background: var(--color-accent); opacity: 0.035; pointer-events: none;"></div>
+    <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 300px; height: 300px; bottom: 0; left: -80px; background: var(--color-accent); opacity: 0.025; pointer-events: none;"></div>
+
+    <!-- Floating nature elements (desktop only) -->
+    <div class="over-float over-float-1" aria-hidden="true" style="position: absolute; right: 6%; top: 160px; width: 22px; height: 22px; color: var(--color-accent); opacity: 0.18; pointer-events: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="11"/><path d="M12 11C11 7.5 8 5.5 5 6.5c.3 3.5 2.5 5.5 7 4.5z"/><path d="M12 11c1-3.5 4-5.5 7-4.5-.3 3.5-2.5 5.5-7 4.5z"/></svg>
+    </div>
+    <div class="over-float over-float-2" aria-hidden="true" style="position: absolute; left: 4%; top: 220px; width: 18px; height: 18px; color: var(--color-accent); opacity: 0.13; pointer-events: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="5.5" rx="2" ry="3"/><ellipse cx="18.5" cy="12" rx="3" ry="2"/><ellipse cx="12" cy="18.5" rx="2" ry="3"/><ellipse cx="5.5" cy="12" rx="3" ry="2"/></svg>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-6 pb-12 md:pb-16">
+      <p class="over-eyebrow" style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;">Over ons</p>
+      <h1 class="over-h1" style="font-size: clamp(2.25rem, 5vw, 3.5rem); max-width: 600px; margin-bottom: 16px;">
         Het gezicht achter Bureau Intake
       </h1>
-      <p class="text-lg max-w-xl" style="color: var(--color-muted);">
+      <p class="over-sub" style="font-size: 17px; color: var(--color-muted); max-width: 480px; line-height: 1.65;">
         Persoonlijk, direct, en volledig gericht op de zorgsector.
       </p>
     </div>
   </section>
 
+  <!-- Divider line -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <div style="height: 1px; background: linear-gradient(to right, var(--color-accent), rgba(46,204,113,0.08), transparent);"></div>
+  </div>
+
   <!-- Main content -->
-  <section class="py-16 md:py-24" style="background: var(--color-white);">
-    <div class="max-w-[1200px] mx-auto px-6">
+  <section style="padding: 56px 24px 96px; background: var(--color-white);">
+    <div class="max-w-[1200px] mx-auto">
 
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-        <!-- Photo -->
+        <!-- Photo column -->
         <div class="reveal lg:col-span-2">
-          <img
-            src={url('/iwan-stepanova.png')}
-            alt="Iwan Stepanova, oprichter van Bureau Intake"
-            class="rounded-2xl"
-            style="width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block;"
-          />
+          <div style="position: relative;">
+            <!-- Accent blob behind photo -->
+            <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 160px; height: 160px; top: -20px; left: -20px; background: var(--color-accent); opacity: 0.06; pointer-events: none; z-index: 0;"></div>
+
+            <img
+              src={url('/iwan-stepanova.png')}
+              alt="Iwan Stepanova, oprichter van Bureau Intake"
+              class="rounded-2xl"
+              style="position: relative; z-index: 1; width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; box-shadow: 0 8px 40px rgba(0,0,0,0.08);"
+            />
+          </div>
 
           <!-- Name card -->
-          <div class="mt-6 p-5 rounded-xl" style="background: var(--color-light);">
+          <div class="mt-5 p-5 rounded-xl" style="background: var(--color-light);">
             <p class="font-semibold mb-0.5" style="font-family: var(--font-heading);">Iwan Stepanova</p>
             <p class="text-sm" style="color: var(--color-muted);">Oprichter — Bureau Intake</p>
             <p class="text-sm mt-1" style="color: var(--color-muted);">Alkmaar, Nederland</p>
           </div>
+
+          <!-- Decorative accent line -->
+          <div style="margin-top: 24px; display: flex; align-items: center; gap: 10px;">
+            <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+            <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Uitsluitend fysiotherapie</span>
+          </div>
         </div>
 
-        <!-- Story -->
+        <!-- Story column -->
         <div class="reveal reveal-delay-2 lg:col-span-3">
-          <h2 class="mb-8" style="font-size: clamp(1.5rem, 2.5vw, 2rem);">
-            Waarom Bureau Intake?
-          </h2>
 
-          <div class="space-y-5 text-base leading-relaxed" style="color: var(--color-primary);">
-            <p>
-              Ik heb Bureau Intake opgericht omdat ik keer op keer zag hoe goed fysiotherapeuten werden gerund — en hoe slecht ze online zichtbaar waren. Niet door eigen schuld, maar simpelweg omdat hun energie terecht zat in behandelingen, niet in marketing.
-            </p>
-            <p>
-              Tijdens mijn werk bij een marketingbureau zag ik keer op keer hoe slecht fysiotherapiepraktijken online zichtbaar waren — terwijl het juist die praktijken zijn waar patiënten elke dag naar zoeken.
-            </p>
-            <p>
-              Bureau Intake is volledig gebouwd rondom de uitdagingen van fysiotherapeuten: drukke praktijken die nauwelijks tijd hebben voor hun eigen vindbaarheid, terwijl patiënten wél online zoeken.
-            </p>
-
-            <div class="py-6 my-2 border-l-4 pl-6" style="border-color: var(--color-accent);">
-              <p class="text-lg font-medium" style="font-family: var(--font-heading);">
-                "Fysiotherapeuten moeten hun energie steken in behandelen — niet in uitzoeken waarom ze niet gevonden worden."
-              </p>
-            </div>
-
-            <p>
-              Wij werken uitsluitend voor fysiotherapiepraktijken. Dat is geen beperking — dat is een keuze. Specialisatie leidt tot betere resultaten en een eerlijker gesprek.
+          <!-- About-me intro -->
+          <div style="padding: 28px 28px; border-radius: 16px; background: var(--color-light); margin-bottom: 32px; border-left: 3px solid var(--color-accent);">
+            <p style="font-size: 16px; line-height: 1.75; color: var(--color-primary); font-style: italic; margin: 0;">
+              "Ik ben Iwan Stepanova, oprichter van Bureau Intake. Tijdens mijn werk bij marketingbureaus viel me iets op: fysiotherapeuten leveren uitstekende zorg, maar online is dat bijna nooit zichtbaar. Geen goed Google-profiel, geen reviews, een website die niemand vindt. Niet omdat ze het niet belangrijk vinden, maar omdat ze er simpelweg geen tijd voor hebben. Bureau Intake is er om dat op te lossen."
             </p>
           </div>
 
-          <!-- Values -->
-          <div class="mt-12">
-            <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color: var(--color-muted);">Hoe wij werken</p>
+          <!-- Main story paragraphs -->
+          <div class="space-y-5 text-base leading-relaxed" style="color: var(--color-primary);">
+            <p>
+              Ik heb Bureau Intake opgericht omdat ik iets zag dat niet klopte. Fysiotherapeuten die uitstekende zorg leveren, maar online nauwelijks te vinden zijn. Niet omdat ze het niet proberen, maar omdat hun tijd opgaat aan wat echt belangrijk is: hun patiënten.
+            </p>
+            <p>
+              Tijdens mijn werk bij een marketingbureau werd dit patroon steeds duidelijker. Praktijken met een halfleeg Google-profiel, zonder reviews, met een website die al jaren niet is aangeraakt.
+            </p>
+            <p>
+              Terwijl 74% van de patiënten tegenwoordig zelf online zoekt, zonder verwijzing van de huisarts.
+            </p>
+            <p>
+              Bureau Intake bestaat om dat gat te dichten. Wij werken uitsluitend voor fysiotherapiepraktijken. Dat is een bewuste keuze: hoe beter wij jullie wereld begrijpen, hoe beter de resultaten.
+            </p>
+          </div>
+
+          <!-- Values grid -->
+          <div class="mt-10">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: var(--color-muted);">Hoe wij werken</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { title: 'Persoonlijk', body: 'Geen accountmanager die belt. Je werkt direct met de oprichter.' },
@@ -81,7 +109,7 @@ import { url } from '../utils/url';
                 { title: 'Maandelijks opzegbaar', body: 'We verdienen je vertrouwen elke maand opnieuw.' },
                 { title: 'Zorgsector first', body: 'We begrijpen de context van jouw praktijk.' },
               ].map(val => (
-                <div class="p-5 rounded-xl" style="background: var(--color-light);">
+                <div class="p-5 rounded-xl" style="background: var(--color-light); transition: box-shadow 0.2s ease, transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.07)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
                   <p class="text-sm font-semibold mb-1" style="font-family: var(--font-heading);">{val.title}</p>
                   <p class="text-sm" style="color: var(--color-muted);">{val.body}</p>
                 </div>
@@ -90,7 +118,7 @@ import { url } from '../utils/url';
           </div>
 
           <!-- CTA -->
-          <div class="mt-12">
+          <div class="mt-10">
             <a
               href={url('/contact')}
               class="inline-block text-base font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
@@ -106,3 +134,45 @@ import { url } from '../utils/url';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Over page hero animations */
+  .over-eyebrow,
+  .over-h1,
+  .over-sub {
+    opacity: 0;
+    transform: translateY(20px);
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-duration: 900ms;
+    will-change: transform, opacity;
+  }
+
+  .over-eyebrow.visible { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+  .over-h1.visible      { opacity: 1; transform: translateY(0); transition-delay: 120ms; }
+  .over-sub.visible     { opacity: 1; transform: translateY(0); transition-delay: 240ms; }
+
+  /* Floating icons — desktop only */
+  @media (max-width: 768px) {
+    .over-float { display: none; }
+  }
+
+  .over-float-1 { animation: floatEl 7s ease-in-out infinite; }
+  .over-float-2 { animation: floatEl 9s ease-in-out 1.5s infinite; }
+</style>
+
+<script>
+  const overEls = document.querySelectorAll('.over-eyebrow, .over-h1, .over-sub');
+  const overObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          overObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  overEls.forEach((el) => overObs.observe(el));
+</script>

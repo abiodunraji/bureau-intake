@@ -5,10 +5,10 @@ import { url } from '../utils/url';
 
 <BaseLayout
   title="Over ons — Bureau Intake"
-  description="Leer Iwan Stepanova kennen — de oprichter van Bureau Intake. Marketingspecialist met focus op de zorgsector en een persoonlijke aanpak."
+  description="Leer Bureau Intake kennen — een marketingbureau dat uitsluitend werkt voor fysiotherapiepraktijken in Nederland."
 >
 
-  <!-- Page hero — tighter bottom padding -->
+  <!-- Page hero -->
   <section class="over-hero" style="padding-top: 132px; padding-bottom: 0; background: var(--color-white); position: relative; overflow: hidden;">
 
     <!-- Subtle background blobs -->
@@ -25,11 +25,11 @@ import { url } from '../utils/url';
 
     <div class="max-w-[1200px] mx-auto px-6 pb-12 md:pb-16">
       <p class="over-eyebrow" style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;">Over ons</p>
-      <h1 class="over-h1" style="font-size: clamp(2.25rem, 5vw, 3.5rem); max-width: 600px; margin-bottom: 16px;">
-        Het gezicht achter Bureau Intake
+      <h1 class="over-h1" style="font-size: clamp(2.25rem, 5vw, 3.5rem); max-width: 700px; margin-bottom: 16px;">
+        Bureau Intake helpt fysiotherapiepraktijken meer patiënten te bereiken.
       </h1>
-      <p class="over-sub" style="font-size: 17px; color: var(--color-muted); max-width: 480px; line-height: 1.65;">
-        Persoonlijk, direct, en volledig gericht op de zorgsector.
+      <p class="over-sub" style="font-size: 17px; color: var(--color-muted); max-width: 520px; line-height: 1.65;">
+        Uitsluitend voor fysiotherapie. Persoonlijk. Zonder jargon.
       </p>
     </div>
   </section>
@@ -39,102 +39,116 @@ import { url } from '../utils/url';
     <div style="height: 1px; background: linear-gradient(to right, var(--color-accent), rgba(46,204,113,0.08), transparent);"></div>
   </div>
 
-  <!-- Main content -->
-  <section style="padding: 56px 24px 96px; background: var(--color-white);">
+  <!-- Vision section -->
+  <section style="padding: 64px 24px 72px; background: var(--color-white);">
     <div class="max-w-[1200px] mx-auto">
-
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-
-        <!-- Photo column -->
-        <div class="reveal lg:col-span-2">
-          <div style="position: relative;">
-            <!-- Accent blob behind photo -->
-            <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 160px; height: 160px; top: -20px; left: -20px; background: var(--color-accent); opacity: 0.06; pointer-events: none; z-index: 0;"></div>
-
-            <img
-              src={url('/iwan-stepanova.webp')}
-              alt="Iwan Stepanova, oprichter van Bureau Intake"
-              loading="lazy"
-              decoding="async"
-              width="480"
-              height="640"
-              class="rounded-2xl"
-              style="position: relative; z-index: 1; width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; box-shadow: 0 8px 40px rgba(0,0,0,0.08);"
-            />
-          </div>
-
-          <!-- Name card -->
-          <div class="mt-5 p-5 rounded-xl" style="background: var(--color-light);">
-            <p class="font-semibold mb-0.5" style="font-family: var(--font-heading);">Iwan Stepanova</p>
-            <p class="text-sm" style="color: var(--color-muted);">Oprichter — Bureau Intake</p>
-            <p class="text-sm mt-1" style="color: var(--color-muted);">Alkmaar, Nederland</p>
-          </div>
-
-          <!-- Decorative accent line -->
-          <div style="margin-top: 24px; display: flex; align-items: center; gap: 10px;">
-            <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
-            <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Uitsluitend fysiotherapie</span>
-          </div>
+      <div class="reveal" style="max-width: 760px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+          <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Onze missie</span>
         </div>
+        <p style="font-size: clamp(16px, 1.6vw, 18px); line-height: 1.75; color: var(--color-primary); margin-bottom: 20px;">
+          Bureau Intake is opgericht met één doel: fysiotherapiepraktijken helpen die het verdienen zichtbaar te zijn. De praktijken waar patiënten na hun behandeling opgelucht naar huis gaan — maar die online nauwelijks te vinden zijn.
+        </p>
+        <p style="font-size: clamp(16px, 1.6vw, 18px); line-height: 1.75; color: var(--color-primary);">
+          We werken uitsluitend voor fysiotherapie. Dat is een bewuste keuze. Hoe beter wij jullie wereld begrijpen — de agenda, de verwijzingen, de concurrenten in de buurt — hoe beter wij kunnen leveren. Lokale vindbaarheid is geen truc. Het is een combinatie van een sterk Google-profiel, echte reviews en een website die patiënten vertrouwen geeft op het moment dat ze zoeken.
+        </p>
+      </div>
+    </div>
+  </section>
 
-        <!-- Story column -->
-        <div class="reveal reveal-delay-2 lg:col-span-3">
-
-          <!-- About-me intro -->
-          <div style="padding: 28px 28px; border-radius: 16px; background: var(--color-light); margin-bottom: 32px; border-left: 3px solid var(--color-accent);">
-            <p style="font-size: 16px; line-height: 1.75; color: var(--color-primary); font-style: italic; margin: 0;">
-              "Ik ben Iwan Stepanova, oprichter van Bureau Intake. Tijdens mijn werk bij marketingbureaus viel me iets op: fysiotherapeuten leveren uitstekende zorg, maar online is dat bijna nooit zichtbaar. Geen goed Google-profiel, geen reviews, een website die niemand vindt. Niet omdat ze het niet belangrijk vinden, maar omdat ze er simpelweg geen tijd voor hebben. Bureau Intake is er om dat op te lossen."
-            </p>
+  <!-- How we work -->
+  <section style="padding: 64px 24px 72px; background: var(--color-light);">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="reveal" style="margin-bottom: 36px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+          <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Hoe wij werken</span>
+        </div>
+        <h2 style="font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: var(--color-primary); max-width: 480px; margin: 0;">
+          Direct, transparant en volledig gericht op resultaat.
+        </h2>
+      </div>
+      <div class="reveal reveal-delay-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { title: 'Persoonlijk', body: 'Geen accountmanager die belt. Je werkt direct met de oprichter.' },
+          { title: 'Transparant', body: 'Je ziet precies wat we doen en wat het oplevert.' },
+          { title: 'Maandelijks opzegbaar', body: 'We verdienen je vertrouwen elke maand opnieuw.' },
+          { title: 'Zorgsector first', body: 'We begrijpen de context van jouw praktijk.' },
+        ].map(val => (
+          <div class="p-6 rounded-xl" style="background: var(--color-white); transition: box-shadow 0.2s ease, transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.07)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+            <p class="text-sm font-semibold mb-2" style="font-family: var(--font-heading);">{val.title}</p>
+            <p class="text-sm" style="color: var(--color-muted); line-height: 1.65;">{val.body}</p>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-          <!-- Main story paragraphs -->
-          <div class="space-y-5 text-base leading-relaxed" style="color: var(--color-primary);">
-            <p>
-              Ik heb Bureau Intake opgericht omdat ik iets zag dat niet klopte. Fysiotherapeuten die uitstekende zorg leveren, maar online nauwelijks te vinden zijn. Niet omdat ze het niet proberen, maar omdat hun tijd opgaat aan wat echt belangrijk is: hun patiënten.
-            </p>
-            <p>
-              Tijdens mijn werk bij een marketingbureau werd dit patroon steeds duidelijker. Praktijken met een halfleeg Google-profiel, zonder reviews, met een website die al jaren niet is aangeraakt.
-            </p>
-            <p>
-              Terwijl 74% van de patiënten tegenwoordig zelf online zoekt, zonder verwijzing van de huisarts.
-            </p>
-            <p>
-              Bureau Intake bestaat om dat gat te dichten. Wij werken uitsluitend voor fysiotherapiepraktijken. Dat is een bewuste keuze: hoe beter wij jullie wereld begrijpen, hoe beter de resultaten.
-            </p>
-          </div>
+  <!-- About Iwan (last) -->
+  <section style="padding: 72px 24px 100px; background: var(--color-white);">
+    <div style="max-width: 760px; margin: 0 auto;">
 
-          <!-- Values grid -->
-          <div class="mt-10">
-            <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: var(--color-muted);">Hoe wij werken</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                { title: 'Persoonlijk', body: 'Geen accountmanager die belt. Je werkt direct met de oprichter.' },
-                { title: 'Transparant', body: 'Je ziet precies wat we doen en wat het oplevert.' },
-                { title: 'Maandelijks opzegbaar', body: 'We verdienen je vertrouwen elke maand opnieuw.' },
-                { title: 'Zorgsector first', body: 'We begrijpen de context van jouw praktijk.' },
-              ].map(val => (
-                <div class="p-5 rounded-xl" style="background: var(--color-light); transition: box-shadow 0.2s ease, transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.07)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
-                  <p class="text-sm font-semibold mb-1" style="font-family: var(--font-heading);">{val.title}</p>
-                  <p class="text-sm" style="color: var(--color-muted);">{val.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      <!-- Section label -->
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 32px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Over de oprichter</span>
+      </div>
 
-          <!-- CTA -->
-          <div class="mt-10">
-            <a
-              href={url('/contact')}
-              class="inline-block text-base font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
-              style="background: var(--color-accent); color: white;"
-              onmouseover="this.style.background='var(--color-accent-hover)'"
-              onmouseout="this.style.background='var(--color-accent)'"
-            >
-              Neem contact op
-            </a>
+      <!-- Compact founder card -->
+      <div class="reveal reveal-delay-1" style="display: flex; align-items: center; gap: 20px; padding: 20px 24px; border-radius: 16px; background: var(--color-light); margin-bottom: 32px;">
+        <img
+          src={url('/iwan-stepanova.webp')}
+          alt="Iwan Stepanova, oprichter van Bureau Intake"
+          loading="lazy"
+          decoding="async"
+          width="88"
+          height="88"
+          style="width: 88px; height: 88px; border-radius: 12px; object-fit: cover; object-position: center top; flex-shrink: 0; display: block;"
+        />
+        <div>
+          <p style="font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">Iwan Stepanova</p>
+          <p style="font-family: var(--font-body); font-size: 13px; color: var(--color-muted);">Oprichter — Bureau Intake</p>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+            <div style="width: 18px; height: 1px; background: var(--color-accent);"></div>
+            <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--color-accent); text-transform: uppercase;">Uitsluitend fysiotherapie</span>
           </div>
         </div>
       </div>
+
+      <!-- About-me intro quote -->
+      <div class="reveal reveal-delay-2" style="padding: 28px; border-radius: 16px; background: var(--color-light); margin-bottom: 32px; border-left: 3px solid var(--color-accent);">
+        <p style="font-size: 16px; line-height: 1.75; color: var(--color-primary); font-style: italic; margin: 0;">
+          "Tijdens mijn werk bij marketingbureaus viel me iets op: fysiotherapeuten leveren uitstekende zorg, maar online is dat bijna nooit zichtbaar. Geen goed Google-profiel, geen reviews, een website die niemand vindt. Niet omdat ze het niet belangrijk vinden, maar omdat ze er simpelweg geen tijd voor hebben. Bureau Intake is er om dat op te lossen."
+        </p>
+      </div>
+
+      <!-- Main story paragraphs -->
+      <div class="reveal reveal-delay-3 space-y-5 text-base leading-relaxed" style="color: var(--color-primary);">
+        <p>
+          Ik heb Bureau Intake opgericht omdat ik iets zag dat niet klopte. Fysiotherapeuten die uitstekende zorg leveren, maar online nauwelijks te vinden zijn. Niet omdat ze het niet proberen, maar omdat hun tijd opgaat aan wat echt belangrijk is: hun patiënten.
+        </p>
+        <p>
+          Tijdens mijn werk bij een marketingbureau werd dit patroon steeds duidelijker. Praktijken met een halfleeg Google-profiel, zonder reviews, met een website die al jaren niet is aangeraakt. Terwijl 74% van de patiënten tegenwoordig zelf online zoekt, zonder verwijzing van de huisarts.
+        </p>
+        <p>
+          Bureau Intake bestaat om dat gat te dichten. Wij werken uitsluitend voor fysiotherapiepraktijken. Dat is een bewuste keuze: hoe beter wij jullie wereld begrijpen, hoe beter de resultaten.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal reveal-delay-4 mt-10">
+        <a
+          href={url('/contact')}
+          class="inline-block text-base font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+          style="background: var(--color-accent); color: white;"
+          onmouseover="this.style.background='var(--color-accent-hover)'"
+          onmouseout="this.style.background='var(--color-accent)'"
+        >
+          Neem contact op
+        </a>
+      </div>
+
     </div>
   </section>
 </BaseLayout>

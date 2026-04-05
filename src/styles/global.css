@@ -20,6 +20,7 @@
     font-family: var(--font-body);
     color: var(--color-primary);
     scroll-behavior: smooth;
+    overflow-x: clip; /* prevent any absolutely-positioned element from causing horizontal scroll */
   }
 
   h1, h2, h3, h4 {
@@ -300,6 +301,7 @@
   padding: 120px 20px;
   text-align: center;
   position: relative;
+  overflow: hidden; /* contains the 560px absolute radial glow */
   background-color: var(--color-light);
   background-image:
     repeating-linear-gradient(

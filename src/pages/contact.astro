@@ -7,23 +7,39 @@ import ContactForm from '../components/ContactForm.astro';
   title="Contact — Bureau Intake"
   description="Plan een vrijblijvende kennismaking met Bureau Intake. Vul het formulier in en we nemen zo snel mogelijk contact op."
 >
-  <section class="pt-40 pb-24 md:pt-48 md:pb-32" style="background: var(--color-white);">
-    <div class="max-w-[1200px] mx-auto px-6">
+  <section style="padding-top: 132px; padding-bottom: 96px; background: var(--color-white); position: relative; overflow: hidden;">
+
+    <!-- Background: dot grid (matches homepage problem section pattern at much lower opacity) -->
+    <div aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.018; background-image: radial-gradient(rgba(46,204,113,0.7) 1px, transparent 1px); background-size: 36px 36px; pointer-events: none;"></div>
+
+    <!-- Accent blobs -->
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 420px; height: 420px; top: -60px; right: -80px; background: var(--color-accent); opacity: 0.03; pointer-events: none;"></div>
+    <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 260px; height: 260px; bottom: 80px; left: -60px; background: var(--color-accent); opacity: 0.025; pointer-events: none;"></div>
+
+    <!-- Floating icons (desktop only) -->
+    <div class="contact-float contact-float-1" aria-hidden="true" style="position: absolute; right: 8%; top: 180px; width: 20px; height: 20px; color: var(--color-accent); opacity: 0.16; pointer-events: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="11"/><path d="M12 11C11 7.5 8 5.5 5 6.5c.3 3.5 2.5 5.5 7 4.5z"/><path d="M12 11c1-3.5 4-5.5 7-4.5-.3 3.5-2.5 5.5-7 4.5z"/></svg>
+    </div>
+    <div class="contact-float contact-float-2" aria-hidden="true" style="position: absolute; left: 5%; top: 260px; width: 16px; height: 16px; color: var(--color-accent); opacity: 0.12; pointer-events: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="5.5" rx="2" ry="3"/><ellipse cx="18.5" cy="12" rx="3" ry="2"/><ellipse cx="12" cy="18.5" rx="2" ry="3"/><ellipse cx="5.5" cy="12" rx="3" ry="2"/></svg>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-6" style="position: relative;">
 
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
 
         <!-- Left: heading + contact details -->
         <div class="lg:col-span-2">
-          <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Contact</p>
-          <h1 class="mb-4" style="font-size: clamp(2rem, 4vw, 3rem);">
+          <p class="contact-eyebrow" style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;">Contact</p>
+          <h1 class="contact-h1" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px;">
             Plan een kennismaking
           </h1>
-          <p class="text-base leading-relaxed mb-12" style="color: var(--color-muted);">
+          <p class="contact-sub text-base leading-relaxed mb-12" style="color: var(--color-muted);">
             We komen langs bij je praktijk, bekijken je situatie en laten zien wat er mogelijk is. Vrijblijvend en zonder verplichtingen.
           </p>
 
           <!-- Contact details -->
-          <div class="space-y-6">
+          <div class="contact-details space-y-6">
             <div>
               <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">E-mail</p>
               <a href="mailto:info@bureauintake.nl" class="text-sm transition-colors duration-200 hover:text-[var(--color-accent)]" style="color: var(--color-primary);">
@@ -54,10 +70,10 @@ import ContactForm from '../components/ContactForm.astro';
             </div>
           </div>
 
-          <!-- Trust signal -->
-          <div class="mt-12 p-5 rounded-xl" style="background: var(--color-light);">
-            <p class="text-sm font-medium mb-1" style="color: var(--color-primary);">Gratis proefmaand</p>
-            <p class="text-sm" style="color: var(--color-muted);">Na de kennismaking beginnen we met een gratis proefmaand. Geen risico, geen verplichting.</p>
+          <!-- Accent divider -->
+          <div style="margin-top: 32px; display: flex; align-items: center; gap: 10px;">
+            <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+            <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Geen verplichtingen</span>
           </div>
         </div>
 
@@ -71,3 +87,45 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .contact-eyebrow,
+  .contact-h1,
+  .contact-sub,
+  .contact-details {
+    opacity: 0;
+    transform: translateY(18px);
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-duration: 850ms;
+    will-change: transform, opacity;
+  }
+
+  .contact-eyebrow.visible { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+  .contact-h1.visible      { opacity: 1; transform: translateY(0); transition-delay: 100ms; }
+  .contact-sub.visible     { opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+  .contact-details.visible { opacity: 1; transform: translateY(0); transition-delay: 300ms; }
+
+  @media (max-width: 768px) {
+    .contact-float { display: none; }
+  }
+
+  .contact-float-1 { animation: floatEl 7s ease-in-out infinite; }
+  .contact-float-2 { animation: floatEl 9s ease-in-out 2s infinite; }
+</style>
+
+<script>
+  const contactEls = document.querySelectorAll('.contact-eyebrow, .contact-h1, .contact-sub, .contact-details');
+  const contactObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          contactObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  contactEls.forEach((el) => contactObs.observe(el));
+</script>

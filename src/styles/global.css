@@ -246,17 +246,16 @@
 /* Hero card — desktop size boost */
 @media (min-width: 1024px) {
   .hero-card-wrap {
-    flex-basis: 420px !important;
+    flex-basis: 480px !important;
   }
 }
 
 /* Problem section — desktop visual */
 .problem-visual-col {
-  flex: 0 0 320px;
+  flex: 0 0 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 72px;
 }
 
 @media (max-width: 900px) {

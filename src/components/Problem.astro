@@ -11,7 +11,7 @@
   <!-- Morph blob -->
   <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 400px; height: 400px; top: -10%; right: -5%; background: var(--color-accent); opacity: 0.04; pointer-events: none;"></div>
 
-  <div style="max-width: 1200px; margin: 0 auto; position: relative; display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap;">
+  <div style="max-width: 1200px; margin: 0 auto; position: relative; display: flex; gap: 80px; align-items: center; flex-wrap: wrap;">
 
     <!-- Left: text content -->
     <div style="flex: 1 1 480px; min-width: 0;">
@@ -102,29 +102,29 @@
 
     <!-- Right: visual (desktop only) -->
     <div class="problem-visual-col" aria-hidden="true">
-      <div style="position: relative; width: 300px; height: 340px; display: flex; align-items: center; justify-content: center;">
+      <div style="position: relative; width: 370px; height: 420px; display: flex; align-items: center; justify-content: center;">
 
         <!-- Pulsing rings -->
-        <div class="problem-ring problem-ring-1" style="position: absolute; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.22); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-        <div class="problem-ring problem-ring-2" style="position: absolute; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.13); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-        <div class="problem-ring problem-ring-3" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.07); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="problem-ring problem-ring-1" style="position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.22); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="problem-ring problem-ring-2" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.13); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="problem-ring problem-ring-3" style="position: absolute; width: 370px; height: 370px; border-radius: 50%; border: 1px solid rgba(46,204,113,0.07); top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
 
         <!-- Center: map pin -->
-        <div style="position: relative; z-index: 2; width: 72px; height: 72px; border-radius: 50%; background: rgba(46,204,113,0.1); border: 1.5px solid rgba(46,204,113,0.35); display: flex; align-items: center; justify-content: center;">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2ECC71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <div style="position: relative; z-index: 2; width: 84px; height: 84px; border-radius: 50%; background: rgba(46,204,113,0.1); border: 1.5px solid rgba(46,204,113,0.35); display: flex; align-items: center; justify-content: center;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2ECC71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
         </div>
 
         <!-- Floating chip: Google Maps -->
-        <div class="problem-chip problem-chip-1" style="position: absolute; top: 10px; right: -10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
+        <div class="problem-chip problem-chip-1" style="position: absolute; top: 30px; right: -4px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
           <div style="font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 3px; letter-spacing: 0.06em; text-transform: uppercase;">Google Maps</div>
           <div style="font-family: var(--font-body); font-size: 13px; font-weight: 600; color: #2ECC71;">Gevonden</div>
         </div>
 
         <!-- Floating chip: Reviews -->
-        <div class="problem-chip problem-chip-2" style="position: absolute; bottom: 50px; left: -20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
+        <div class="problem-chip problem-chip-2" style="position: absolute; bottom: 80px; left: -8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
           <div style="font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 4px; letter-spacing: 0.06em; text-transform: uppercase;">Reviews</div>
           <div style="display: flex; gap: 2px; align-items: center;">
             <span style="color: #f59e0b; font-size: 13px; letter-spacing: 1px;">★★★★★</span>
@@ -132,7 +132,7 @@
         </div>
 
         <!-- Floating chip: New patients -->
-        <div class="problem-chip problem-chip-3" style="position: absolute; bottom: 10px; right: -10px; background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.25); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
+        <div class="problem-chip problem-chip-3" style="position: absolute; bottom: 30px; right: -4px; background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.25); border-radius: 10px; padding: 10px 14px; backdrop-filter: blur(8px);">
           <div style="font-family: var(--font-body); font-size: 12px; color: #2ECC71; font-weight: 600;">+12 nieuwe patiënten</div>
         </div>
 

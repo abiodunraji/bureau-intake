@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 130" width="200" height="130">
+
+  <!-- Icon: green rounded square -->
+  <rect x="75" y="4" width="50" height="50" rx="11" fill="#2ECC71"/>
+
+  <!-- Map pin: white teardrop -->
+  <path d="M100,49 C100,49 86,38 86,27 A14,14 0 1,1 114,27 C114,38 100,49 100,49 Z" fill="white"/>
+  <!-- Inner circle cutout -->
+  <circle cx="100" cy="27" r="6" fill="#2ECC71"/>
+
+  <!-- Text: "Bureau" dark + "Intake" green, same line -->
+  <text y="95" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.5">
+    <tspan x="100" fill="#1a1a2e">Bureau</tspan><tspan fill="#2ECC71" font-family="'Playfair Display', Georgia, serif" font-style="italic"> Intake</tspan>
+  </text>
+
+</svg>

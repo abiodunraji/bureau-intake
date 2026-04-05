@@ -12,8 +12,18 @@ const currentPath = Astro.url.pathname;
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href={url('/')} class="font-heading font-bold text-xl tracking-tight" style="font-family: var(--font-heading); color: var(--color-primary);">
-      Bureau<span style="color: var(--color-accent);">Intake</span>
+    <a href={url('/')} aria-label="Bureau Intake — home" style="display: inline-flex; align-items: center; line-height: 1;">
+      <img
+        src={url('/bureau-intake-logo.svg')}
+        alt="Bureau Intake"
+        width="120"
+        height="78"
+        style="height: 42px; width: auto; display: block;"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
+      />
+      <span style="display: none; font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: var(--color-primary);">
+        Bureau<span style="color: var(--color-accent);">Intake</span>
+      </span>
     </a>
 
     <!-- Desktop nav -->

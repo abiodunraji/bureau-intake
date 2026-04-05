@@ -250,6 +250,20 @@
   }
 }
 
+/* Problem stats grid */
+.problem-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 480px) {
+  .problem-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
 /* Problem section — desktop visual */
 .problem-visual-col {
   flex: 0 0 400px;

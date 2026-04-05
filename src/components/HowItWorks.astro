@@ -43,9 +43,8 @@ import { url } from '../utils/url';
 
         <div class="space-y-0">
 
-          <!-- Step 1 -->
+          <!-- Step 1 — Kennismaking -->
           <div class="reveal relative pl-20 pb-14">
-            <!-- Node -->
             <div
               class="absolute left-0 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold"
               style="background: white; color: var(--color-accent); border: 2px solid var(--color-accent); font-family: var(--font-heading); box-shadow: 0 0 0 4px rgba(46,204,113,0.08);"
@@ -55,16 +54,32 @@ import { url } from '../utils/url';
 
             <div class="pt-2">
               <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">Stap één</p>
-              <h3 class="text-2xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.02em;">Kennismaking</h3>
-              <p class="text-base leading-relaxed" style="color: var(--color-muted);">
-                We komen langs bij je praktijk, bekijken je huidige situatie en leggen uit wat we kunnen verbeteren. Vrijblijvend, geen verkooppraatje.
+              <h3 class="text-2xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.02em;">Kennismaking — intakegesprek</h3>
+              <p class="text-base leading-relaxed mb-4" style="color: var(--color-muted);">
+                We plannen een gesprek — telefonisch of op locatie — om de strategie volledig door te nemen. Zo zorgen we dat we alles hebben om direct te starten: bedrijfsprofielen, websitegegevens en jouw doelen.
               </p>
+
+              <!-- Photo USP callout -->
+              <div class="step-photo-usp" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: rgba(46,204,113,0.07); border: 1px solid rgba(46,204,113,0.18);">
+                <!-- Camera icon -->
+                <div style="flex-shrink: 0; margin-top: 1px; color: var(--color-accent);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="13" r="4"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold mb-0.5" style="color: var(--color-primary); font-family: var(--font-heading);">Professionele praktijkfoto's inbegrepen</p>
+                  <p class="text-sm leading-relaxed" style="color: var(--color-muted);">
+                    Wij maken professionele foto's van jouw praktijk die direct worden gebruikt op je bedrijfsprofielen — voor een sterke eerste indruk bij elke patiënt.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Step 2 — highlighted -->
+          <!-- Step 2 — Uitwerking & implementatie -->
           <div class="reveal reveal-delay-1 relative pl-20 pb-14">
-            <!-- Node — filled accent -->
             <div
               class="absolute left-0 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold"
               style="background: var(--color-accent); color: white; font-family: var(--font-heading); box-shadow: 0 4px 16px rgba(46,204,113,0.3);"
@@ -73,20 +88,16 @@ import { url } from '../utils/url';
             </div>
 
             <div class="pt-2 p-6 rounded-2xl -ml-6 pl-10" style="background: white; box-shadow: 0 2px 16px rgba(0,0,0,0.06);">
-              <div class="flex items-center gap-3 mb-2">
-                <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--color-muted);">Stap twee</p>
-                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full" style="background: rgba(46,204,113,0.12); color: var(--color-accent);">Gratis</span>
-              </div>
-              <h3 class="text-2xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.02em;">Proefmaand</h3>
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">Stap twee</p>
+              <h3 class="text-2xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.02em;">Uitwerking &amp; implementatie</h3>
               <p class="text-base leading-relaxed" style="color: var(--color-muted);">
-                We gaan direct aan de slag. Na 30 dagen laten we je precies zien wat het heeft opgeleverd — concreet en eerlijk.
+                We voeren de strategie uit: profielen worden geoptimaliseerd, foto's geplaatst, en alle kanalen op orde gebracht. Jij hoeft niets te regelen.
               </p>
             </div>
           </div>
 
-          <!-- Step 3 -->
+          <!-- Step 3 — Monitoring & optimalisatie -->
           <div class="reveal reveal-delay-2 relative pl-20">
-            <!-- Node -->
             <div
               class="absolute left-0 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold"
               style="background: white; color: var(--color-accent); border: 2px solid var(--color-accent); font-family: var(--font-heading); box-shadow: 0 0 0 4px rgba(46,204,113,0.08);"
@@ -96,9 +107,9 @@ import { url } from '../utils/url';
 
             <div class="pt-2">
               <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">Stap drie</p>
-              <h3 class="text-2xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.02em;">Resultaat</h3>
+              <h3 class="text-2xl font-semibold mb-3" style="font-family: var(--font-heading); letter-spacing: -0.02em;">Monitoring &amp; optimalisatie</h3>
               <p class="text-base leading-relaxed" style="color: var(--color-muted);">
-                Je beslist of je doorgaat. Maandelijks opzegbaar, geen langetermijnverplichting. Wij verdienen je vertrouwen elke maand opnieuw.
+                We houden de resultaten bij en sturen bij waar nodig. Elke maand krijg je inzicht in wat het oplevert. Maandelijks opzegbaar — wij verdienen je vertrouwen elke maand opnieuw.
               </p>
             </div>
           </div>

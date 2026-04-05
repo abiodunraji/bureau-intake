@@ -234,6 +234,18 @@
   }
 }
 
+/* Step 1 photo USP callout */
+.step-photo-usp {
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step-photo-usp:hover {
+  background: rgba(46, 204, 113, 0.12) !important;
+  border-color: rgba(46, 204, 113, 0.35) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(46, 204, 113, 0.1);
+}
+
 /* Bridge section background */
 .bridge-section {
   padding: 120px 20px;

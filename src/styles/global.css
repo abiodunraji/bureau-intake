@@ -203,6 +203,13 @@
 }
 
 /* Hero mobile bottom spacing — prevents CTA overlap with next section */
+/* Hero desktop — add bottom padding so trust badges don't crowd next section */
+@media (min-width: 768px) {
+  .hero-section {
+    padding-bottom: 100px;
+  }
+}
+
 @media (max-width: 767px) {
   .hero-section {
     padding-bottom: 80px;

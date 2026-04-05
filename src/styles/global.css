@@ -198,6 +198,21 @@
   50%       { transform: translateX(-50%) translateY(-6px); }
 }
 
+.scroll-indicator {
+  display: flex;
+}
+
+/* Hero mobile bottom spacing — prevents CTA overlap with next section */
+@media (max-width: 767px) {
+  .hero-section {
+    padding-bottom: 80px;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+}
+
 /* Grain overlay */
 .grain-overlay {
   position: fixed;

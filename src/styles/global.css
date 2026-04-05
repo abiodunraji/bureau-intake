@@ -234,15 +234,31 @@
   }
 }
 
+/* Bridge section — staggered fade-in (900ms, slower than default 800ms) */
+.bridge-symbol,
+.bridge-quote,
+.bridge-tagline {
+  opacity: 0;
+  transform: translateY(24px);
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 900ms;
+  will-change: transform, opacity;
+}
+
+.bridge-symbol.visible  { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+.bridge-quote.visible   { opacity: 1; transform: translateY(0); transition-delay: 180ms; }
+.bridge-tagline.visible { opacity: 1; transform: translateY(0); transition-delay: 360ms; }
+
 /* Problem rings pulse */
 @keyframes problemRingPulse {
   0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.25); }
 }
 
-.problem-ring-1 { animation: problemRingPulse 3s ease-out infinite; }
-.problem-ring-2 { animation: problemRingPulse 3s ease-out 1s infinite; }
-.problem-ring-3 { animation: problemRingPulse 3s ease-out 2s infinite; }
+.problem-ring-1 { animation: problemRingPulse 3s ease-out infinite; will-change: transform, opacity; }
+.problem-ring-2 { animation: problemRingPulse 3s ease-out 1s infinite; will-change: transform, opacity; }
+.problem-ring-3 { animation: problemRingPulse 3s ease-out 2s infinite; will-change: transform, opacity; }
 
 /* Problem chips float */
 @keyframes problemChipFloat {
@@ -250,9 +266,9 @@
   50%       { transform: translateY(-7px); }
 }
 
-.problem-chip-1 { animation: problemChipFloat 5s ease-in-out infinite; }
-.problem-chip-2 { animation: problemChipFloat 6s ease-in-out 0.8s infinite; }
-.problem-chip-3 { animation: problemChipFloat 4.5s ease-in-out 1.5s infinite; }
+.problem-chip-1 { animation: problemChipFloat 5s ease-in-out infinite; will-change: transform; }
+.problem-chip-2 { animation: problemChipFloat 6s ease-in-out 0.8s infinite; will-change: transform; }
+.problem-chip-3 { animation: problemChipFloat 4.5s ease-in-out 1.5s infinite; will-change: transform; }
 
 /* Grain overlay */
 .grain-overlay {

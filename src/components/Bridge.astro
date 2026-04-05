@@ -1,21 +1,43 @@
 ---
 ---
 
-<section style="padding: 120px 24px; text-align: center; position: relative; background: var(--color-white);" aria-label="Overbrugging">
-  <!-- Morph blob centered -->
-  <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 350px; height: 350px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--color-accent); opacity: 0.04; pointer-events: none;"></div>
+<section style="padding: 120px 20px; text-align: center; position: relative; background: var(--color-white);" aria-label="Overbrugging">
 
-  <div class="reveal" style="position: relative; max-width: 580px; margin: 0 auto;">
-    <!-- Opening quote mark -->
-    <div aria-hidden="true" style="font-family: var(--font-heading); font-size: 64px; color: rgba(46,204,113,0.1); line-height: 1; margin-bottom: -16px;">"</div>
+  <!-- Radial gradient glow -->
+  <div aria-hidden="true" style="position: absolute; width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(46,204,113,0.04), transparent 70%); pointer-events: none;"></div>
 
-    <blockquote style="margin: 0;">
-      <p style="font-family: var(--font-heading); font-size: clamp(21px, 3vw, 30px); font-weight: 500; line-height: 1.5; color: var(--color-primary); font-style: italic;">
+  <div style="position: relative; max-width: 540px; margin: 0 auto;">
+
+    <!-- Decorative quotation mark -->
+    <div class="bridge-symbol" aria-hidden="true" style="font-family: Georgia, 'Times New Roman', serif; font-size: 140px; color: rgba(46,204,113,0.08); line-height: 1; margin-bottom: -20px; user-select: none;">"</div>
+
+    <!-- Quote -->
+    <blockquote class="bridge-quote" style="margin: 0;">
+      <p style="font-family: var(--font-heading); font-size: clamp(22px, 2.8vw, 28px); font-weight: 400; line-height: 1.5; color: var(--color-primary); font-style: italic; max-width: 540px; margin: 0 auto;">
         Je bent fysiotherapeut geworden om mensen beter te maken — niet om Google-profielen te beheren.
       </p>
-      <p style="font-family: var(--font-body); font-size: 17px; color: var(--color-accent); margin-top: 24px; font-weight: 600;">
-        En dat hoeft ook niet.
-      </p>
     </blockquote>
+
+    <!-- Tagline -->
+    <p class="bridge-tagline" style="font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #2ECC71; margin-top: 24px;">
+      En dat hoeft ook niet.
+    </p>
+
   </div>
 </section>
+
+<script>
+  const bridgeEls = document.querySelectorAll('.bridge-symbol, .bridge-quote, .bridge-tagline');
+  const bridgeObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          bridgeObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  bridgeEls.forEach((el) => bridgeObs.observe(el));
+</script>

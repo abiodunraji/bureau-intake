@@ -1,0 +1,132 @@
+---
+import { url } from '../utils/url';
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden" style="background: var(--color-white);">
+
+  <!-- Background accent — subtle off-grid element -->
+  <div
+    class="absolute right-0 top-0 w-[45%] h-full pointer-events-none"
+    aria-hidden="true"
+    style="background: linear-gradient(135deg, var(--color-light) 0%, transparent 60%);"
+  ></div>
+
+  <div class="relative max-w-[1200px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-28 pb-20 sm:pt-36 sm:pb-24 lg:py-0">
+
+    <!-- Left: copy -->
+    <div>
+      <!-- Eyebrow -->
+      <p class="hero-sub text-sm font-semibold uppercase tracking-widest mb-6" style="color: var(--color-accent);">
+        Lokale vindbaarheid voor fysiotherapeuten
+      </p>
+
+      <!-- Headline -->
+      <h1 class="hero-h1 mb-6" style="font-size: clamp(2rem, 5vw, 3.75rem); line-height: 1.1;">
+        97% van je potentiële patiënten zoekt online.<br />
+        <span style="color: var(--color-accent);">Vinden ze jou</span> — of je concurrent?
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-sub text-lg leading-relaxed mb-10 max-w-xl" style="color: var(--color-muted);">
+        Bureau Intake maakt fysiotherapiepraktijken zichtbaar in Google, Google Maps en AI-zoekmachines.
+        Geen jaarcontract, geen risico.
+      </p>
+
+      <!-- CTA -->
+      <div class="hero-cta flex flex-col sm:flex-row gap-4 items-start">
+        <a
+          href={url('/contact')}
+          class="inline-block text-base font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+          style="background: var(--color-accent); color: white;"
+          onmouseover="this.style.background='var(--color-accent-hover)'"
+          onmouseout="this.style.background='var(--color-accent)'"
+        >
+          Plan een kennismaking
+        </a>
+        <a
+          href="#hoe-het-werkt"
+          class="inline-flex items-center gap-2 text-base font-medium py-4 transition-colors duration-200 hover:text-[var(--color-accent)]"
+          style="color: var(--color-primary);"
+        >
+          Hoe werkt het?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="hero-cta flex flex-wrap gap-6 mt-10">
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full" style="background: var(--color-accent);"></div>
+          <span class="text-sm" style="color: var(--color-muted);">Gratis proefmaand</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full" style="background: var(--color-accent);"></div>
+          <span class="text-sm" style="color: var(--color-muted);">Maandelijks opzegbaar</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full" style="background: var(--color-accent);"></div>
+          <span class="text-sm" style="color: var(--color-muted);">Geen opstartkosten</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: animated Google Maps pin visual -->
+    <div class="hidden lg:flex items-center justify-center relative" aria-hidden="true">
+      <div class="relative w-64 h-64">
+
+        <!-- Pulse ring -->
+        <div
+          class="hero-pulse absolute rounded-full"
+          style="
+            width: 120px;
+            height: 120px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+          "
+        ></div>
+
+        <!-- Map pin SVG -->
+        <div class="hero-pin absolute bottom-20 left-1/2" style="transform: translateX(-50%);">
+          <svg width="80" height="96" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google Maps locatiepin">
+            <path d="M40 0C20.12 0 4 16.12 4 36C4 60 40 96 40 96C40 96 76 60 76 36C76 16.12 59.88 0 40 0Z" fill="var(--color-accent)"/>
+            <circle cx="40" cy="36" r="16" fill="white" />
+            <path d="M40 28v16M32 36h16" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Floating labels -->
+        <div
+          class="absolute text-xs font-semibold px-3 py-1.5 rounded-lg"
+          style="background: white; color: var(--color-primary); top: 30px; right: -20px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); animation: fadeSlideUp 0.6s ease-out 1.4s both;"
+        >
+          ★★★★★ 4.9
+        </div>
+
+        <div
+          class="absolute text-xs font-semibold px-3 py-1.5 rounded-lg"
+          style="background: white; color: var(--color-primary); top: 70px; left: -30px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); animation: fadeSlideUp 0.6s ease-out 1.6s both;"
+        >
+          #1 in Alkmaar
+        </div>
+
+        <div
+          class="absolute text-xs font-semibold px-3 py-1.5 rounded-lg"
+          style="background: var(--color-accent); color: white; top: 10px; left: -10px; animation: fadeSlideUp 0.6s ease-out 1.8s both;"
+        >
+          Gevonden!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-cta" aria-hidden="true">
+    <span class="text-xs tracking-widest uppercase" style="color: var(--color-muted);">Scroll</span>
+    <div class="w-px h-8" style="background: linear-gradient(to bottom, var(--color-muted), transparent);"></div>
+  </div>
+</section>

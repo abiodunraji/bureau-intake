@@ -1,0 +1,16 @@
+{
+  "name": "Bureau Intake",
+  "short_name": "Bureau Intake",
+  "description": "Lokale SEO voor fysiotherapiepraktijken",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2ECC71",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

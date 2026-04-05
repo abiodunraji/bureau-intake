@@ -1,0 +1,161 @@
+---
+import { url } from '../utils/url';
+
+const includes = [
+  'Zichtbaar worden in Google Maps en AI-zoekmachines',
+  'Een professioneel en compleet Google Bedrijfsprofiel',
+  'Meer en betere reviews van patiënten',
+  'Een website die gevonden wordt',
+  'Maandelijkse rapportage met concrete resultaten',
+];
+
+const faqs = [
+  {
+    question: 'Hoe snel zie ik resultaat?',
+    answer: 'De eerste verbeteringen zie je binnen 2–4 weken. De grootste groei komt na 2–3 maanden — dat is hoe lokale vindbaarheid werkt.',
+  },
+  {
+    question: 'Wat als het niet werkt?',
+    answer: 'Dan stop je. Geen opzegtermijn, geen boete. Wij verdienen je vertrouwen elke maand opnieuw.',
+  },
+  {
+    question: 'Kan ik echt elk moment stoppen?',
+    answer: 'Ja. Maandelijks opzegbaar betekent precies dat. Geen kleine lettertjes, geen verborgen clausules.',
+  },
+  {
+    question: 'Wat kost één extra patiënt mij?',
+    answer: 'Gemiddeld levert één nieuwe patiënt €270 aan omzet op (6 behandelingen × €45). Bij 3 extra patiënten per maand verdien je de investering ruim terug.',
+  },
+];
+---
+
+<section class="py-24 md:py-32" style="background: var(--color-white);" aria-labelledby="pricing-heading">
+  <div class="max-w-[1200px] mx-auto px-6">
+
+    <p class="reveal text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Tarief</p>
+    <h2 class="reveal reveal-delay-1 mb-4 max-w-xl" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem);" id="pricing-heading">
+      Eén helder tarief. Geen verrassingen.
+    </h2>
+    <p class="reveal reveal-delay-2 text-base mb-16 max-w-lg" style="color: var(--color-muted);">
+      Transparantie is onze standaard, niet een uitzondering.
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Price card -->
+      <div class="reveal reveal-delay-1">
+        <div class="p-10 rounded-2xl" style="background: var(--color-light); box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+
+          <!-- Price -->
+          <div class="mb-8">
+            <div class="flex items-baseline gap-2 mb-2">
+              <span class="font-bold" style="font-size: 4rem; font-family: var(--font-heading); color: var(--color-primary); letter-spacing: -0.04em; line-height: 1;">€590</span>
+              <span class="text-lg" style="color: var(--color-muted);">per maand</span>
+            </div>
+            <p class="text-sm font-medium" style="color: var(--color-accent);">
+              Maandelijks opzegbaar · Geen jaarcontract · Geen opstartkosten
+            </p>
+          </div>
+
+          <!-- Divider -->
+          <div class="mb-8 h-px" style="background: rgba(0,0,0,0.06);"></div>
+
+          <!-- What's included -->
+          <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color: var(--color-muted);">Wat er inzit</p>
+          <ul class="space-y-3 mb-10">
+            {includes.map(item => (
+              <li class="flex items-start gap-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span class="text-sm leading-snug" style="color: var(--color-primary);">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={url('/contact')}
+            class="block w-full text-center font-semibold py-4 rounded-lg transition-all duration-200 hover:scale-[1.01]"
+            style="background: var(--color-accent); color: white;"
+            onmouseover="this.style.background='var(--color-accent-hover)'"
+            onmouseout="this.style.background='var(--color-accent)'"
+          >
+            Plan een kennismaking
+          </a>
+        </div>
+
+        <!-- Free trial callout -->
+        <div class="mt-4 p-5 rounded-xl" style="background: rgba(46,204,113,0.06); border: 1px solid rgba(46,204,113,0.2);">
+          <p class="text-sm font-semibold mb-1" style="color: var(--color-accent);">Gratis proefmaand</p>
+          <p class="text-sm leading-relaxed" style="color: var(--color-primary);">
+            Nog niet overtuigd? Start met een gratis proefmaand. Na 30 dagen laten we je zien wat het heeft opgeleverd — dan beslis jij.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="reveal reveal-delay-2">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color: var(--color-muted);">Veelgestelde vragen</p>
+
+        <div class="space-y-2" id="faq-list">
+          {faqs.map((faq, i) => (
+            <div class="faq-item rounded-xl overflow-hidden" style="background: var(--color-light);" data-index={i}>
+              <button
+                class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                aria-expanded="false"
+              >
+                <span class="text-sm font-semibold" style="font-family: var(--font-heading); color: var(--color-primary);">
+                  {faq.question}
+                </span>
+                <svg
+                  class="faq-icon flex-shrink-0"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--color-accent)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </button>
+              <div class="faq-answer px-6 pb-5">
+                <p class="text-sm leading-relaxed" style="color: var(--color-muted);">{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const triggers = document.querySelectorAll('.faq-trigger');
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item') as HTMLElement;
+      const answer = item.querySelector('.faq-answer') as HTMLElement;
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item').forEach((el) => {
+        el.classList.remove('open');
+        const ans = el.querySelector('.faq-answer') as HTMLElement;
+        if (ans) ans.classList.remove('open');
+        const btn = el.querySelector('.faq-trigger') as HTMLElement;
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

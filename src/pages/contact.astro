@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact — Bureau Intake"
+  description="Plan een vrijblijvende kennismaking met Bureau Intake. Vul het formulier in en we nemen zo snel mogelijk contact op."
+>
+  <section class="pt-40 pb-24 md:pt-48 md:pb-32" style="background: var(--color-white);">
+    <div class="max-w-[1200px] mx-auto px-6">
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+
+        <!-- Left: heading + contact details -->
+        <div class="lg:col-span-2">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Contact</p>
+          <h1 class="mb-4" style="font-size: clamp(2rem, 4vw, 3rem);">
+            Plan een kennismaking
+          </h1>
+          <p class="text-base leading-relaxed mb-12" style="color: var(--color-muted);">
+            We komen langs bij je praktijk, bekijken je situatie en laten zien wat er mogelijk is. Vrijblijvend en zonder verplichtingen.
+          </p>
+
+          <!-- Contact details -->
+          <div class="space-y-6">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">E-mail</p>
+              <a href="mailto:info@bureauintake.nl" class="text-sm transition-colors duration-200 hover:text-[var(--color-accent)]" style="color: var(--color-primary);">
+                info@bureauintake.nl
+              </a>
+            </div>
+
+            <!-- Phone: uncomment and fill in when number is available -->
+            <!--
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">Telefoon</p>
+              <a href="tel:+31XXXXXXXXX" class="text-sm transition-colors duration-200 hover:text-[var(--color-accent)]" style="color: var(--color-primary);">
+                +31 X XX XX XX XX
+              </a>
+            </div>
+            -->
+
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">Locatie</p>
+              <p class="text-sm" style="color: var(--color-primary);">Alkmaar, Nederland</p>
+              <p class="text-xs mt-1" style="color: var(--color-muted);">Wij komen naar u toe</p>
+            </div>
+
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: var(--color-muted);">Bereikbaarheid</p>
+              <p class="text-sm" style="color: var(--color-primary);">Maandag t/m vrijdag</p>
+              <p class="text-xs mt-0.5" style="color: var(--color-muted);">09:00 – 18:00</p>
+            </div>
+          </div>
+
+          <!-- Trust signal -->
+          <div class="mt-12 p-5 rounded-xl" style="background: var(--color-light);">
+            <p class="text-sm font-medium mb-1" style="color: var(--color-primary);">Gratis proefmaand</p>
+            <p class="text-sm" style="color: var(--color-muted);">Na de kennismaking beginnen we met een gratis proefmaand. Geen risico, geen verplichting.</p>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="reveal lg:col-span-3">
+          <div class="p-8 md:p-10 rounded-2xl" style="background: var(--color-light); box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

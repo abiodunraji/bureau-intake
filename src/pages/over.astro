@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../utils/url';
+---
+
+<BaseLayout
+  title="Over ons — Bureau Intake"
+  description="Leer Iwan Stepanova kennen — de oprichter van Bureau Intake. Marketingspecialist met focus op de zorgsector en een persoonlijke aanpak."
+>
+  <!-- Page hero -->
+  <section class="pt-40 pb-20 md:pt-48 md:pb-28" style="background: var(--color-white);">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Over ons</p>
+      <h1 class="mb-4 max-w-2xl" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">
+        Het gezicht achter Bureau Intake
+      </h1>
+      <p class="text-lg max-w-xl" style="color: var(--color-muted);">
+        Persoonlijk, direct, en volledig gericht op de zorgsector.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="py-16 md:py-24" style="background: var(--color-white);">
+    <div class="max-w-[1200px] mx-auto px-6">
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+
+        <!-- Photo -->
+        <div class="reveal lg:col-span-2">
+          <div
+            class="rounded-2xl overflow-hidden"
+            style="aspect-ratio: 3/4; background: var(--color-light); border: 1px solid rgba(0,0,0,0.06);"
+          >
+            <!-- Photo: replace this div with <img> when Iwan's photo is available -->
+            <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);">
+              <div class="w-28 h-28 rounded-full flex items-center justify-center" style="background: rgba(46,204,113,0.15);">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Profielfoto Iwan Stepanova">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Name card -->
+          <div class="mt-6 p-5 rounded-xl" style="background: var(--color-light);">
+            <p class="font-semibold mb-0.5" style="font-family: var(--font-heading);">Iwan Stepanova</p>
+            <p class="text-sm" style="color: var(--color-muted);">Oprichter — Bureau Intake</p>
+            <p class="text-sm mt-1" style="color: var(--color-muted);">Alkmaar, Nederland</p>
+          </div>
+        </div>
+
+        <!-- Story -->
+        <div class="reveal reveal-delay-2 lg:col-span-3">
+          <h2 class="mb-8" style="font-size: clamp(1.5rem, 2.5vw, 2rem);">
+            Waarom Bureau Intake?
+          </h2>
+
+          <div class="space-y-5 text-base leading-relaxed" style="color: var(--color-primary);">
+            <p>
+              Ik heb Bureau Intake opgericht omdat ik keer op keer zag hoe goed fysiotherapeuten werden gerund — en hoe slecht ze online zichtbaar waren. Niet door eigen schuld, maar simpelweg omdat hun energie terecht zat in behandelingen, niet in marketing.
+            </p>
+            <p>
+              In mijn werk als marketingspecialist in de zorgsector kwam ik erachter dat lokale vindbaarheid voor zorgpraktijken een blinde vlek is. Grote marketingbureaus zijn te generiek, te duur, en begrijpen de zorgcontext niet. Kleine zelfstandigen weten niet waar te beginnen.
+            </p>
+            <p>
+              Bureau Intake vult die ruimte: een bureau dat de zorgsector begrijpt, transparant werkt, en alleen resultaten levert die je daadwerkelijk in je agenda terugziet.
+            </p>
+
+            <div class="py-6 my-2 border-l-4 pl-6" style="border-color: var(--color-accent);">
+              <p class="text-lg font-medium" style="font-family: var(--font-heading);">
+                "Fysiotherapeuten moeten hun energie steken in behandelen — niet in uitzoeken waarom ze niet gevonden worden."
+              </p>
+            </div>
+
+            <p>
+              Wij werken uitsluitend voor fysiotherapiepraktijken. Dat is geen beperking — dat is een keuze. Specialisatie leidt tot betere resultaten en een eerlijker gesprek.
+            </p>
+          </div>
+
+          <!-- Values -->
+          <div class="mt-12">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color: var(--color-muted);">Hoe wij werken</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Persoonlijk', body: 'Geen accountmanager die belt. Je werkt direct met de oprichter.' },
+                { title: 'Transparant', body: 'Je ziet precies wat we doen en wat het oplevert.' },
+                { title: 'Maandelijks opzegbaar', body: 'We verdienen je vertrouwen elke maand opnieuw.' },
+                { title: 'Zorgsector first', body: 'We begrijpen de context van jouw praktijk.' },
+              ].map(val => (
+                <div class="p-5 rounded-xl" style="background: var(--color-light);">
+                  <p class="text-sm font-semibold mb-1" style="font-family: var(--font-heading);">{val.title}</p>
+                  <p class="text-sm" style="color: var(--color-muted);">{val.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-12">
+            <a
+              href={url('/contact')}
+              class="inline-block text-base font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+              style="background: var(--color-accent); color: white;"
+              onmouseover="this.style.background='var(--color-accent-hover)'"
+              onmouseout="this.style.background='var(--color-accent)'"
+            >
+              Neem contact op
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

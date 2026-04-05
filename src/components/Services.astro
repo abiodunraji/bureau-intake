@@ -1,0 +1,83 @@
+---
+const services = [
+  {
+    number: '01',
+    title: 'Zichtbaar in Google Maps',
+    body: 'Wij optimaliseren je Google Bedrijfsprofiel zodat patiënten je vinden als ze zoeken in jouw regio — volledig, up-to-date, en beter dan je concurrent.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  },
+  {
+    number: '02',
+    title: 'Meer en betere reviews',
+    body: 'Wij helpen je met een strategie om reviews te verzamelen en reageren namens je praktijk — zodat nieuwe patiënten direct vertrouwen voelen.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  },
+  {
+    number: '03',
+    title: 'Overal dezelfde gegevens',
+    body: 'Wij zorgen dat je naam, adres en telefoonnummer overal correct en consistent staan — van Zorgkaart Nederland tot Google en online gidsen.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
+  },
+  {
+    number: '04',
+    title: 'Een website die werkt',
+    body: 'Wij optimaliseren je bestaande site zodat Google én patiënten je beter vinden. Sneller, technisch correct, en met de juiste zoektermen voor jouw regio.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><circle cx="7.5" cy="6" r="1" fill="currentColor"/><circle cx="10.5" cy="6" r="1" fill="currentColor"/></svg>`,
+  },
+];
+---
+
+<section class="py-24 md:py-32" style="background: var(--color-white);" aria-labelledby="diensten-heading">
+  <div class="max-w-[1200px] mx-auto px-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: sticky heading -->
+      <div class="lg:sticky lg:top-32">
+        <p class="reveal text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Wat wij doen</p>
+        <h2 class="reveal reveal-delay-1 mb-6" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem);" id="diensten-heading">
+          Meer patiënten zonder dat je er zelf aan hoeft te denken
+        </h2>
+        <p class="reveal reveal-delay-2 text-base leading-relaxed mb-8" style="color: var(--color-muted);">
+          Jij behandelt — wij zorgen dat je gevonden wordt. Alles wat wij doen is gericht op één ding: een vollere agenda.
+        </p>
+
+        <!-- AI subtext -->
+        <div class="reveal reveal-delay-3 flex items-start gap-3 p-5 rounded-xl" style="background: rgba(46,204,113,0.06); border: 1px solid rgba(46,204,113,0.15);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+          <p class="text-sm leading-relaxed" style="color: var(--color-primary);">
+            Plus: wij bereiden je praktijk voor op AI-zoekmachines — de volgende generatie vindbaarheid.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: service cards -->
+      <div class="space-y-4">
+        {services.map((service, i) => (
+          <div
+            class={`reveal reveal-delay-${i + 1} service-card p-6 rounded-xl`}
+            style="background: var(--color-light); box-shadow: 0 2px 8px rgba(0,0,0,0.04);"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
+                style="background: rgba(46,204,113,0.1); color: var(--color-accent);"
+                set:html={service.icon}
+              />
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-xs font-bold" style="color: rgba(46,204,113,0.5); font-family: var(--font-heading);">{service.number}</span>
+                  <h3 class="text-base font-semibold" style="font-family: var(--font-heading);">{service.title}</h3>
+                </div>
+                <p class="text-sm leading-relaxed" style="color: var(--color-muted);">{service.body}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

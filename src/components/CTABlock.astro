@@ -1,0 +1,49 @@
+---
+import { url } from '../utils/url';
+---
+
+<section class="py-24 md:py-32" style="background: var(--color-dark);" aria-labelledby="cta-heading">
+  <div class="max-w-[1200px] mx-auto px-6 text-center">
+
+    <div
+      class="reveal w-12 h-1 rounded-full mx-auto mb-8"
+      style="background: var(--color-accent);"
+      aria-hidden="true"
+    ></div>
+
+    <h2
+      class="reveal reveal-delay-1 mx-auto mb-6"
+      style="font-size: clamp(2rem, 4vw, 3rem); color: white; max-width: 640px;"
+      id="cta-heading"
+    >
+      Benieuwd wat jouw praktijk online laat liggen?
+    </h2>
+
+    <p
+      class="reveal reveal-delay-2 text-base leading-relaxed mx-auto mb-10"
+      style="color: var(--color-dark-text); max-width: 520px;"
+    >
+      Plan een vrijblijvende kennismaking. We komen langs, bekijken je situatie en laten zien wat er mogelijk is.
+    </p>
+
+    <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href={url('/contact')}
+        class="inline-block text-base font-semibold px-10 py-4 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+        style="background: var(--color-accent); color: white;"
+        onmouseover="this.style.background='var(--color-accent-hover)'"
+        onmouseout="this.style.background='var(--color-accent)'"
+      >
+        Plan een kennismaking
+      </a>
+    </div>
+
+    <div class="reveal reveal-delay-4 flex flex-wrap items-center justify-center gap-6 mt-10">
+      <span class="text-xs" style="color: rgba(224,224,224,0.4);">Gratis proefmaand</span>
+      <span class="text-xs" style="color: rgba(224,224,224,0.2);">·</span>
+      <span class="text-xs" style="color: rgba(224,224,224,0.4);">Maandelijks opzegbaar</span>
+      <span class="text-xs" style="color: rgba(224,224,224,0.2);">·</span>
+      <span class="text-xs" style="color: rgba(224,224,224,0.4);">Geen opstartkosten</span>
+    </div>
+  </div>
+</section>

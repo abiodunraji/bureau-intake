@@ -1,17 +1,30 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import Services from '../components/Services.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Pricing from '../components/Pricing.astro';
+import Founder from '../components/Founder.astro';
+import CTABlock from '../components/CTABlock.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Bureau Intake — Meer patiënten voor jouw fysiotherapiepraktijk"
+  description="Bureau Intake maakt fysiotherapiepraktijken zichtbaar in Google en Google Maps. €590/maand, maandelijks opzegbaar, gratis proefmaand."
+>
+  <Hero />
+  <Problem />
+  <Services />
+  <HowItWorks />
+  <Pricing />
+
+  <!--
+    SOCIAL PROOF SECTION — Reserved
+    Voeg hier een for/after case toe na de eerste pilot (~mei 2026).
+    Gebruik een concrete praktijkcasus met screenshots en meetbare resultaten.
+  -->
+
+  <Founder />
+  <CTABlock />
+</BaseLayout>

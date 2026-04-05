@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bureauintake.nl/sitemap-index.xml

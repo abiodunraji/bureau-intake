@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+
+  <!-- Light accent block top-right -->
+  <rect x="700" y="0" width="500" height="630" fill="#F8F9FA"/>
+
+  <!-- Accent bar left -->
+  <rect x="0" y="0" width="6" height="630" fill="#2ECC71"/>
+
+  <!-- Map pin visual (right side) -->
+  <!-- Pulse ring -->
+  <ellipse cx="950" cy="390" rx="90" ry="30" fill="#2ECC71" opacity="0.08"/>
+  <ellipse cx="950" cy="390" rx="60" ry="20" fill="#2ECC71" opacity="0.1"/>
+
+  <!-- Pin body -->
+  <path d="M950 240C918 240 892 266 892 298C892 340 950 400 950 400C950 400 1008 340 1008 298C1008 266 982 240 950 240Z" fill="#2ECC71"/>
+  <!-- Pin inner circle -->
+  <circle cx="950" cy="298" r="22" fill="white"/>
+  <!-- Plus sign -->
+  <line x1="950" y1="288" x2="950" y2="308" stroke="#2ECC71" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="940" y1="298" x2="960" y2="298" stroke="#2ECC71" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Floating card 1 -->
+  <rect x="1010" y="248" width="140" height="40" rx="8" fill="white" filter="url(#shadow)"/>
+  <text x="1025" y="272" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="500" fill="#4F4F4F">★★★★★ 4.9</text>
+
+  <!-- Floating card 2 -->
+  <rect x="780" y="330" width="130" height="40" rx="8" fill="white" filter="url(#shadow)"/>
+  <text x="795" y="354" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="500" fill="#4F4F4F">#1 in regio</text>
+
+  <!-- Gevonden badge -->
+  <rect x="1010" y="195" width="90" height="32" rx="6" fill="#2ECC71"/>
+  <text x="1025" y="215" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="white">Gevonden!</text>
+
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="rgba(0,0,0,0.08)"/>
+    </filter>
+  </defs>
+
+  <!-- Left: Logo -->
+  <text x="80" y="120" font-family="Montserrat, sans-serif" font-size="36" font-weight="700" fill="#4F4F4F" letter-spacing="-0.5">Bureau</text>
+  <text x="265" y="120" font-family="Montserrat, sans-serif" font-size="36" font-weight="700" fill="#2ECC71" letter-spacing="-0.5">Intake</text>
+
+  <!-- Divider under logo -->
+  <rect x="80" y="138" width="48" height="3" rx="2" fill="#2ECC71"/>
+
+  <!-- Headline -->
+  <text x="80" y="240" font-family="Montserrat, sans-serif" font-size="52" font-weight="700" fill="#4F4F4F" letter-spacing="-1">Meer patiënten.</text>
+  <text x="80" y="306" font-family="Montserrat, sans-serif" font-size="52" font-weight="700" fill="#4F4F4F" letter-spacing="-1">Volle agenda.</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="372" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="400" fill="#6B7280">Lokale vindbaarheid voor fysiotherapiepraktijken.</text>
+
+  <!-- Price pill -->
+  <rect x="80" y="420" width="240" height="52" rx="10" fill="#F8F9FA" stroke="#2ECC71" stroke-width="1.5"/>
+  <text x="105" y="452" font-family="Montserrat, sans-serif" font-size="24" font-weight="700" fill="#4F4F4F">€590</text>
+  <text x="165" y="452" font-family="Space Grotesk, sans-serif" font-size="16" font-weight="400" fill="#6B7280">/maand · opzegbaar</text>
+
+  <!-- Domain -->
+  <text x="80" y="570" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="500" fill="#6B7280">bureauintake.nl</text>
+</svg>

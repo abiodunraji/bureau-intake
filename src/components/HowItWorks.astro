@@ -1,0 +1,91 @@
+---
+import { url } from '../utils/url';
+
+const steps = [
+  {
+    number: '1',
+    title: 'Kennismaking',
+    body: 'We komen langs bij je praktijk, bekijken je huidige situatie en leggen uit wat we kunnen verbeteren. Vrijblijvend, geen verkooppraatje.',
+    accent: false,
+  },
+  {
+    number: '2',
+    title: 'Gratis proefmaand',
+    body: 'We gaan direct aan de slag. Na 30 dagen laten we je precies zien wat het heeft opgeleverd — concreet en eerlijk.',
+    accent: true,
+  },
+  {
+    number: '3',
+    title: 'Resultaat',
+    body: 'Je beslist of je doorgaat. Maandelijks opzegbaar, geen langetermijnverplichting. Wij verdienen je vertrouwen elke maand opnieuw.',
+    accent: false,
+  },
+];
+---
+
+<section id="hoe-het-werkt" class="py-24 md:py-32" style="background: var(--color-light);" aria-labelledby="werkt-heading">
+  <div class="max-w-[1200px] mx-auto px-6">
+
+    <p class="reveal text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--color-accent);">Hoe het werkt</p>
+    <h2 class="reveal reveal-delay-1 mb-4 max-w-xl" style="font-size: clamp(1.75rem, 3.5vw, 2.5rem);" id="werkt-heading">
+      Van eerste gesprek tot volle agenda
+    </h2>
+    <p class="reveal reveal-delay-2 text-base mb-16 max-w-lg" style="color: var(--color-muted);">
+      Drie stappen. Geen verrassingen. Geen verplichting totdat jij overtuigd bent.
+    </p>
+
+    <!-- Steps -->
+    <div class="relative">
+
+      <!-- Connecting line (desktop) -->
+      <div
+        class="hidden md:block absolute top-10 left-0 right-0 h-px"
+        style="background: linear-gradient(to right, transparent, var(--color-accent), transparent); opacity: 0.3;"
+        aria-hidden="true"
+      ></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        {steps.map((step, i) => (
+          <div class={`reveal reveal-delay-${i + 1} relative flex flex-col`}>
+            <div class="mb-6 flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold flex-shrink-0"
+                style={step.accent
+                  ? 'background: var(--color-accent); color: white; font-family: var(--font-heading);'
+                  : 'background: white; color: var(--color-accent); border: 2px solid var(--color-accent); font-family: var(--font-heading);'
+                }
+              >
+                {step.number}
+              </div>
+              {step.accent && (
+                <span
+                  class="text-xs font-semibold px-2.5 py-1 rounded-full"
+                  style="background: rgba(46,204,113,0.12); color: var(--color-accent);"
+                >
+                  Gratis
+                </span>
+              )}
+            </div>
+
+            <h3 class="text-lg font-semibold mb-3" style="font-family: var(--font-heading);">{step.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--color-muted);">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom CTA nudge -->
+    <div class="reveal mt-16 flex justify-center">
+      <a
+        href={url('/contact')}
+        class="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200 hover:text-[var(--color-accent-hover)]"
+        style="color: var(--color-accent);"
+      >
+        Plan een vrijblijvende kennismaking
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

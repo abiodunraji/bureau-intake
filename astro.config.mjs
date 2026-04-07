@@ -5,8 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://abiodunraji.github.io',
-  base: '/bureau-intake',
+  site: 'https://bureauintake.nl',
   vite: {
     plugins: [tailwindcss()],
   },

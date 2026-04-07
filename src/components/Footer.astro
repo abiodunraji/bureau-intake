@@ -9,18 +9,8 @@ const year = new Date().getFullYear();
 
       <!-- Brand -->
       <div>
-        <a href={url('/')} aria-label="Bureau Intake — home" style="display: inline-flex; align-items: center; line-height: 1; margin-bottom: 12px;">
-          <img
-            src={url('/bureau-intake-logo-dark.svg')}
-            alt="Bureau Intake"
-            width="150"
-            height="160"
-            style="height: 160px; width: auto; display: block;"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
-          />
-          <span style="display: none; font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: white;">
-            Bureau<span style="color: var(--color-accent);">Intake</span>
-          </span>
+        <a href={url('/')} aria-label="Bureau Intake — home" style="display: inline-flex; align-items: center; line-height: 1; margin-bottom: 12px; font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: white; text-decoration: none;">
+          Bureau<span style="color: var(--color-accent);">Intake</span>
         </a>
         <p class="text-sm leading-relaxed" style="color: var(--color-muted);">
           Wij maken fysiotherapiepraktijken zichtbaar in Google, Google Maps en AI-zoekmachines.

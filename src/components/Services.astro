@@ -45,9 +45,9 @@ const services = [
       Meer patiënten, <span style="font-style: italic; color: #9ca3af; font-weight: 400;">zonder dat je er zelf aan hoeft te denken.</span>
     </h2>
 
-    <!-- Auto-fit card grid -->
+    <!-- Core services: 4-card grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-      {services.map((service, i) => (
+      {services.filter(s => !s.link).map((service, i) => (
         <div
           class={`reveal reveal-delay-${i + 1} service-card`}
           style="padding: 32px 28px; border-radius: 16px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.04); height: 100%; cursor: default;"
@@ -57,20 +57,34 @@ const services = [
           <div style="color: var(--color-accent); margin-bottom: 16px;" set:html={service.icon}></div>
           <h3 style="font-family: var(--font-body); font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">{service.title}</h3>
           <p style="font-size: 14px; line-height: 1.65; color: var(--color-muted); margin: 0;">{service.body}</p>
-          {service.link && (
-            <a
-              href={url(service.link)}
-              style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; transition: color 0.2s ease;"
-              onmouseover="this.style.color='var(--color-accent-hover)'"
-              onmouseout="this.style.color='var(--color-accent)'"
-            >
-              {service.linkText}
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          )}
         </div>
       ))}
     </div>
+
+    <!-- Featured card: Webdesign (full-width, horizontal) -->
+    {services.filter(s => s.link).map(service => (
+      <div
+        class="reveal reveal-delay-5 service-card"
+        style="margin-top: 20px; padding: 28px 32px; border-radius: 16px; background: var(--color-white); border: 1px solid rgba(46,204,113,0.15); display: flex; align-items: center; gap: 24px; flex-wrap: wrap; cursor: default;"
+        onmouseover="this.style.borderColor='rgba(46,204,113,0.3)'"
+        onmouseout="this.style.borderColor='rgba(46,204,113,0.15)'"
+      >
+        <div style="color: var(--color-accent); flex-shrink: 0;" set:html={service.icon}></div>
+        <div style="flex: 1; min-width: 200px;">
+          <h3 style="font-family: var(--font-body); font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">{service.title}</h3>
+          <p style="font-size: 14px; line-height: 1.65; color: var(--color-muted); margin: 0;">{service.body}</p>
+        </div>
+        <a
+          href={url(service.link)}
+          style="flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; white-space: nowrap; transition: color 0.2s ease;"
+          onmouseover="this.style.color='var(--color-accent-hover)'"
+          onmouseout="this.style.color='var(--color-accent)'"
+        >
+          {service.linkText}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    ))}
 
     <!-- AI subtext -->
     <div class="reveal reveal-delay-5" style="margin-top: 32px; padding: 14px 20px; background: rgba(46,204,113,0.05); border-radius: 12px; border: 1px solid rgba(46,204,113,0.1); display: flex; align-items: flex-start; gap: 8px; max-width: 100%;">

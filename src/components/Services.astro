@@ -1,4 +1,6 @@
 ---
+import { url } from '../utils/url';
+
 const services = [
   {
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="22" x2="12" y2="11"/><path d="M12 11C11 7.5 8 5.5 5 6.5c.3 3.5 2.5 5.5 7 4.5z"/><path d="M12 11c1-3.5 4-5.5 7-4.5-.3 3.5-2.5 5.5-7 4.5z"/></svg>`,
@@ -19,6 +21,13 @@ const services = [
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="22" x2="12" y2="5"/><path d="M12 14c-1-2.5-4-4-7-3 .3 3 2.5 5 7 3z"/><path d="M12 14c1-2.5 4-4 7-3-.3 3-2.5 5-7 3z"/><path d="M12 8c-1-2-3-3-5-2.5.2 2.5 2 4 5 2.5z"/><path d="M12 8c1-2 3-3 5-2.5-.2 2.5-2 4-5 2.5z"/></svg>`,
     title: 'Een website die werkt',
     body: 'Wij optimaliseren je bestaande site zodat Google én patiënten je beter vinden. Sneller, technisch correct, en met de juiste zoektermen voor jouw regio.',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+    title: 'Professionele websites',
+    body: 'Wij bouwen snelle, moderne websites specifiek voor fysiotherapiepraktijken. Inclusief fotografie op locatie en een beheersysteem om zelf aanpassingen te doen.',
+    link: '/webdesign',
+    linkText: 'Meer over webdesign',
   },
 ];
 ---
@@ -48,6 +57,17 @@ const services = [
           <div style="color: var(--color-accent); margin-bottom: 16px;" set:html={service.icon}></div>
           <h3 style="font-family: var(--font-body); font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">{service.title}</h3>
           <p style="font-size: 14px; line-height: 1.65; color: var(--color-muted); margin: 0;">{service.body}</p>
+          {service.link && (
+            <a
+              href={url(service.link)}
+              style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--color-accent); text-decoration: none; transition: color 0.2s ease;"
+              onmouseover="this.style.color='var(--color-accent-hover)'"
+              onmouseout="this.style.color='var(--color-accent)'"
+            >
+              {service.linkText}
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          )}
         </div>
       ))}
     </div>

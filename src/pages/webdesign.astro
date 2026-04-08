@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../utils/url';
+---
+
+<BaseLayout
+  title="Professionele websites voor fysiotherapiepraktijken — Bureau Intake"
+  description="Bureau Intake bouwt snelle, moderne websites voor fysiotherapiepraktijken. Inclusief fotografie op locatie, beheersysteem en een Lighthouse score van 95+."
+>
+
+  <!-- Page hero -->
+  <section style="padding-top: 132px; padding-bottom: 0; background: var(--color-white); position: relative; overflow: hidden;">
+
+    <!-- Background blobs -->
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 480px; height: 480px; top: -80px; right: -100px; background: var(--color-accent); opacity: 0.035; pointer-events: none;"></div>
+    <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 300px; height: 300px; bottom: 0; left: -80px; background: var(--color-accent); opacity: 0.025; pointer-events: none;"></div>
+
+    <!-- Floating decoration -->
+    <div aria-hidden="true" style="position: absolute; right: 6%; top: 160px; width: 22px; height: 22px; color: var(--color-accent); opacity: 0.18; pointer-events: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <div aria-hidden="true" style="position: absolute; left: 4%; top: 220px; width: 18px; height: 18px; color: var(--color-accent); opacity: 0.13; pointer-events: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-6 pb-12 md:pb-16" style="text-align: center;">
+      <p style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 14px;">Webdesign</p>
+      <h1 style="font-size: clamp(2.25rem, 5vw, 3.5rem); max-width: 760px; margin: 0 auto 16px; letter-spacing: -0.02em; line-height: 1.12;">
+        Professionele websites voor fysiotherapiepraktijken
+      </h1>
+      <p style="font-size: 17px; color: var(--color-muted); max-width: 520px; line-height: 1.65; margin: 0 auto;">
+        Snel, modern en gebouwd om patiënten aan te trekken. Inclusief fotografie op locatie.
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <div style="height: 1px; background: linear-gradient(to right, var(--color-accent), rgba(46,204,113,0.08), transparent);"></div>
+  </div>
+
+  <!-- Section 2: Problem recognition -->
+  <section style="padding: 80px 24px; background: var(--color-light);" aria-labelledby="probleem-heading">
+    <div style="max-width: 1100px; margin: 0 auto;">
+
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Herkent u dit?</span>
+      </div>
+
+      <h2 class="reveal reveal-delay-1" id="probleem-heading" style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 48px; max-width: 540px;">
+        De meeste praktijkwebsites werken niet voor u.
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 680px;">
+
+        <div class="reveal reveal-delay-1" style="display: flex; gap: 18px; align-items: flex-start; padding: 24px; border-radius: 16px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.04);">
+          <div style="flex-shrink: 0; margin-top: 2px; color: var(--color-muted);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--color-primary); margin: 0;">
+            Uw website is jaren geleden gemaakt en ziet er gedateerd uit op een telefoon.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-2" style="display: flex; gap: 18px; align-items: flex-start; padding: 24px; border-radius: 16px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.04);">
+          <div style="flex-shrink: 0; margin-top: 2px; color: var(--color-muted);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--color-primary); margin: 0;">
+            Patiënten verlaten uw site voordat ze bellen, omdat de laadtijd te lang is of de informatie moeilijk te vinden is.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-3" style="display: flex; gap: 18px; align-items: flex-start; padding: 24px; border-radius: 16px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.04);">
+          <div style="flex-shrink: 0; margin-top: 2px; color: var(--color-muted);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <p style="font-size: 15px; line-height: 1.65; color: var(--color-primary); margin: 0;">
+            U wilt uw site aanpassen, maar u bent afhankelijk van een webbouwer die traag of duur is.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: What we do differently -->
+  <section style="padding: 80px 24px; background: var(--color-white);" aria-labelledby="aanpak-heading">
+    <div style="max-width: 1100px; margin: 0 auto;">
+
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Onze aanpak</span>
+      </div>
+
+      <h2 class="reveal reveal-delay-1" id="aanpak-heading" style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 48px; max-width: 480px;">
+        Een website die werkt voor uw praktijk.
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+
+        {[
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+            title: 'Razendsnel',
+            body: 'Onze websites laden in minder dan een seconde. Dat is niet alleen prettig voor bezoekers, het is ook een rankingfactor in Google. De meeste praktijkwebsites laden in 3 tot 5 seconden.',
+          },
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>`,
+            title: 'Mobiel-eerst',
+            body: 'Meer dan 70% van uw patiënten zoekt op een telefoon. Onze sites zijn ontworpen voor mobiel en werken perfect op elk scherm.',
+          },
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+            title: 'Zelf aanpasbaar',
+            body: 'Openingstijden gewijzigd? Nieuw teamlid? U past het zelf aan via een eenvoudig beheersysteem. Geen webbouwer nodig voor kleine wijzigingen.',
+          },
+          {
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+            title: 'Professionele fotografie',
+            body: 'Wij komen langs bij uw praktijk voor een fotosessie. Echte foto\'s van uw team, behandelruimtes en apparatuur. Geen stockfoto\'s.',
+          },
+        ].map((card, i) => (
+          <div
+            class={`reveal reveal-delay-${i + 1} service-card`}
+            style="padding: 32px 28px; border-radius: 16px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.04); cursor: default;"
+            onmouseover="this.style.borderColor='rgba(46,204,113,0.15)'"
+            onmouseout="this.style.borderColor='rgba(0,0,0,0.04)'"
+          >
+            <div style="color: var(--color-accent); margin-bottom: 16px;" set:html={card.icon}></div>
+            <h3 style="font-family: var(--font-body); font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">{card.title}</h3>
+            <p style="font-size: 14px; line-height: 1.65; color: var(--color-muted); margin: 0;">{card.body}</p>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Lighthouse score comparison -->
+  <section style="padding: 80px 24px; background: var(--color-light);" aria-labelledby="vergelijking-heading">
+    <div style="max-width: 1100px; margin: 0 auto;">
+
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Het verschil in cijfers</span>
+      </div>
+
+      <h2 class="reveal reveal-delay-1" id="vergelijking-heading" style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; max-width: 540px;">
+        Kwaliteit die u kunt meten.
+      </h2>
+      <p class="reveal reveal-delay-2" style="font-size: 15px; color: var(--color-muted); margin-bottom: 48px; max-width: 480px; line-height: 1.65;">
+        Google Lighthouse meet de technische kwaliteit van een website. Hoe hoger de score, hoe beter voor uw patiënten en uw vindbaarheid.
+      </p>
+
+      <!-- Comparison panels -->
+      <div class="reveal reveal-delay-2 grid grid-cols-1 sm:grid-cols-2" style="gap: 20px; max-width: 840px;">
+
+        <!-- Left: average practice -->
+        <div style="padding: 36px 28px; border-radius: 20px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.06);">
+          <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px;">Gemiddelde praktijkwebsite</p>
+          <div style="height: 1px; background: rgba(0,0,0,0.06); margin-bottom: 28px;"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+
+            {[
+              { label: 'Performance', score: 45, color: '#ef4444', offset: 138.2 },
+              { label: 'Toegankelijkheid', score: 62, color: '#f59e0b', offset: 95.5 },
+              { label: 'SEO', score: 71, color: '#f59e0b', offset: 72.9 },
+            ].map(item => (
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="position: relative; flex-shrink: 0; width: 72px; height: 72px; display: flex; align-items: center; justify-content: center;">
+                  <svg viewBox="0 0 100 100" width="72" height="72" style="transform: rotate(-90deg);" aria-hidden="true">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#f3f4f6" stroke-width="10"/>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke={item.color} stroke-width="10" stroke-linecap="round" stroke-dasharray="251.33" stroke-dashoffset={item.offset}/>
+                  </svg>
+                  <div style="position: absolute; text-align: center;">
+                    <span
+                      data-count-up
+                      data-target={item.score}
+                      data-duration="1800"
+                      style={`font-family: var(--font-body); font-size: 18px; font-weight: 700; color: ${item.color}; line-height: 1;`}
+                    >{item.score}</span>
+                  </div>
+                </div>
+                <span style="font-size: 14px; color: var(--color-muted);">{item.label}</span>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        <!-- Right: Bureau Intake -->
+        <div style="padding: 36px 28px; border-radius: 20px; background: var(--color-white); border: 2px solid rgba(46,204,113,0.3); position: relative;">
+          <div style="position: absolute; top: -12px; left: 28px; background: var(--color-accent); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px;">Bureau Intake</div>
+          <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px;">Bureau Intake website</p>
+          <div style="height: 1px; background: rgba(46,204,113,0.15); margin-bottom: 28px;"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+
+            {[
+              { label: 'Performance', score: 98, offset: 5.0 },
+              { label: 'Toegankelijkheid', score: 100, offset: 0 },
+              { label: 'SEO', score: 100, offset: 0 },
+            ].map(item => (
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="position: relative; flex-shrink: 0; width: 72px; height: 72px; display: flex; align-items: center; justify-content: center;">
+                  <svg viewBox="0 0 100 100" width="72" height="72" style="transform: rotate(-90deg);" aria-hidden="true">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#dcfce7" stroke-width="10"/>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="var(--color-accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="251.33" stroke-dashoffset={item.offset}/>
+                  </svg>
+                  <div style="position: absolute; text-align: center;">
+                    <span
+                      data-count-up
+                      data-target={item.score}
+                      data-duration="1800"
+                      style="font-family: var(--font-body); font-size: 18px; font-weight: 700; color: var(--color-accent); line-height: 1;"
+                    >{item.score}</span>
+                  </div>
+                </div>
+                <span style="font-size: 14px; color: var(--color-muted);">{item.label}</span>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+      </div>
+
+      <p class="reveal reveal-delay-3" style="font-size: 13px; color: var(--color-muted); margin-top: 16px; max-width: 840px;">
+        Scores gemeten via Google Lighthouse. Linkerkolom is representatief voor gangbare praktijkwebsites.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 5: How it works -->
+  <section style="padding: 80px 24px; background: var(--color-white);" aria-labelledby="proces-heading">
+    <div style="max-width: 1100px; margin: 0 auto;">
+
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Hoe het werkt</span>
+      </div>
+
+      <h2 class="reveal reveal-delay-1" id="proces-heading" style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 56px; max-width: 400px;">
+        Van concept naar live in een week.
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 0; max-width: 640px; position: relative;">
+
+        <!-- Vertical line -->
+        <div aria-hidden="true" style="position: absolute; left: 23px; top: 48px; bottom: 48px; width: 1px; background: linear-gradient(to bottom, var(--color-accent), rgba(46,204,113,0.08));"></div>
+
+        {[
+          {
+            num: '1',
+            title: 'Concept',
+            body: 'Wij maken een gepersonaliseerde conceptwebsite voor uw praktijk, op basis van uw huidige informatie. U ontvangt een preview voordat u iets beslist.',
+          },
+          {
+            num: '2',
+            title: 'Fotografie op locatie',
+            body: 'Wij komen langs voor een korte fotosessie. Professionele foto\'s van uw praktijk, team en behandelruimtes. Die foto\'s worden direct verwerkt in de site.',
+          },
+          {
+            num: '3',
+            title: 'Live en in uw handen',
+            body: 'Uw website gaat live op uw eigen domeinnaam. U krijgt toegang tot het beheersysteem en een korte uitleg zodat u zelf kleine aanpassingen kunt doen.',
+          },
+        ].map((step, i) => (
+          <div class={`reveal reveal-delay-${i + 1}`} style="display: flex; gap: 24px; padding-bottom: 36px; position: relative;">
+            <div style={`flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 15px; font-weight: 700; background: ${i === 1 ? 'var(--color-accent)' : 'var(--color-white)'}; color: ${i === 1 ? 'white' : 'var(--color-accent)'}; border: ${i === 1 ? 'none' : '2px solid var(--color-accent)'}; box-shadow: ${i === 1 ? '0 4px 16px rgba(46,204,113,0.3)' : '0 0 0 4px rgba(46,204,113,0.08)'}; position: relative; z-index: 1;`}>
+              {step.num}
+            </div>
+            <div style="padding-top: 10px;">
+              <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 6px;">Stap {step.num === '1' ? 'één' : step.num === '2' ? 'twee' : 'drie'}</p>
+              <h3 style="font-family: var(--font-body); font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">{step.title}</h3>
+              <p style="font-size: 14px; line-height: 1.7; color: var(--color-muted); margin: 0;">{step.body}</p>
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: What's included -->
+  <section style="padding: 80px 24px; background: var(--color-light);" aria-labelledby="inbegrepen-heading">
+    <div style="max-width: 1100px; margin: 0 auto;">
+
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent); text-transform: uppercase;">Standaard inbegrepen</span>
+      </div>
+
+      <h2 class="reveal reveal-delay-1" id="inbegrepen-heading" style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 48px; max-width: 420px;">
+        Alles wat uw praktijk nodig heeft.
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; max-width: 840px;">
+
+        {[
+          'Volledig responsive website (mobiel, tablet, desktop)',
+          'Professionele fotografie op locatie',
+          'Razendsnel: Lighthouse score 95+',
+          'Beheersysteem voor zelf aanpassen',
+          'Google-klaar: SEO-basis, meta tags, schema markup',
+          'Koppeling met Google Bedrijfsprofiel',
+          'SSL-certificaat en hosting',
+          'Persoonlijke begeleiding bij oplevering',
+        ].map((item, i) => (
+          <div class={`reveal reveal-delay-${(i % 3) + 1}`} style="display: flex; gap: 12px; align-items: flex-start; padding: 18px 20px; border-radius: 12px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.04);">
+            <div style="flex-shrink: 0; margin-top: 1px; color: var(--color-accent);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="font-size: 14px; line-height: 1.5; color: var(--color-primary);">{item}</span>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: CTA -->
+  <section
+    style="padding: 110px 24px; background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%); text-align: center; position: relative; overflow: hidden;"
+    aria-labelledby="webdesign-cta-heading"
+  >
+    <div aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.02; background-image: radial-gradient(rgba(46,204,113,0.5) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--color-accent); opacity: 0.05; pointer-events: none;"></div>
+
+    <div style="position: relative; max-width: 520px; margin: 0 auto;">
+      <h2 class="reveal" id="webdesign-cta-heading" style="font-family: var(--font-heading); font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: white; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.02em;">
+        Benieuwd wat wij voor uw praktijk kunnen betekenen?
+      </h2>
+      <p class="reveal reveal-delay-1" style="font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.6; margin-bottom: 40px; max-width: 420px; margin-left: auto; margin-right: auto;">
+        Neem vrijblijvend contact op. Wij vertellen u graag meer over de mogelijkheden.
+      </p>
+      <div class="reveal reveal-delay-2">
+        <a
+          href={url('/contact')}
+          style="font-family: var(--font-body); font-size: 16px; font-weight: 600; color: #1a1a2e; background: var(--color-accent); padding: 18px 48px; border-radius: 12px; text-decoration: none; display: inline-block; box-shadow: 0 4px 24px rgba(46,204,113,0.3); transition: all 0.25s ease;"
+          onmouseover="this.style.background='var(--color-accent-hover)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 32px rgba(46,204,113,0.4)';"
+          onmouseout="this.style.background='var(--color-accent)'; this.style.transform=''; this.style.boxShadow='0 4px 24px rgba(46,204,113,0.3)';"
+        >
+          Neem contact op
+        </a>
+      </div>
+      <p class="reveal reveal-delay-3" style="font-family: var(--font-body); font-size: clamp(12px, 1.2vw, 14px); color: rgba(255,255,255,0.38); margin-top: 28px;">
+        Vrijblijvend gesprek · Geen verkooppraatje
+      </p>
+    </div>
+  </section>
+
+
+</BaseLayout>

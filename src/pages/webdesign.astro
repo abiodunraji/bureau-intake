@@ -159,7 +159,7 @@ import { url } from '../utils/url';
 
         <!-- Left: average practice -->
         <div style="padding: 36px 28px; border-radius: 20px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.06);">
-          <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px;">Gemiddelde praktijkwebsite</p>
+          <p class="card-label" style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px;">Gemiddelde praktijkwebsite</p>
           <div style="height: 1px; background: rgba(0,0,0,0.06); margin-bottom: 28px;"></div>
 
           <div style="display: flex; flex-direction: column; gap: 20px;">
@@ -169,7 +169,7 @@ import { url } from '../utils/url';
               { label: 'Toegankelijkheid', score: 62, color: '#f59e0b', offset: 95.5 },
               { label: 'SEO', score: 71, color: '#f59e0b', offset: 72.9 },
             ].map(item => (
-              <div style="display: flex; align-items: center; gap: 16px;">
+              <div class="score-row" style="display: flex; align-items: center; gap: 16px;">
                 <div style="position: relative; flex-shrink: 0; width: 72px; height: 72px; display: flex; align-items: center; justify-content: center;">
                   <svg viewBox="0 0 100 100" width="72" height="72" style="transform: rotate(-90deg);" aria-hidden="true">
                     <circle cx="50" cy="50" r="40" fill="none" stroke="#f3f4f6" stroke-width="10"/>
@@ -194,7 +194,7 @@ import { url } from '../utils/url';
         <!-- Right: Bureau Intake -->
         <div style="padding: 36px 28px; border-radius: 20px; background: var(--color-white); border: 2px solid rgba(46,204,113,0.3); position: relative;">
           <div style="position: absolute; top: -12px; left: 28px; background: var(--color-accent); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px;">Bureau Intake</div>
-          <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px;">Bureau Intake website</p>
+          <p class="card-label" style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px;">Bureau Intake website</p>
           <div style="height: 1px; background: rgba(46,204,113,0.15); margin-bottom: 28px;"></div>
 
           <div style="display: flex; flex-direction: column; gap: 20px;">
@@ -204,7 +204,7 @@ import { url } from '../utils/url';
               { label: 'Toegankelijkheid', score: 100, offset: 0 },
               { label: 'SEO', score: 100, offset: 0 },
             ].map(item => (
-              <div style="display: flex; align-items: center; gap: 16px;">
+              <div class="score-row" style="display: flex; align-items: center; gap: 16px;">
                 <div style="position: relative; flex-shrink: 0; width: 72px; height: 72px; display: flex; align-items: center; justify-content: center;">
                   <svg viewBox="0 0 100 100" width="72" height="72" style="transform: rotate(-90deg);" aria-hidden="true">
                     <circle cx="50" cy="50" r="40" fill="none" stroke="#dcfce7" stroke-width="10"/>
@@ -353,5 +353,19 @@ import { url } from '../utils/url';
     </div>
   </section>
 
+
+  <style>
+    @media (max-width: 640px) {
+      .score-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+      }
+      .card-label {
+        text-align: center;
+      }
+    }
+  </style>
 
 </BaseLayout>

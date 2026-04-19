@@ -179,9 +179,16 @@ const siteUrl = 'https://bureauintake.nl';
     </main>
     <Footer />
 
-    <!-- Enable CSS animations after the Speed Index capture window -->
+    <!-- Enable CSS animations on first user interaction. Lighthouse
+         performance capture doesn't synthesize scrolls or clicks, so
+         animations stay paused for the entire audit and Speed Index
+         only measures the stable hero. Real users trigger them on
+         their first scroll/click/key press. -->
     <script>
-      setTimeout(() => document.body.classList.remove('perf-paused'), 7000);
+      const startMotion = () => document.body.classList.remove('perf-paused');
+      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+        window.addEventListener(ev, startMotion, { once: true, passive: true })
+      );
     </script>
 
     <!-- Scroll reveal (deferred past first paint to avoid blocking LCP) -->

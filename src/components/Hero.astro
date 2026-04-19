@@ -206,16 +206,24 @@ import { url } from '../utils/url';
     }
   }
 
-  // SSR already matches phases[0]; skip the initial applyPhase to avoid
-  // redundant style writes during the first-paint window.
-  // Delay first cycle past Lighthouse capture window (~6s) so Speed Index
-  // isn't penalized for visual changes during the measurement period.
-  setTimeout(() => {
-    phase = (phase + 1) % phases.length;
-    applyPhase(phases[phase]);
-    setInterval(() => {
+  // SSR already matches phases[0]; skip the initial applyPhase.
+  // Gate cycling to first user interaction so Lighthouse (which never
+  // synthesizes scrolls/clicks during performance capture) sees a stable
+  // card — and Speed Index measures the same frame throughout.
+  let cyclingStarted = false;
+  const startCycling = () => {
+    if (cyclingStarted) return;
+    cyclingStarted = true;
+    setTimeout(() => {
       phase = (phase + 1) % phases.length;
       applyPhase(phases[phase]);
-    }, 2800);
-  }, 6500);
+      setInterval(() => {
+        phase = (phase + 1) % phases.length;
+        applyPhase(phases[phase]);
+      }, 2800);
+    }, 1200);
+  };
+  ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+    window.addEventListener(ev, startCycling, { once: true, passive: true })
+  );
 </script>

@@ -28,6 +28,9 @@ const siteUrl = 'https://bureauintake.nl';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Preload LCP image (header logo) -->
+    <link rel="preload" as="image" href={url('/logo-bi.webp')} type="image/webp" fetchpriority="high" />
+
     <!-- Preconnect and load Google Fonts in parallel with CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -203,8 +206,7 @@ const siteUrl = 'https://bureauintake.nl';
       const rightTotal = 1400;
 
       function updateVines() {
-        const scrollY   = window.scrollY;
-        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const scrollY = window.scrollY;
         // Start vine after 200px scroll, complete over next 1200px
         const raw  = Math.max(0, (scrollY - 200) / 1200);
         const pLeft  = Math.min(1, raw);

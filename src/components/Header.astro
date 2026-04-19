@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname;
   id="mobile-nav"
   class="mobile-nav fixed top-0 right-0 h-full w-72 z-40 shadow-2xl flex flex-col pt-24 px-8 gap-6"
   style="background: var(--color-white);"
-  aria-hidden="true"
+  inert
 >
   {navLinks.map(link => (
     <a
@@ -112,7 +112,7 @@ const currentPath = Astro.url.pathname;
     overlay?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     toggle?.setAttribute('aria-expanded', 'true');
-    mobileNav?.removeAttribute('aria-hidden');
+    mobileNav?.removeAttribute('inert');
     if (h1 && h2 && h3) {
       h1.style.transform = 'rotate(45deg) translate(5px, 5px)';
       h2.style.opacity = '0';
@@ -126,7 +126,7 @@ const currentPath = Astro.url.pathname;
     overlay?.classList.add('hidden');
     document.body.style.overflow = '';
     toggle?.setAttribute('aria-expanded', 'false');
-    mobileNav?.setAttribute('aria-hidden', 'true');
+    mobileNav?.setAttribute('inert', '');
     if (h1 && h2 && h3) {
       h1.style.transform = '';
       h2.style.opacity = '';

@@ -34,6 +34,7 @@ const siteUrl = 'https://bureauintake.nl';
     <!-- Preload critical self-hosted fonts (above-the-fold body + heading) -->
     <link rel="preload" as="font" type="font/woff2" href={url('/fonts/dm-sans-latin-400-normal.woff2')} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={url('/fonts/playfair-display-latin-700-normal.woff2')} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={url('/fonts/playfair-display-latin-400-italic.woff2')} crossorigin />
 
     <!-- SEO -->
     <title>{title}</title>
@@ -178,20 +179,27 @@ const siteUrl = 'https://bureauintake.nl';
     </main>
     <Footer />
 
-    <!-- Scroll reveal -->
+    <!-- Scroll reveal (deferred past first paint to avoid blocking LCP) -->
     <script>
-      const revealEls = document.querySelectorAll('.reveal');
-      const revealObs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-      revealEls.forEach((el) => revealObs.observe(el));
+      const initReveal = () => {
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        revealEls.forEach((el) => revealObs.observe(el));
+      };
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(initReveal, { timeout: 500 });
+      } else {
+        setTimeout(initReveal, 1);
+      }
     </script>
 
     <!-- Growing vine scroll animation -->
@@ -244,19 +252,26 @@ const siteUrl = 'https://bureauintake.nl';
         requestAnimationFrame(step);
       }
 
-      const countEls = document.querySelectorAll('[data-count-up]');
-      const countObs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              runCountUp(entry.target);
-              countObs.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-      countEls.forEach((el) => countObs.observe(el));
+      const initCountUp = () => {
+        const countEls = document.querySelectorAll('[data-count-up]');
+        const countObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                runCountUp(entry.target);
+                countObs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        countEls.forEach((el) => countObs.observe(el));
+      };
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(initCountUp, { timeout: 500 });
+      } else {
+        setTimeout(initCountUp, 1);
+      }
     </script>
   </body>
 </html>

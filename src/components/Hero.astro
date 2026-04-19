@@ -89,7 +89,7 @@ import { url } from '../utils/url';
         <!-- Status indicator -->
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
           <div id="card-dot" style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; transition: all 0.8s ease;"></div>
-          <span id="card-status" style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #ef4444; text-transform: uppercase; transition: color 0.8s ease;">Onzichtbaar</span>
+          <span id="card-status" style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #dc2626; text-transform: uppercase; transition: color 0.8s ease;">Onzichtbaar</span>
         </div>
 
         <div style="font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">Jouw Praktijk</div>
@@ -109,7 +109,7 @@ import { url } from '../utils/url';
         <div style="margin-top: 16px;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
             <span style="font-family: var(--font-body); font-size: 11px; color: var(--color-muted);">Profiel compleetheid</span>
-            <span id="card-pct" style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: #ef4444; transition: color 0.8s ease;">15%</span>
+            <span id="card-pct" style="font-family: var(--font-body); font-size: 11px; font-weight: 600; color: #dc2626; transition: color 0.8s ease;">15%</span>
           </div>
           <div style="background: #f3f4f6; border-radius: 6px; height: 6px; overflow: hidden;">
             <div id="card-bar" style="height: 100%; border-radius: 6px; background: #ef4444; width: 15%; transition: all 1.4s cubic-bezier(0.22,1,0.36,1);"></div>
@@ -138,12 +138,12 @@ import { url } from '../utils/url';
     {
       statusText: 'Onzichtbaar',
       dotColor: '#ef4444',
-      statusColor: '#ef4444',
+      statusColor: '#dc2626',
       starsActive: 0,
       reviews: 'Geen reviews',
       pct: '15%',
       barW: '15%',
-      barColor: '#ef4444',
+      barColor: '#dc2626',
       showBadge: false,
       cardBorder: 'rgba(0,0,0,0.04)',
       cardShadow: '0 8px 32px rgba(0,0,0,0.06)',
@@ -206,9 +206,8 @@ import { url } from '../utils/url';
     }
   }
 
-  // Initial apply
-  applyPhase(phases[0]);
-
+  // SSR already matches phases[0]; skip the initial applyPhase to avoid
+  // redundant style writes during the first-paint window.
   // Delay first cycle past Lighthouse capture window (~6s) so Speed Index
   // isn't penalized for visual changes during the measurement period.
   setTimeout(() => {

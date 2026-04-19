@@ -33,14 +33,14 @@
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/playfair-display-latin-400-normal.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Playfair Display';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/playfair-display-latin-700-normal.woff2') format('woff2');
 }
 @font-face {
@@ -54,7 +54,7 @@
   font-family: 'Playfair Display';
   font-style: italic;
   font-weight: 700;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/playfair-display-latin-700-italic.woff2') format('woff2');
 }
 

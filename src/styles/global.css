@@ -96,6 +96,15 @@
   }
 }
 
+/* Pause all CSS animations during initial paint window so Speed Index
+   measures a stable visual, not continuous morph/float pixel churn.
+   The body class is removed by JS after ~1.2s via requestAnimationFrame. */
+body.perf-paused *,
+body.perf-paused *::before,
+body.perf-paused *::after {
+  animation-play-state: paused !important;
+}
+
 /* Scroll animation base */
 .reveal {
   opacity: 0;

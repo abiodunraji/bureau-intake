@@ -93,7 +93,7 @@ const siteUrl = 'https://bureauintake.nl';
       }
     </script>
   </head>
-  <body>
+  <body class="perf-paused">
     <!-- Grain overlay -->
     <div class="grain-overlay" aria-hidden="true"></div>
 
@@ -178,6 +178,11 @@ const siteUrl = 'https://bureauintake.nl';
       <slot />
     </main>
     <Footer />
+
+    <!-- Enable CSS animations after the Speed Index capture window -->
+    <script>
+      setTimeout(() => document.body.classList.remove('perf-paused'), 7000);
+    </script>
 
     <!-- Scroll reveal (deferred past first paint to avoid blocking LCP) -->
     <script>

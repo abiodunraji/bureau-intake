@@ -31,10 +31,9 @@ const siteUrl = 'https://bureauintake.nl';
     <!-- Preload LCP image (header logo) -->
     <link rel="preload" as="image" href={url('/logo-bi.webp')} type="image/webp" fetchpriority="high" />
 
-    <!-- Preconnect and load Google Fonts in parallel with CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" />
+    <!-- Preload critical self-hosted fonts (above-the-fold body + heading) -->
+    <link rel="preload" as="font" type="font/woff2" href={url('/fonts/dm-sans-latin-400-normal.woff2')} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={url('/fonts/playfair-display-latin-700-normal.woff2')} crossorigin />
 
     <!-- SEO -->
     <title>{title}</title>

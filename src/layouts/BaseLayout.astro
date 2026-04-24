@@ -214,35 +214,54 @@ const siteUrl = 'https://bureauintake.nl';
       }
     </script>
 
-    <!-- Growing vine scroll animation -->
+    <!-- Growing vine scroll animation. Deferred to idle so the initial
+         sync call does not force reflow during the LCP paint window. -->
     <script>
-      const vinePathLeft  = document.getElementById('vine-path-left')  as SVGPathElement | null;
-      const vinePathRight = document.getElementById('vine-path-right') as SVGPathElement | null;
-      const leftLeaves  = [1,2,3,4,5].map(i => document.getElementById(`vine-leaf-left-${i}`));
-      const rightLeaves = [1,2,3,4].map(i => document.getElementById(`vine-leaf-right-${i}`));
+      const initVines = () => {
+        const vinePathLeft  = document.getElementById('vine-path-left')  as SVGPathElement | null;
+        const vinePathRight = document.getElementById('vine-path-right') as SVGPathElement | null;
+        const leftLeaves  = [1,2,3,4,5].map(i => document.getElementById(`vine-leaf-left-${i}`));
+        const rightLeaves = [1,2,3,4].map(i => document.getElementById(`vine-leaf-right-${i}`));
 
-      const leftTotal  = 1600;
-      const rightTotal = 1400;
-
-      function updateVines() {
-        const scrollY = window.scrollY;
-        // Start vine after 200px scroll, complete over next 1200px
-        const raw  = Math.max(0, (scrollY - 200) / 1200);
-        const pLeft  = Math.min(1, raw);
-        const pRight = Math.min(1, raw * 0.85);
-
-        if (vinePathLeft)  vinePathLeft.style.strokeDashoffset  = String(leftTotal  * (1 - pLeft));
-        if (vinePathRight) vinePathRight.style.strokeDashoffset = String(rightTotal * (1 - pRight));
-
-        // Leaves appear at fractional milestones
+        const leftTotal  = 1600;
+        const rightTotal = 1400;
         const leftThresholds  = [0.18, 0.36, 0.52, 0.68, 0.84];
         const rightThresholds = [0.2,  0.4,  0.58, 0.76];
-        leftLeaves.forEach((el, i)  => { if (el) el.style.opacity = pLeft  > leftThresholds[i]  + 0.05 ? '1' : '0'; });
-        rightLeaves.forEach((el, i) => { if (el) el.style.opacity = pRight > rightThresholds[i] + 0.05 ? '1' : '0'; });
-      }
 
-      window.addEventListener('scroll', updateVines, { passive: true });
-      updateVines();
+        let queued = false;
+        let lastScrollY = window.scrollY;
+
+        function applyVines(scrollY: number) {
+          const raw  = Math.max(0, (scrollY - 200) / 1200);
+          const pLeft  = Math.min(1, raw);
+          const pRight = Math.min(1, raw * 0.85);
+
+          if (vinePathLeft)  vinePathLeft.style.strokeDashoffset  = String(leftTotal  * (1 - pLeft));
+          if (vinePathRight) vinePathRight.style.strokeDashoffset = String(rightTotal * (1 - pRight));
+
+          leftLeaves.forEach((el, i)  => { if (el) el.style.opacity = pLeft  > leftThresholds[i]  + 0.05 ? '1' : '0'; });
+          rightLeaves.forEach((el, i) => { if (el) el.style.opacity = pRight > rightThresholds[i] + 0.05 ? '1' : '0'; });
+        }
+
+        function onScroll() {
+          lastScrollY = window.scrollY;
+          if (!queued) {
+            queued = true;
+            requestAnimationFrame(() => {
+              queued = false;
+              applyVines(lastScrollY);
+            });
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        applyVines(lastScrollY);
+      };
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(initVines, { timeout: 1000 });
+      } else {
+        setTimeout(initVines, 1);
+      }
     </script>
 
     <!-- CountUp animation -->

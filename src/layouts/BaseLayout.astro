@@ -28,10 +28,9 @@ const siteUrl = 'https://bureauintake.nl';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Preload LCP image (header logo) -->
-    <link rel="preload" as="image" href={url('/logo-bi.webp')} type="image/webp" fetchpriority="high" />
-
-    <!-- Preload critical self-hosted fonts (above-the-fold body + heading) -->
+    <!-- Preload fonts needed for the LCP element (hero H1: playfair 700 + italic)
+         and the first body text (DM Sans 400). The header logo is NOT the LCP
+         (hero H1 is) so no image preload — it competes with the fonts that are. -->
     <link rel="preload" as="font" type="font/woff2" href={url('/fonts/dm-sans-latin-400-normal.woff2')} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={url('/fonts/playfair-display-latin-700-normal.woff2')} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={url('/fonts/playfair-display-latin-400-italic.woff2')} crossorigin />
@@ -53,7 +52,6 @@ const siteUrl = 'https://bureauintake.nl';
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
-    <link rel="manifest" href={url('/site.webmanifest')} />
 
     <!-- LocalBusiness JSON-LD -->
     <script type="application/ld+json">
@@ -183,12 +181,25 @@ const siteUrl = 'https://bureauintake.nl';
          performance capture doesn't synthesize scrolls or clicks, so
          animations stay paused for the entire audit and Speed Index
          only measures the stable hero. Real users trigger them on
-         their first scroll/click/key press. -->
+         their first scroll/click/key press. Also inject the PWA manifest
+         at idle — it has no render value and should not sit in the
+         critical request chain. -->
     <script>
       const startMotion = () => document.body.classList.remove('perf-paused');
       ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(ev =>
         window.addEventListener(ev, startMotion, { once: true, passive: true })
       );
+      const injectManifest = () => {
+        const l = document.createElement('link');
+        l.rel = 'manifest';
+        l.href = import.meta.env.BASE_URL.replace(/\/$/, '') + '/site.webmanifest';
+        document.head.appendChild(l);
+      };
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(injectManifest, { timeout: 2000 });
+      } else {
+        setTimeout(injectManifest, 2000);
+      }
     </script>
 
     <!-- Scroll reveal (deferred past first paint to avoid blocking LCP) -->

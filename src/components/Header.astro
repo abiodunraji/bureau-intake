@@ -25,8 +25,8 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => (
         <a
           href={link.href}
-          class="text-sm font-medium transition-colors duration-200 hover:text-[var(--color-accent)]"
-          style={`color: ${currentPath === link.href ? 'var(--color-accent)' : 'var(--color-primary)'}`}
+          class="text-sm font-medium transition-colors duration-200 hover:text-[var(--color-accent-text)]"
+          style={`color: ${currentPath === link.href ? 'var(--color-accent-text)' : 'var(--color-primary)'}`}
         >
           {link.label}
         </a>
@@ -34,7 +34,7 @@ const currentPath = Astro.url.pathname;
       <a
         href={url('/contact')}
         class="text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 hover:scale-[1.02]"
-        style="background: var(--color-accent); color: white;"
+        style="background: var(--color-accent); color: var(--color-primary);"
         onmouseover="this.style.background='var(--color-accent-hover)'"
         onmouseout="this.style.background='var(--color-accent)'"
       >
@@ -66,7 +66,7 @@ const currentPath = Astro.url.pathname;
   {navLinks.map(link => (
     <a
       href={link.href}
-      class="text-lg font-medium py-2 border-b transition-colors duration-200 hover:text-[var(--color-accent)]"
+      class="text-lg font-medium py-2 border-b transition-colors duration-200 hover:text-[var(--color-accent-text)]"
       style="color: var(--color-primary); border-color: var(--color-light);"
     >
       {link.label}
@@ -75,7 +75,7 @@ const currentPath = Astro.url.pathname;
   <a
     href={url('/contact')}
     class="mt-4 text-base font-semibold px-6 py-3 rounded-lg text-center transition-all duration-200"
-    style="background: var(--color-accent); color: white;"
+    style="background: var(--color-accent); color: var(--color-primary);"
   >
     Neem contact op
   </a>

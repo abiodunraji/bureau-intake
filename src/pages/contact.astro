@@ -1,11 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
+
+const schemaGraph = [
+  {
+    "@type": "ContactPage",
+    "@id": "https://bureauintake.nl/contact/#webpage",
+    "url": "https://bureauintake.nl/contact/",
+    "name": "Contact — Bureau Intake",
+    "isPartOf": { "@id": "https://bureauintake.nl/#website" },
+    "about": { "@id": "https://bureauintake.nl/#organization" },
+    "inLanguage": "nl-NL",
+  },
+];
 ---
 
 <BaseLayout
   title="Contact — Bureau Intake"
   description="Plan een vrijblijvende kennismaking met Bureau Intake. Vul het formulier in en we nemen zo snel mogelijk contact op."
+  schemaGraph={schemaGraph}
 >
   <section style="padding-top: 132px; padding-bottom: 96px; background: var(--color-white); position: relative; overflow: hidden;">
 

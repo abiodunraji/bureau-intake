@@ -1,11 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../utils/url';
+
+const schemaGraph = [
+  {
+    "@type": "AboutPage",
+    "@id": "https://bureauintake.nl/over/#webpage",
+    "url": "https://bureauintake.nl/over/",
+    "name": "Over ons — Bureau Intake",
+    "isPartOf": { "@id": "https://bureauintake.nl/#website" },
+    "about": { "@id": "https://bureauintake.nl/#organization" },
+    "inLanguage": "nl-NL",
+  },
+  {
+    "@type": "Person",
+    "@id": "https://bureauintake.nl/over/#iwan",
+    "name": "Iwan Stepanova",
+    "jobTitle": "Founder, Bureau Intake",
+    "worksFor": { "@id": "https://bureauintake.nl/#organization" },
+    "image": "https://bureauintake.nl/iwan-stepanova.webp",
+    "url": "https://bureauintake.nl/over/",
+    "nationality": "NL",
+  },
+];
 ---
 
 <BaseLayout
   title="Over ons — Bureau Intake"
   description="Leer Bureau Intake kennen — een marketingbureau dat uitsluitend werkt voor fysiotherapiepraktijken in Nederland."
+  schemaGraph={schemaGraph}
 >
 
   <!-- Page hero -->

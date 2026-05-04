@@ -1,11 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../utils/url';
+
+// Note: no Offer / price field is included here on purpose. Schema must
+// not claim more than the page shows (Google Rich Results policy). Once
+// the webdesign page lists a concrete price, add an Offer block matching
+// that price.
+const schemaGraph = [
+  {
+    "@type": "Service",
+    "@id": "https://bureauintake.nl/webdesign/#service",
+    "serviceType": "Webdesign for physiotherapy practices",
+    "name": "Professionele websites voor fysiotherapiepraktijken",
+    "description":
+      "Fast, modern websites built specifically for physiotherapy practices. Includes on-location photography and a CMS for self-service edits.",
+    "provider": { "@id": "https://bureauintake.nl/#organization" },
+    "areaServed": { "@type": "Country", "name": "Netherlands" },
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Physiotherapy practices",
+    },
+  },
+];
 ---
 
 <BaseLayout
   title="Professionele websites voor fysiotherapiepraktijken — Bureau Intake"
   description="Bureau Intake bouwt snelle, moderne websites voor fysiotherapiepraktijken. Inclusief fotografie op locatie, beheersysteem en een Lighthouse score van 95+."
+  schemaGraph={schemaGraph}
 >
 
   <!-- Page hero -->

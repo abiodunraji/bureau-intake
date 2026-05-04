@@ -9,6 +9,7 @@ interface Props {
   description: string;
   ogImage?: string;
   canonical?: string;
+  schemaGraph?: any[];
 }
 
 const {
@@ -16,9 +17,84 @@ const {
   description,
   ogImage = '/og-image.svg',
   canonical = Astro.url.href,
+  schemaGraph = [],
 } = Astro.props;
 
 const siteUrl = 'https://bureauintake.nl';
+
+// Base schema graph — Organization + WebSite. Present on every page.
+// Page-specific items (FAQPage, Person, Service, etc.) come in via the
+// schemaGraph prop and are merged below.
+const baseGraph = [
+  {
+    "@type": "Organization",
+    "@id": "https://bureauintake.nl/#organization",
+    "name": "Bureau Intake",
+    "url": "https://bureauintake.nl/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bureauintake.nl/logo-bi.png",
+      "contentUrl": "https://bureauintake.nl/logo-bi.png",
+    },
+    "image": "https://bureauintake.nl/logo-bi.png",
+    "description": "Local SEO and webdesign exclusively for physiotherapy practices in the Netherlands.",
+    "email": "hallo@bureauintake.nl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Madeliefstraat 13",
+      "postalCode": "1817 CG",
+      "addressLocality": "Alkmaar",
+      "addressCountry": "NL",
+    },
+    "founder": { "@id": "https://bureauintake.nl/over/#iwan" },
+    "areaServed": { "@type": "Country", "name": "Netherlands" },
+    "knowsAbout": [
+      {
+        "@type": "Thing",
+        "name": "Local SEO",
+        "sameAs": "https://en.wikipedia.org/wiki/Local_search_engine_optimisation",
+      },
+      {
+        "@type": "Thing",
+        "name": "Google Business Profile",
+        "sameAs": "https://en.wikipedia.org/wiki/Google_Business_Profile",
+      },
+      {
+        "@type": "MedicalSpecialty",
+        "name": "Physiotherapy",
+        "sameAs": "https://en.wikipedia.org/wiki/Physical_therapy",
+      },
+    ],
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "KvK",
+      "value": "90576063",
+    },
+    "sameAs": [
+      "https://linkedin.com/company/bureau-intake",
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "hallo@bureauintake.nl",
+      "areaServed": "NL",
+      "availableLanguage": "Dutch",
+    },
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://bureauintake.nl/#website",
+    "url": "https://bureauintake.nl/",
+    "name": "Bureau Intake",
+    "publisher": { "@id": "https://bureauintake.nl/#organization" },
+    "inLanguage": "nl-NL",
+  },
+];
+
+const fullGraph = {
+  "@context": "https://schema.org",
+  "@graph": [...baseGraph, ...schemaGraph],
+};
 ---
 
 <!doctype html>
@@ -53,43 +129,8 @@ const siteUrl = 'https://bureauintake.nl';
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
 
-    <!-- LocalBusiness JSON-LD -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Bureau Intake",
-        "description": "Bureau Intake maakt fysiotherapiepraktijken zichtbaar in Google, Google Maps en AI-zoekmachines.",
-        "url": "https://bureauintake.nl",
-        "email": "hallo@bureauintake.nl",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Alkmaar",
-          "addressCountry": "NL"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 52.6324,
-          "longitude": 4.7534
-        },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Netherlands"
-        },
-        "priceRange": "€590/maand",
-        "openingHours": "Mo-Fr 09:00-18:00",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Lokale SEO voor fysiotherapiepraktijken",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Bedrijfsprofiel optimalisatie" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Review strategie" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "NAP-consistentie" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website vindbaarheid" } }
-          ]
-        }
-      }
-    </script>
+    <!-- Schema.org JSON-LD: Organization + WebSite base, plus page-specific items -->
+    <script type="application/ld+json" set:html={JSON.stringify(fullGraph)} />
   </head>
   <body class="perf-paused">
     <!-- Grain overlay -->

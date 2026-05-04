@@ -8,11 +8,57 @@ import HowItWorks from '../components/HowItWorks.astro';
 import Pricing from '../components/Pricing.astro';
 import Founder from '../components/Founder.astro';
 import CTABlock from '../components/CTABlock.astro';
+import { faqs } from '../data/faqs';
+
+const schemaGraph = [
+  {
+    "@type": "Service",
+    "@id": "https://bureauintake.nl/#local-seo-service",
+    "serviceType": "Local SEO for physiotherapy practices",
+    "name": "Local SEO voor fysiotherapeuten",
+    "description":
+      "Local visibility for physiotherapy practices: Google Business Profile optimization, reviews, NAP consistency, and website findability.",
+    "provider": { "@id": "https://bureauintake.nl/#organization" },
+    "areaServed": { "@type": "Country", "name": "Netherlands" },
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Physiotherapy practices",
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "590",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "590",
+        "priceCurrency": "EUR",
+        "unitCode": "MON",
+        "billingDuration": "P1M",
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://bureauintake.nl/",
+      "description": "Maandelijks opzegbaar. Geen jaarcontract. Geen opstartkosten.",
+    },
+  },
+  {
+    "@type": "FAQPage",
+    "@id": "https://bureauintake.nl/#faq",
+    "mainEntity": faqs.map(({ question, answer }) => ({
+      "@type": "Question",
+      "name": question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": answer,
+      },
+    })),
+  },
+];
 ---
 
 <BaseLayout
   title="Bureau Intake — Meer patiënten voor jouw fysiotherapiepraktijk"
   description="Bureau Intake maakt fysiotherapiepraktijken zichtbaar in Google en Google Maps. €590/maand, maandelijks opzegbaar, gratis proefmaand."
+  schemaGraph={schemaGraph}
 >
   <Hero />
   <Problem />

@@ -129,6 +129,9 @@ const fullGraph = {
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
 
+    <!-- RSS feed auto-discovery -->
+    <link rel="alternate" type="application/rss+xml" title="Bureau Intake — Blog" href={url('/rss.xml')} />
+
     <!-- Schema.org JSON-LD: Organization + WebSite base, plus page-specific items -->
     <script type="application/ld+json" set:html={JSON.stringify(fullGraph)} />
   </head>

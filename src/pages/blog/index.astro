@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/url';
+import { getPublishedPosts, formatDateNL } from '../../utils/blog';
+
+const posts = await getPublishedPosts();
+
+const schemaGraph = [
+  {
+    "@type": "Blog",
+    "@id": "https://bureauintake.nl/blog/#blog",
+    "url": "https://bureauintake.nl/blog/",
+    "name": "Bureau Intake — Blog",
+    "description":
+      "Artikelen over lokale vindbaarheid, Google Bedrijfsprofiel en online zichtbaarheid voor fysiotherapiepraktijken.",
+    "isPartOf": { "@id": "https://bureauintake.nl/#website" },
+    "publisher": { "@id": "https://bureauintake.nl/#organization" },
+    "inLanguage": "nl-NL",
+    "blogPost": posts.map((p) => ({
+      "@type": "BlogPosting",
+      "@id": `https://bureauintake.nl/blog/${p.id}/#blogposting`,
+      "headline": p.data.title,
+      "description": p.data.description,
+      "datePublished": p.data.pubDate.toISOString(),
+      "url": `https://bureauintake.nl/blog/${p.id}/`,
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Blog — Bureau Intake"
+  description="Artikelen over lokale vindbaarheid, Google Bedrijfsprofiel en online zichtbaarheid voor fysiotherapiepraktijken."
+  schemaGraph={schemaGraph}
+>
+  <!-- Hero -->
+  <section class="blog-hero" style="padding-top: 132px; padding-bottom: 0; background: var(--color-white); position: relative; overflow: hidden;">
+
+    <!-- Subtle background blobs (matches /over) -->
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 480px; height: 480px; top: -80px; right: -100px; background: var(--color-accent); opacity: 0.035; pointer-events: none;"></div>
+    <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 300px; height: 300px; bottom: 0; left: -80px; background: var(--color-accent); opacity: 0.025; pointer-events: none;"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 pb-12 md:pb-16" style="text-align: center;">
+      <div class="blog-eyebrow" style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase;">Blog</span>
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+      </div>
+      <h1 class="blog-h1" style="font-size: clamp(2.25rem, 5vw, 3.5rem); max-width: 760px; margin: 0 auto 16px;">
+        Inzichten over lokale vindbaarheid voor fysiotherapie.
+      </h1>
+      <p class="blog-sub" style="font-size: 17px; color: var(--color-muted); max-width: 560px; line-height: 1.65; margin: 0 auto;">
+        Praktische artikelen over Google, reviews en zichtbaarheid — geschreven vanuit de werkelijkheid van een fysiotherapiepraktijk.
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider line -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <div style="height: 1px; background: linear-gradient(to right, var(--color-accent), rgba(46,204,113,0.08), transparent);"></div>
+  </div>
+
+  <!-- Posts -->
+  <section style="padding: 64px 24px 100px; background: var(--color-white);">
+    <div class="max-w-[1200px] mx-auto">
+
+      {posts.length === 0 ? (
+        <p style="text-align: center; font-family: var(--font-body); color: var(--color-muted); font-size: 16px;">Binnenkort meer.</p>
+      ) : (
+        <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <a
+              href={url(`/blog/${post.id}`)}
+              class="blog-card"
+              style="display: flex; flex-direction: column; padding: 28px 28px 32px; border-radius: 12px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.06); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;"
+              onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'; this.style.borderColor='rgba(46,204,113,0.2)';"
+              onmouseout="this.style.transform=''; this.style.boxShadow=''; this.style.borderColor='rgba(0,0,0,0.06)';"
+            >
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase;">
+                  {formatDateNL(post.data.pubDate)}
+                </span>
+              </div>
+              <h2 style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; color: var(--color-primary); margin-bottom: 12px;">
+                {post.data.title}
+              </h2>
+              <p style="font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--color-muted); margin: 0 0 20px;">
+                {post.data.description}
+              </p>
+              <span style="margin-top: auto; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--color-accent-text);">
+                Lees verder →
+              </span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-eyebrow,
+  .blog-h1,
+  .blog-sub {
+    opacity: 0;
+    transform: translateY(20px);
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-duration: 900ms;
+    will-change: transform, opacity;
+  }
+  .blog-eyebrow.visible { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+  .blog-h1.visible      { opacity: 1; transform: translateY(0); transition-delay: 120ms; }
+  .blog-sub.visible     { opacity: 1; transform: translateY(0); transition-delay: 240ms; }
+</style>
+
+<script>
+  const blogHeroEls = document.querySelectorAll('.blog-eyebrow, .blog-h1, .blog-sub');
+  const blogObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          blogObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  blogHeroEls.forEach((el) => blogObs.observe(el));
+</script>

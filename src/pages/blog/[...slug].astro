@@ -1,0 +1,189 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../utils/url';
+import { getPublishedPosts, formatDateNL, readingTime } from '../../utils/blog';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = await getPublishedPosts();
+const relatedPosts = allPosts.filter((p) => p.id !== post.id).slice(0, 2);
+const minutes = readingTime(post.body ?? '');
+const canonical = `https://bureauintake.nl/blog/${post.id}/`;
+
+const schemaGraph = [
+  {
+    "@type": "BlogPosting",
+    "@id": `${canonical}#blogposting`,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.pubDate.toISOString(),
+    ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
+    "author": { "@id": "https://bureauintake.nl/over/#iwan" },
+    "publisher": { "@id": "https://bureauintake.nl/#organization" },
+    "inLanguage": "nl-NL",
+    "url": canonical,
+    ...(post.data.tags.length > 0 && { "keywords": post.data.tags.join(", ") }),
+  },
+];
+---
+
+<BaseLayout
+  title={`${post.data.title} — Bureau Intake`}
+  description={post.data.description}
+  canonical={canonical}
+  schemaGraph={schemaGraph}
+>
+  <article style="padding-top: 132px; padding-bottom: 0; background: var(--color-white); position: relative; overflow: hidden;">
+
+    <!-- Subtle background blob -->
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 420px; height: 420px; top: -60px; right: -100px; background: var(--color-accent); opacity: 0.03; pointer-events: none;"></div>
+
+    <!-- Header -->
+    <header class="blog-post-header" style="max-width: 720px; margin: 0 auto; padding: 0 24px 32px; text-align: center;">
+      <a href={url('/blog')} style="display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--color-accent-text); text-decoration: none; margin-bottom: 24px; letter-spacing: 0.04em; text-transform: uppercase;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-accent-text)'">
+        ← Terug naar blog
+      </a>
+      <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-muted); text-transform: uppercase;">
+        <span>{formatDateNL(post.data.pubDate)}</span>
+        <span style="width: 3px; height: 3px; border-radius: 50%; background: var(--color-muted);"></span>
+        <span>{minutes} min lezen</span>
+      </div>
+      <h1 style="font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--color-primary); margin-bottom: 20px;">
+        {post.data.title}
+      </h1>
+      <p style="font-family: var(--font-body); font-size: clamp(16px, 1.6vw, 18px); line-height: 1.65; color: var(--color-muted); max-width: 600px; margin: 0 auto;">
+        {post.data.description}
+      </p>
+    </header>
+
+    <!-- Accent divider -->
+    <div style="max-width: 80px; margin: 12px auto 48px; height: 1.5px; background: var(--color-accent); opacity: 0.6;"></div>
+
+    <!-- Body -->
+    <div class="prose-bi" style="max-width: 680px; margin: 0 auto; padding: 0 24px 96px; font-family: var(--font-body); color: var(--color-primary); font-size: 17px; line-height: 1.75;">
+      <Content />
+    </div>
+  </article>
+
+  <!-- Related posts -->
+  {relatedPosts.length > 0 && (
+    <section style="padding: 80px 24px 100px; background: var(--color-light); border-top: 1px solid rgba(0,0,0,0.04);">
+      <div class="max-w-[1200px] mx-auto">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 28px; max-width: 720px; margin-left: auto; margin-right: auto;">
+          <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+          <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase;">Meer lezen</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="max-width: 720px; margin: 0 auto;">
+          {relatedPosts.map((p) => (
+            <a
+              href={url(`/blog/${p.id}`)}
+              style="display: flex; flex-direction: column; padding: 24px 26px 28px; border-radius: 12px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.05); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;"
+              onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'; this.style.borderColor='rgba(46,204,113,0.2)';"
+              onmouseout="this.style.transform=''; this.style.boxShadow=''; this.style.borderColor='rgba(0,0,0,0.05)';"
+            >
+              <span style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase; margin-bottom: 10px;">
+                {formatDateNL(p.data.pubDate)}
+              </span>
+              <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 700; line-height: 1.25; color: var(--color-primary); margin: 0 0 10px;">
+                {p.data.title}
+              </h3>
+              <p style="font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--color-muted); margin: 0;">
+                {p.data.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  /* Article body — scoped Markdown styling matching the house system */
+  .prose-bi h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--color-primary);
+    margin-top: 56px;
+    margin-bottom: 16px;
+  }
+  .prose-bi h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(18px, 2.4vw, 21px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-primary);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .prose-bi p {
+    margin-bottom: 22px;
+  }
+  .prose-bi p:first-child {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--color-primary);
+  }
+  .prose-bi a {
+    color: var(--color-accent-text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+  .prose-bi a:hover {
+    color: var(--color-primary);
+  }
+  .prose-bi strong { font-weight: 600; color: var(--color-primary); }
+  .prose-bi em { font-style: italic; }
+  .prose-bi ul, .prose-bi ol {
+    margin: 0 0 22px 1.4em;
+  }
+  .prose-bi ul { list-style: disc; }
+  .prose-bi ol { list-style: decimal; }
+  .prose-bi li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .prose-bi li::marker { color: var(--color-accent); }
+  .prose-bi blockquote {
+    margin: 32px 0;
+    padding: 18px 24px;
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-light);
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+    color: var(--color-primary);
+  }
+  .prose-bi blockquote p:last-child { margin-bottom: 0; }
+  .prose-bi code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    font-size: 0.92em;
+    padding: 2px 6px;
+    background: var(--color-light);
+    border-radius: 4px;
+  }
+  .prose-bi hr {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    margin: 48px auto;
+    max-width: 80px;
+  }
+  .prose-bi img {
+    border-radius: 12px;
+    margin: 32px 0;
+    max-width: 100%;
+    height: auto;
+  }
+</style>

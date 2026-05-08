@@ -9,6 +9,17 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
+
+// Normalize trailing slashes so /over/ matches /over.
+// Home (/) is active only on exact match. Other items also light up on
+// child pages — e.g. /blog/some-post/ activates the "Blog" item.
+const stripSlash = (p: string) => p.replace(/\/$/, '');
+function isActive(href: string): boolean {
+  const cur = stripSlash(currentPath);
+  const target = stripSlash(href);
+  if (target === '') return cur === '';
+  return cur === target || cur.startsWith(target + '/');
+}
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -26,8 +37,9 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => (
         <a
           href={link.href}
+          aria-current={isActive(link.href) ? 'page' : undefined}
           class="text-sm font-medium transition-colors duration-200 hover:text-[var(--color-accent-text)]"
-          style={`color: ${currentPath === link.href ? 'var(--color-accent-text)' : 'var(--color-primary)'}`}
+          style={`color: ${isActive(link.href) ? 'var(--color-accent-text)' : 'var(--color-primary)'}`}
         >
           {link.label}
         </a>
@@ -67,8 +79,9 @@ const currentPath = Astro.url.pathname;
   {navLinks.map(link => (
     <a
       href={link.href}
+      aria-current={isActive(link.href) ? 'page' : undefined}
       class="text-lg font-medium py-2 border-b transition-colors duration-200 hover:text-[var(--color-accent-text)]"
-      style="color: var(--color-primary); border-color: var(--color-light);"
+      style={`color: ${isActive(link.href) ? 'var(--color-accent-text)' : 'var(--color-primary)'}; border-color: var(--color-light);`}
     >
       {link.label}
     </a>

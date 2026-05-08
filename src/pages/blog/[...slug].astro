@@ -106,7 +106,13 @@ const schemaGraph = [
   )}
 </BaseLayout>
 
-<style>
+<!-- Astro scopes styles by adding a data-astro-cid attribute to elements
+     it renders. <Content /> is rendered by Markdown and does NOT carry
+     that attribute, so scoped descendant selectors (.prose-bi h2, etc)
+     would never match. Marking the block as global lets these rules
+     reach Markdown-rendered tags. .prose-bi is unique to this page so
+     there is no risk of bleed. -->
+<style is:global>
   /* Article body — scoped Markdown styling matching the house system */
   .prose-bi h2 {
     font-family: var(--font-heading);

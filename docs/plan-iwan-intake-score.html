@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>De Intake Score — Build Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #2ECC71;
+    --mint-dark: #15803D;
+    --mint-soft: rgba(46, 204, 113, 0.08);
+    --mint-line: rgba(46, 204, 113, 0.18);
+    --primary: #1A1A2E;
+    --muted: #4B5563;
+    --muted-soft: #6B7280;
+    --line: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.14);
+    --bg: #FFFFFF;
+    --bg-soft: #F8F9FA;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 18mm 18mm 18mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #6B7280;
+    }
+    @bottom-left {
+      content: "Bureau Intake — De Intake Score build plan";
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #6B7280;
+    }
+  }
+  @page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--primary);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* Cover */
+  .cover {
+    page-break-after: always;
+    height: 297mm;
+    padding: 28mm 22mm;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-bg-mint {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: var(--mint);
+    opacity: 0.08;
+  }
+  .cover-bg-mint-2 {
+    position: absolute;
+    bottom: -80px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: var(--mint-dark);
+    opacity: 0.06;
+  }
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mint-dark);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-eyebrow .rule {
+    width: 36px;
+    height: 1.5pt;
+    background: var(--mint);
+  }
+  .cover-title {
+    font-size: 56pt;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-top: 28pt;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mint-dark);
+  }
+  .cover-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14pt;
+    color: var(--muted);
+    line-height: 1.45;
+    max-width: 140mm;
+    margin-top: 18pt;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 24pt;
+    border-top: 1pt solid var(--line);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    margin-bottom: 4pt;
+    font-weight: 600;
+  }
+  .cover-meta .value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11pt;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  .cover-brand {
+    text-align: right;
+  }
+  .cover-brand .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14pt;
+    font-weight: 700;
+  }
+
+  /* Generic page */
+  .page {
+    page-break-after: always;
+    padding: 0;
+  }
+  .page:last-of-type { page-break-after: auto; }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14pt;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mint-dark);
+  }
+  .section-eyebrow .rule {
+    width: 24px;
+    height: 1.5pt;
+    background: var(--mint);
+  }
+  .section-h {
+    font-size: 26pt;
+    line-height: 1.15;
+    margin-bottom: 14pt;
+  }
+  .section-h em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mint-dark);
+  }
+  .section-lead {
+    font-size: 12pt;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 165mm;
+    margin-bottom: 22pt;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 18pt 0 8pt;
+    color: var(--primary);
+    letter-spacing: 0;
+  }
+  p { margin: 0 0 9pt; }
+
+  /* Cards / boxes */
+  .card {
+    border: 1pt solid var(--line);
+    border-radius: 8pt;
+    padding: 14pt 16pt;
+    background: var(--bg);
+  }
+  .card-mint {
+    border-color: var(--mint-line);
+    background: var(--mint-soft);
+  }
+  .card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mint-dark);
+    margin: 0 0 6pt;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin: 6pt 0 18pt;
+  }
+  th {
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mint-dark);
+    padding: 10pt 10pt 10pt 0;
+    border-bottom: 1.5pt solid var(--line-strong);
+    vertical-align: bottom;
+  }
+  td {
+    padding: 9pt 10pt 9pt 0;
+    border-bottom: 1pt solid var(--line);
+    vertical-align: top;
+  }
+  td:last-child, th:last-child { padding-right: 0; }
+  tr:last-child td { border-bottom: none; }
+  .num { font-variant-numeric: tabular-nums; }
+  .col-tight { width: 18%; }
+  .col-tighter { width: 12%; }
+  .col-wide { width: 50%; }
+
+  /* Two-column */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14pt;
+    margin: 6pt 0 14pt;
+  }
+
+  /* Pill */
+  .pill {
+    display: inline-block;
+    padding: 2pt 8pt;
+    border-radius: 99pt;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+  }
+
+  /* Diagram */
+  .diagram {
+    margin: 8pt 0 14pt;
+    width: 100%;
+  }
+
+  /* Numbered steps */
+  .steps {
+    counter-reset: step;
+    margin: 6pt 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .steps li {
+    counter-increment: step;
+    padding: 10pt 0 10pt 32pt;
+    position: relative;
+    border-bottom: 1pt solid var(--line);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 10pt;
+    width: 22pt;
+    height: 22pt;
+    border-radius: 50%;
+    background: var(--mint);
+    color: var(--primary);
+    font-family: 'Playfair Display', serif;
+    font-size: 11pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .steps strong {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5pt;
+    margin-bottom: 2pt;
+  }
+
+  /* Callouts */
+  .callout {
+    border-left: 3pt solid var(--mint);
+    padding: 10pt 14pt;
+    background: var(--mint-soft);
+    border-radius: 0 8pt 8pt 0;
+    margin: 12pt 0;
+    font-size: 10pt;
+  }
+  .callout strong { color: var(--mint-dark); }
+
+  /* Inline marks */
+  .ok { color: var(--mint-dark); font-weight: 700; }
+  .pay { color: #B45309; font-weight: 600; }
+  .free { color: var(--mint-dark); font-weight: 700; }
+
+  /* Footnote-ish */
+  .note {
+    font-size: 8.5pt;
+    color: var(--muted-soft);
+    line-height: 1.5;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER -->
+<!-- ============================================================ -->
+<section class="cover">
+  <div class="cover-bg-mint"></div>
+  <div class="cover-bg-mint-2"></div>
+
+  <div>
+    <div class="cover-eyebrow">
+      <span class="rule"></span>
+      <span>Bureau Intake — strategic build plan</span>
+    </div>
+    <h1 class="cover-title">
+      De Intake<br/><em>Score</em>
+    </h1>
+    <p class="cover-sub">
+      A daily-updated, proprietary visibility score for every Dutch physiotherapy practice — and the technical moat behind it.
+    </p>
+  </div>
+
+  <div class="cover-meta">
+    <div>
+      <div class="label">Prepared for</div>
+      <div class="value">Iwan Stepanova</div>
+    </div>
+    <div>
+      <div class="label">Status</div>
+      <div class="value">Pre-build planning</div>
+    </div>
+    <div>
+      <div class="label">Date</div>
+      <div class="value">May 2026</div>
+    </div>
+    <div class="cover-brand">
+      <div class="label">Brand</div>
+      <div class="value name">Bureau Intake</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: EXECUTIVE SUMMARY -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>Executive summary</span>
+  </div>
+  <h2 class="section-h">The opportunity, in four lines.</h2>
+
+  <p class="section-lead">
+    Local SEO as a service is a commodity. Local SEO as a measurable, owned product — with a number that compounds in your favor as you collect more data than anyone else — is a moat. This plan describes how to build that product without changing the daily business.
+  </p>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>The product</h4>
+      <p>A 0–100 score for every physio practice in NL, recomputed daily from five proprietary signals. Free public lookup at <strong>intake-score</strong>. Private dashboard for paying clients.</p>
+    </div>
+    <div class="card">
+      <h4>The moat</h4>
+      <p>You start collecting data nobody else has — particularly AI-search mention rates. The score gets more accurate every day. A competitor starting six months later is six months behind, forever.</p>
+    </div>
+    <div class="card">
+      <h4>The cost reality</h4>
+      <p>Pilot operation: <span class="ok">€3–8/month</span>. Cloudflare-native infra (free tier), pay-as-you-go SERP and LLM APIs. Real costs scale only when you have paying clients to absorb them.</p>
+    </div>
+    <div class="card">
+      <h4>The human role</h4>
+      <p>Iwan operates, doesn't maintain. Three buttons in <strong>/admin</strong>: add a practice, pause it, view error log. Everything else runs on cron, observed by the system itself.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Bottom line.</strong> The system is built once, then runs on its own. Iwan's daily involvement after launch is reading alerts and adding new clients. Everything else — scraping, scoring, alerting, reporting — is handled by Cloudflare Workers, calling LLMs and APIs in the background.
+  </div>
+
+  <h3>What this plan covers</h3>
+  <table>
+    <tr>
+      <td class="col-tighter num"><strong>1</strong></td>
+      <td>What De Intake Score is and why it's defensible</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>2</strong></td>
+      <td>The five signals that feed it</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>3</strong></td>
+      <td>System architecture and operating model</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>4</strong></td>
+      <td>Cost model: pilot, early, scale</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>5</strong></td>
+      <td>Build phases and effort estimate</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>6</strong></td>
+      <td>What's needed to start Phase 0</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 2: THE PRODUCT -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>01 — The product</span>
+  </div>
+  <h2 class="section-h">A number, not a service.</h2>
+
+  <p class="section-lead">
+    Right now Bureau Intake sells "local SEO for physiotherapists." This is true but indistinguishable from what a hundred other agencies offer. De Intake Score replaces that abstraction with a concrete number that becomes the unit of conversation in your market.
+  </p>
+
+  <h3>What it does for the practice owner</h3>
+  <p>
+    A physio types her practice name on <strong>intake-score.bureauintake.nl</strong>. Within two seconds she sees: her score (e.g. 42/100), how she ranks against other physios in her postcode (e.g. 8th out of 11), the three weakest signals, and a one-paragraph diagnosis. She can leave her email to receive a deeper report. Whether or not she becomes a client, she now thinks about her practice's visibility in terms of <em>your</em> metric.
+  </p>
+
+  <h3>What it does for Bureau Intake</h3>
+  <table>
+    <tr>
+      <td class="col-tight"><span class="pill">Lead engine</span></td>
+      <td>Anyone scoring below 60 is exactly your target prospect. The lookup form captures email + practice name, feeding directly into your sales pipeline.</td>
+    </tr>
+    <tr>
+      <td><span class="pill">Sales proof</span></td>
+      <td>"Your score is 42 today. In six months we'll get you to 75." Concrete, trackable, demonstrable. Recurring revenue stops feeling abstract.</td>
+    </tr>
+    <tr>
+      <td><span class="pill">Retention</span></td>
+      <td>Clients log into their dashboard and watch the score climb. Visible progress is the strongest reason to stay subscribed.</td>
+    </tr>
+    <tr>
+      <td><span class="pill">Authority</span></td>
+      <td>Once data covers 500+ practices, you publish an annual "State of Visibility in NL Physiotherapy" report. Press, links, awareness — all flow back.</td>
+    </tr>
+    <tr>
+      <td><span class="pill">Moat</span></td>
+      <td>Twelve months of historical data later, competitors who start fresh are permanently behind on accuracy and trend signals.</td>
+    </tr>
+  </table>
+
+  <h3>Why this is not the website</h3>
+  <p>
+    The website is a trust instrument. De Intake Score is a tool that runs continuously, ingests live data, exposes a public lookup, and powers a private dashboard. It happens to <em>live on</em> the same Cloudflare account, but it's a separate product with separate purpose. Building it does not change what the homepage says.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 3: THE FIVE SIGNALS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>02 — The five signals</span>
+  </div>
+  <h2 class="section-h">What feeds the score.</h2>
+
+  <p class="section-lead">
+    Each signal is fetched independently, weighted, and combined into the final 0–100. The fifth signal is the one that makes the system defensible — it does not yet exist as a market category.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tighter">#</th>
+      <th class="col-tight">Signal</th>
+      <th class="col-wide">What it measures</th>
+      <th>Why it's defensible</th>
+    </tr>
+    <tr>
+      <td class="num"><strong>1</strong></td>
+      <td><strong>GBP completeness</strong></td>
+      <td>Photos, hours, posts, Q&amp;A, attributes, behandelingen, recency of profile updates.</td>
+      <td>Anyone can score this. Useful only when combined with the rest.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>2</strong></td>
+      <td><strong>Local SERP position</strong></td>
+      <td>Daily rank for "fysio [stad]", "[behandeling] [stad]" across every Dutch postcode the practice serves.</td>
+      <td>Requires 12+ months of history to score percentiles. Day-one competitors can't match.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>3</strong></td>
+      <td><strong>Review velocity</strong></td>
+      <td>Reviews per month over trailing 90 days, average rating, sentiment of recent reviews.</td>
+      <td>Sentiment uses a physio-specific lexicon you refine over time — generic SEO tools miss the nuance.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>4</strong></td>
+      <td><strong>NAP consistency</strong></td>
+      <td>Naam, Adres, Phone across ~20 Dutch healthcare directories (Zorgkaart, Independer, vakorganisaties).</td>
+      <td>Maintaining 20 directory scrapers is significant ongoing work. Most agencies do this manually or not at all.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>5</strong></td>
+      <td><strong>AI-mention rate</strong> <span class="pill">moat</span></td>
+      <td>Daily queries to ChatGPT, Claude, Perplexity, Gemini asking "best fysio in [stad] voor [klacht]". Tracks which practices each AI mentions, and the sentiment of the mention.</td>
+      <td><strong>Nobody is systematically tracking this in NL.</strong> Six months from now everyone will want it; you'll be the only one with a year of history.</td>
+    </tr>
+  </table>
+
+  <h3>How the score combines them</h3>
+  <p>
+    A weighted formula, tuned by Iwan over time. Starting weights (proposed):
+  </p>
+  <table>
+    <tr>
+      <td class="col-wide">GBP completeness</td>
+      <td class="num"><strong>20%</strong></td>
+    </tr>
+    <tr>
+      <td>Local SERP position</td>
+      <td class="num"><strong>30%</strong></td>
+    </tr>
+    <tr>
+      <td>Review velocity &amp; sentiment</td>
+      <td class="num"><strong>20%</strong></td>
+    </tr>
+    <tr>
+      <td>NAP consistency</td>
+      <td class="num"><strong>10%</strong></td>
+    </tr>
+    <tr>
+      <td>AI-mention rate</td>
+      <td class="num"><strong>20%</strong></td>
+    </tr>
+  </table>
+  <p class="note">Weights are configurable via the admin panel. Expect to tune them in the first six months as the data reveals which signals correlate most with real-world results.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 4: ARCHITECTURE -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>03 — Architecture</span>
+  </div>
+  <h2 class="section-h">Cloudflare-native, sits next to the website.</h2>
+
+  <p class="section-lead">
+    The whole system runs on the same Cloudflare account that hosts bureauintake.nl. No new infrastructure, no separate hosting bills, no DevOps. The pieces:
+  </p>
+
+  <svg class="diagram" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#15803D"/>
+      </marker>
+    </defs>
+
+    <!-- External APIs (left column) -->
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="20" y="30" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="46" text-anchor="middle" font-weight="600" font-size="9.5">DataForSEO API</text>
+      <text x="80" y="58" text-anchor="middle" font-size="8" fill="#6B7280">SERP results</text>
+
+      <rect x="20" y="80" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="96" text-anchor="middle" font-weight="600" font-size="9.5">Google Places API</text>
+      <text x="80" y="108" text-anchor="middle" font-size="8" fill="#6B7280">GBP data</text>
+
+      <rect x="20" y="130" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="146" text-anchor="middle" font-weight="600" font-size="9.5">OpenAI / Anthropic</text>
+      <text x="80" y="158" text-anchor="middle" font-size="8" fill="#6B7280">AI-mention queries</text>
+
+      <rect x="20" y="180" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="196" text-anchor="middle" font-weight="600" font-size="9.5">Perplexity / Gemini</text>
+      <text x="80" y="208" text-anchor="middle" font-size="8" fill="#6B7280">AI-mention queries</text>
+
+      <rect x="20" y="230" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="246" text-anchor="middle" font-weight="600" font-size="9.5">Directory scrapers</text>
+      <text x="80" y="258" text-anchor="middle" font-size="8" fill="#6B7280">NAP signals</text>
+    </g>
+
+    <!-- Cloudflare Workers (middle) -->
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="200" y="20" width="280" height="260" rx="10" fill="rgba(46,204,113,0.05)" stroke="#15803D" stroke-width="1" stroke-dasharray="3 2"/>
+      <text x="340" y="42" text-anchor="middle" font-family="Playfair Display" font-weight="700" font-size="12" fill="#15803D">Cloudflare Workers (cron)</text>
+
+      <rect x="220" y="58" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="78" text-anchor="middle" font-weight="600" font-size="9.5">serp-collector  ·  daily 03:00</text>
+
+      <rect x="220" y="98" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="118" text-anchor="middle" font-weight="600" font-size="9.5">gbp-scanner  ·  daily 03:30</text>
+
+      <rect x="220" y="138" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="158" text-anchor="middle" font-weight="600" font-size="9.5">ai-mention-collector  ·  daily 04:00</text>
+
+      <rect x="220" y="178" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="198" text-anchor="middle" font-weight="600" font-size="9.5">nap-checker  ·  weekly Sun 02:00</text>
+
+      <rect x="220" y="218" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="238" text-anchor="middle" font-weight="600" font-size="9.5">score-calculator + alerter  ·  daily 06:00</text>
+    </g>
+
+    <!-- D1 -->
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="520" y="120" width="170" height="60" rx="8" fill="#2ECC71" opacity="0.12" stroke="#15803D" stroke-width="1"/>
+      <text x="605" y="142" text-anchor="middle" font-family="Playfair Display" font-weight="700" font-size="12" fill="#15803D">Cloudflare D1</text>
+      <text x="605" y="160" text-anchor="middle" font-size="9" fill="#1A1A2E">snapshots · scores · alerts</text>
+      <text x="605" y="172" text-anchor="middle" font-size="8" fill="#6B7280">SQLite, free tier</text>
+    </g>
+
+    <!-- User surfaces (bottom) -->
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="200" y="310" width="120" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="0.8"/>
+      <text x="260" y="328" text-anchor="middle" font-weight="600" font-size="9.5">/intake-score</text>
+      <text x="260" y="342" text-anchor="middle" font-size="8" fill="#6B7280">public lookup</text>
+
+      <rect x="340" y="310" width="120" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="0.8"/>
+      <text x="400" y="328" text-anchor="middle" font-weight="600" font-size="9.5">/portal</text>
+      <text x="400" y="342" text-anchor="middle" font-size="8" fill="#6B7280">client dashboard</text>
+
+      <rect x="480" y="310" width="120" height="40" rx="6" fill="#FFFFFF" stroke="#2ECC71" stroke-width="1.2"/>
+      <text x="540" y="328" text-anchor="middle" font-weight="600" font-size="9.5" fill="#15803D">/admin</text>
+      <text x="540" y="342" text-anchor="middle" font-size="8" fill="#6B7280">Iwan operates</text>
+    </g>
+
+    <!-- Arrows from APIs to Workers -->
+    <g stroke="#15803D" stroke-width="0.8" fill="none" marker-end="url(#ah)">
+      <line x1="140" y1="48"  x2="218" y2="74"/>
+      <line x1="140" y1="98"  x2="218" y2="114"/>
+      <line x1="140" y1="148" x2="218" y2="154"/>
+      <line x1="140" y1="198" x2="218" y2="158"/>
+      <line x1="140" y1="248" x2="218" y2="194"/>
+    </g>
+
+    <!-- Arrows from Workers to D1 -->
+    <g stroke="#15803D" stroke-width="0.8" fill="none" marker-end="url(#ah)">
+      <line x1="460" y1="150" x2="518" y2="150"/>
+    </g>
+
+    <!-- Arrows from D1 to user surfaces -->
+    <g stroke="#1A1A2E" stroke-width="0.7" fill="none" marker-end="url(#ah)">
+      <line x1="600" y1="180" x2="260" y2="306"/>
+      <line x1="605" y1="180" x2="400" y2="306"/>
+      <line x1="610" y1="180" x2="540" y2="306"/>
+    </g>
+  </svg>
+
+  <h3>What lives where</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Layer</th>
+      <th>Tech</th>
+      <th>Why this choice</th>
+    </tr>
+    <tr>
+      <td>Compute</td>
+      <td>Cloudflare Workers (cron + HTTP)</td>
+      <td>Runs free up to 100k requests/day. Already hosting the website.</td>
+    </tr>
+    <tr>
+      <td>Database</td>
+      <td>Cloudflare D1 (managed SQLite)</td>
+      <td>Free up to 5GB. Zero ops. Single-region is fine — this isn't latency-sensitive.</td>
+    </tr>
+    <tr>
+      <td>Queues</td>
+      <td>Cloudflare Queues</td>
+      <td>Throttle SERP / LLM calls to respect rate limits. Free for our volume.</td>
+    </tr>
+    <tr>
+      <td>Auth</td>
+      <td>Cloudflare Access (magic links)</td>
+      <td>No password to manage. Iwan logs in via email link.</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>Resend</td>
+      <td>Free 100 emails/day. Alerts, weekly reports.</td>
+    </tr>
+    <tr>
+      <td>Frontend</td>
+      <td>Astro (same repo as the website)</td>
+      <td>New routes /intake-score, /portal, /admin alongside existing pages. No new deployment pipeline.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 5: OPERATING MODEL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>04 — Operating model</span>
+  </div>
+  <h2 class="section-h">Built by an agent, operated by a human.</h2>
+
+  <p class="section-lead">
+    Once Phase 1 is live, the system collects, scores, and alerts on its own every day. Iwan's interaction is intentionally minimal — three buttons in the admin panel and an inbox for alerts.
+  </p>
+
+  <h3>What runs automatically</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Worker</th>
+      <th>Cadence</th>
+      <th>What it does</th>
+    </tr>
+    <tr>
+      <td><strong>serp-collector</strong></td>
+      <td>Daily 03:00</td>
+      <td>Queries DataForSEO for "fysio [stad]" + behandelingen across each tracked postcode. Stores top-10 results.</td>
+    </tr>
+    <tr>
+      <td><strong>gbp-scanner</strong></td>
+      <td>Daily 03:30</td>
+      <td>Fetches Google Places data per practice. Scores completeness, computes review velocity, runs LLM sentiment on the latest 10 reviews.</td>
+    </tr>
+    <tr>
+      <td><strong>ai-mention-collector</strong></td>
+      <td>Daily 04:00</td>
+      <td>Asks ChatGPT, Claude, Perplexity, Gemini physio queries for each city. An LLM parses each answer and logs every practice name that appears.</td>
+    </tr>
+    <tr>
+      <td><strong>nap-checker</strong></td>
+      <td>Weekly Sun 02:00</td>
+      <td>Visits 20 healthcare directories per practice. LLM normalizes name/address/phone. Flags any divergence from the canonical GBP record.</td>
+    </tr>
+    <tr>
+      <td><strong>score-calculator</strong></td>
+      <td>Daily 06:00</td>
+      <td>Reads all signal tables, applies weighted formula, writes daily snapshot. Computes peer percentile within postcode.</td>
+    </tr>
+    <tr>
+      <td><strong>alerter</strong></td>
+      <td>Daily 06:30</td>
+      <td>Detects score drops &gt;5pts, new sub-3★ reviews, competitor entries to top-3, AI-mention disappearances. Emails Iwan + Discord webhook.</td>
+    </tr>
+  </table>
+
+  <h3>What Iwan actually touches</h3>
+  <ul class="steps">
+    <li>
+      <strong>Add a practice</strong>
+      Paste a Google Bedrijfsprofiel URL. The system pulls everything itself, starts monitoring, returns the first score within 24 hours.
+    </li>
+    <li>
+      <strong>Pause / resume</strong>
+      Toggle a practice off when the client churns, back on if they return. No data is deleted — history is preserved.
+    </li>
+    <li>
+      <strong>Read the error log</strong>
+      Only fills up when an upstream parser breaks (e.g. Zorgkaart changes its HTML). Each entry is a clear "this directory needs a 30-minute fix when you have a moment."
+    </li>
+  </ul>
+
+  <div class="callout">
+    <strong>What never happens.</strong> No spreadsheets. No manual review tagging. No "let me check what Perplexity said today." No hand-counting of NAP variations. Every signal that goes into the score is collected by code and parsed by LLMs — humans never enter or judge data.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 6: COST MODEL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>05 — Cost model</span>
+  </div>
+  <h2 class="section-h">Pay-as-you-go until validated.</h2>
+
+  <p class="section-lead">
+    Every external service is on a free tier or pay-per-use until validation. There is no fixed monthly commitment until paying clients absorb the cost. The pilot runs at roughly the price of a Netflix subscription.
+  </p>
+
+  <h3>What's truly free vs. pay-per-use</h3>
+  <table>
+    <tr>
+      <th>Service</th>
+      <th class="col-tight">Pilot cost</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Cloudflare Workers / D1 / Queues / KV / R2</td>
+      <td><span class="free">€0</span></td>
+      <td>Free tier covers thousands of cron runs and millions of DB reads.</td>
+    </tr>
+    <tr>
+      <td>Cloudflare Access (admin auth)</td>
+      <td><span class="free">€0</span></td>
+      <td>Free up to 50 users.</td>
+    </tr>
+    <tr>
+      <td>Google Places API (GBP data)</td>
+      <td><span class="free">€0</span></td>
+      <td>$200/month Google Maps Platform credit covers ~12,000 calls; pilot uses ~150.</td>
+    </tr>
+    <tr>
+      <td>Cloudflare Workers AI (sentiment, parsing)</td>
+      <td><span class="free">€0</span></td>
+      <td>Free tier covers ~10k requests/day on small models.</td>
+    </tr>
+    <tr>
+      <td>Resend (alert emails)</td>
+      <td><span class="free">€0</span></td>
+      <td>100 emails/day free.</td>
+    </tr>
+    <tr>
+      <td>DataForSEO (SERP API)</td>
+      <td><span class="pay">€2–5</span></td>
+      <td>$0.60 per 100 SERP queries, pay-as-you-go. Pilot: ~1500 queries/month.</td>
+    </tr>
+    <tr>
+      <td>OpenAI + Anthropic + Perplexity APIs</td>
+      <td><span class="pay">€1–3</span></td>
+      <td>Pay-as-you-go. ~30 queries/day across providers, small responses.</td>
+    </tr>
+    <tr>
+      <td><strong>Pilot total</strong></td>
+      <td><strong class="ok">€3–8 / month</strong></td>
+      <td>Validated number, not optimistic.</td>
+    </tr>
+  </table>
+
+  <h3>Ramp path</h3>
+  <table>
+    <tr>
+      <th>Stage</th>
+      <th class="col-tight">Practices</th>
+      <th class="col-tight">Monthly cost</th>
+      <th>Trigger to graduate</th>
+    </tr>
+    <tr>
+      <td><strong>Pilot</strong></td>
+      <td>Bureau Intake + 2-3 samples</td>
+      <td><span class="ok">€3–8</span></td>
+      <td>First paying client signs on for the score deliverable</td>
+    </tr>
+    <tr>
+      <td><strong>Early</strong></td>
+      <td>5–10</td>
+      <td><span class="ok">€10–20</span></td>
+      <td>Operating cost feels invisible against MRR</td>
+    </tr>
+    <tr>
+      <td><strong>Scale</strong></td>
+      <td>20+</td>
+      <td><span class="ok">€60–100</span></td>
+      <td>SerpAPI flat tier becomes cheaper than per-query</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Revenue context.</strong> At 20 clients × €590, monthly revenue is €11,800. Operating cost at scale (€100) is 0.8% of revenue. Margin is real and protected because nobody else can replicate the data without the same multi-month head start.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 7: BUILD PHASES -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>06 — Build phases</span>
+  </div>
+  <h2 class="section-h">From zero to operating, in sequenced steps.</h2>
+
+  <p class="section-lead">
+    Each phase produces something Iwan can see and review. No "big bang" build — every two to three days there's progress to look at and steer.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tighter">Phase</th>
+      <th class="col-tight">Output</th>
+      <th class="col-wide">Scope</th>
+      <th>Effort</th>
+    </tr>
+    <tr>
+      <td class="num"><strong>0</strong></td>
+      <td>Foundation</td>
+      <td>Cloudflare Workers project, D1 schema (practices, signals, snapshots, alerts), Cloudflare Access for /admin, base CI.</td>
+      <td>~3 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>1</strong></td>
+      <td>Collection</td>
+      <td>All four collector Workers running on cron + Queues. Data flowing into D1. No UI yet, but the database fills up.</td>
+      <td>~7 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>2</strong></td>
+      <td>Scoring + alerts</td>
+      <td>Score formula, percentile calculation, daily snapshot pipeline, alerter via email + Discord webhook.</td>
+      <td>~3 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>3</strong></td>
+      <td>Public /intake-score</td>
+      <td>Lookup form with practice name + postcode, results page with breakdown + recommendation, email capture into sales pipeline.</td>
+      <td>~5 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>4</strong></td>
+      <td>Client /portal</td>
+      <td>Per-client authenticated dashboard. Score history graph, per-signal trends, auto-generated monthly task list.</td>
+      <td>~5 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>5</strong></td>
+      <td>Admin /admin</td>
+      <td>Iwan's three-button operating console (add, pause/resume, error log) + weights tuning panel.</td>
+      <td>~2 days</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><strong>Total agent effort</strong></td>
+      <td>From empty to fully operating system.</td>
+      <td><strong>~25 days</strong></td>
+    </tr>
+  </table>
+
+  <h3>Cadence</h3>
+  <p>
+    Working sessions of 2–4 hours, three times per week, would complete the build in roughly 8–10 weeks of calendar time. Iwan's involvement during the build is short reviews at the end of each phase plus the account-setup steps on page 8.
+  </p>
+
+  <div class="callout">
+    <strong>Risk: parser maintenance.</strong> Healthcare directories occasionally change their HTML, breaking the NAP scrapers. Expected frequency: one to three times per year per directory. Each fix is a 30-minute job. Surfaced as an error log entry — never silent, never urgent.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 8: NEXT STEPS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>07 — Next steps</span>
+  </div>
+  <h2 class="section-h">What's needed to open Phase 0.</h2>
+
+  <p class="section-lead">
+    Iwan does roughly 30 minutes of one-time account setup. The agent does everything else from there.
+  </p>
+
+  <h3>Iwan's setup checklist</h3>
+  <ul class="steps">
+    <li>
+      <strong>Create a DataForSEO account</strong>
+      ~10 minutes. Pay-as-you-go billing, credit card on file. The agent will receive only the API key — billing remains in Iwan's name.
+    </li>
+    <li>
+      <strong>Activate Google Cloud + enable Places API</strong>
+      ~15 minutes. Same Google account as Workspace. Free $200/month credit applies automatically once billing is enabled.
+    </li>
+    <li>
+      <strong>Create accounts at OpenAI, Anthropic, Perplexity</strong>
+      ~10 minutes total. Pay-as-you-go with $5–10 starting credit on each. Total pilot LLM spend will be cents per month.
+    </li>
+    <li>
+      <strong>Decide: subdomain or sub-path</strong>
+      <em>intake-score.bureauintake.nl</em> (cleaner, easier to spin off later as its own product) or <em>bureauintake.nl/intake-score</em> (simpler today). Agent's default recommendation: sub-path; migrate to subdomain if it grows.
+    </li>
+    <li>
+      <strong>Confirm go-ahead</strong>
+      One message to the agent: "open Phase 0." Build starts.
+    </li>
+  </ul>
+
+  <h3>What the agent delivers in week one</h3>
+  <table>
+    <tr>
+      <td class="col-tight"><strong>Day 1–2</strong></td>
+      <td>Workers project scaffolded, D1 schema designed, Cloudflare Access wired up. Iwan can log into /admin on day 2 (empty but live).</td>
+    </tr>
+    <tr>
+      <td><strong>Day 3</strong></td>
+      <td>First Worker (gbp-scanner) running on cron. Bureau Intake itself is the first tracked practice. Daily data appears in D1.</td>
+    </tr>
+    <tr>
+      <td><strong>Day 4</strong></td>
+      <td>serp-collector live. SERP positions for "fysio Alkmaar" recorded daily.</td>
+    </tr>
+    <tr>
+      <td><strong>Day 5–7</strong></td>
+      <td>ai-mention-collector live. ChatGPT/Claude/Perplexity/Gemini queried daily for "fysio in Alkmaar." Results parsed and stored.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>End of week one.</strong> The system already has more proprietary data about Dutch physiotherapy local visibility than any competing agency in the country. Nothing built yet has a UI, but the moat is already being dug.
+  </div>
+
+  <h3>What Iwan reviews at each phase boundary</h3>
+  <p>
+    A short Loom or screenshare from the agent showing: what was built, where to find it, how to operate it, and what's coming next. No deep technical knowledge required. Each review is ~15 minutes.
+  </p>
+
+  <h3>One open decision</h3>
+  <p>
+    The free-public-lookup model assumes Bureau Intake wants this tool to <strong>generate leads</strong> (anyone can score themselves; the path to improvement is the sales conversation). The alternative is a <strong>gated tool</strong> — only paying clients see scores, which makes it a retention tool but kills the lead-gen angle. Default plan assumes free public lookup. If Iwan prefers gated, the build is identical, only the /intake-score route changes.
+  </p>
+</section>
+
+</body>
+</html>

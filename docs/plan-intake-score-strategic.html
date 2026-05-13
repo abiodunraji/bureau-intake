@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>De Intake Score — Strategic Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #2ECC71;
+    --mint-dark: #15803D;
+    --mint-soft: rgba(46, 204, 113, 0.08);
+    --mint-line: rgba(46, 204, 113, 0.18);
+    --primary: #1A1A2E;
+    --muted: #4B5563;
+    --muted-soft: #6B7280;
+    --line: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.14);
+    --bg: #FFFFFF;
+    --bg-soft: #F8F9FA;
+    --warn: #B45309;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 18mm 18mm 18mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #6B7280;
+    }
+    @bottom-left {
+      content: "Bureau Intake — De Intake Score, strategic plan";
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #6B7280;
+    }
+  }
+  @page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--primary);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* Cover */
+  .cover {
+    page-break-after: always;
+    height: 297mm;
+    padding: 28mm 22mm;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-bg-mint {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: var(--mint);
+    opacity: 0.08;
+  }
+  .cover-bg-mint-2 {
+    position: absolute;
+    bottom: -80px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: var(--mint-dark);
+    opacity: 0.06;
+  }
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mint-dark);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-eyebrow .rule { width: 36px; height: 1.5pt; background: var(--mint); }
+  .cover-title {
+    font-size: 56pt;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-top: 28pt;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mint-dark);
+  }
+  .cover-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14pt;
+    color: var(--muted);
+    line-height: 1.45;
+    max-width: 140mm;
+    margin-top: 18pt;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10pt;
+    color: var(--mint-dark);
+    font-weight: 600;
+    margin-top: 36pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 24pt;
+    border-top: 1pt solid var(--line);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    margin-bottom: 4pt;
+    font-weight: 600;
+  }
+  .cover-meta .value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11pt;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  .cover-brand {
+    text-align: right;
+  }
+  .cover-brand .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14pt;
+    font-weight: 700;
+  }
+
+  /* Generic page */
+  .page {
+    page-break-after: always;
+    padding: 0;
+  }
+  .page:last-of-type { page-break-after: auto; }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14pt;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mint-dark);
+  }
+  .section-eyebrow .rule { width: 24px; height: 1.5pt; background: var(--mint); }
+  .section-h {
+    font-size: 26pt;
+    line-height: 1.15;
+    margin-bottom: 14pt;
+  }
+  .section-h em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mint-dark);
+  }
+  .section-lead {
+    font-size: 12pt;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 165mm;
+    margin-bottom: 22pt;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 18pt 0 8pt;
+    color: var(--primary);
+    letter-spacing: 0;
+  }
+  h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    margin: 14pt 0 6pt;
+    color: var(--primary);
+    text-transform: none;
+  }
+  p { margin: 0 0 9pt; }
+
+  /* Cards */
+  .card {
+    border: 1pt solid var(--line);
+    border-radius: 8pt;
+    padding: 14pt 16pt;
+    background: var(--bg);
+  }
+  .card-mint {
+    border-color: var(--mint-line);
+    background: var(--mint-soft);
+  }
+  .card-dark {
+    background: var(--primary);
+    border: none;
+    color: #FFFFFF;
+  }
+  .card-dark h4, .card-dark .big-stat { color: #FFFFFF; }
+  .card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mint-dark);
+    margin: 0 0 6pt;
+  }
+  .card-dark h4 { color: var(--mint); }
+  .big-stat {
+    font-family: 'Playfair Display', serif;
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--mint-dark);
+    margin: 4pt 0 6pt;
+  }
+  .big-stat-sub {
+    font-size: 9pt;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .card-dark .big-stat-sub { color: rgba(255,255,255,0.7); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin: 6pt 0 18pt;
+  }
+  th {
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mint-dark);
+    padding: 10pt 10pt 10pt 0;
+    border-bottom: 1.5pt solid var(--line-strong);
+    vertical-align: bottom;
+  }
+  td {
+    padding: 9pt 10pt 9pt 0;
+    border-bottom: 1pt solid var(--line);
+    vertical-align: top;
+  }
+  td:last-child, th:last-child { padding-right: 0; }
+  tr:last-child td { border-bottom: none; }
+  .num { font-variant-numeric: tabular-nums; }
+  .col-tight { width: 18%; }
+  .col-tighter { width: 12%; }
+  .col-wide { width: 50%; }
+  .total-row td { font-weight: 700; padding-top: 12pt; border-top: 1.5pt solid var(--line-strong); }
+
+  /* Grids */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14pt;
+    margin: 6pt 0 14pt;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12pt;
+    margin: 6pt 0 14pt;
+  }
+  .four-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10pt;
+    margin: 6pt 0 14pt;
+  }
+
+  /* Pills */
+  .pill {
+    display: inline-block;
+    padding: 2pt 8pt;
+    border-radius: 99pt;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+  }
+  .pill-warn { background: rgba(180, 83, 9, 0.1); color: var(--warn); }
+
+  /* Steps */
+  .steps {
+    counter-reset: step;
+    margin: 6pt 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .steps li {
+    counter-increment: step;
+    padding: 10pt 0 10pt 32pt;
+    position: relative;
+    border-bottom: 1pt solid var(--line);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 10pt;
+    width: 22pt;
+    height: 22pt;
+    border-radius: 50%;
+    background: var(--mint);
+    color: var(--primary);
+    font-family: 'Playfair Display', serif;
+    font-size: 11pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .steps strong {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5pt;
+    margin-bottom: 2pt;
+  }
+
+  /* Callouts */
+  .callout {
+    border-left: 3pt solid var(--mint);
+    padding: 10pt 14pt;
+    background: var(--mint-soft);
+    border-radius: 0 8pt 8pt 0;
+    margin: 12pt 0;
+    font-size: 10pt;
+  }
+  .callout strong { color: var(--mint-dark); }
+  .callout-dark {
+    background: var(--primary);
+    border-left-color: var(--mint);
+    color: #FFFFFF;
+  }
+  .callout-dark strong { color: var(--mint); }
+
+  /* Marks */
+  .ok { color: var(--mint-dark); font-weight: 700; }
+  .pay { color: var(--warn); font-weight: 600; }
+  .free { color: var(--mint-dark); font-weight: 700; }
+  .down { color: var(--warn); font-weight: 600; }
+  .up { color: var(--mint-dark); font-weight: 600; }
+
+  /* Notes */
+  .note {
+    font-size: 8.5pt;
+    color: var(--muted-soft);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* Bullets */
+  ul.bullets {
+    margin: 6pt 0 12pt 0;
+    padding: 0;
+    list-style: none;
+  }
+  ul.bullets li {
+    position: relative;
+    padding-left: 18pt;
+    margin-bottom: 6pt;
+    line-height: 1.55;
+  }
+  ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 4pt;
+    top: 8pt;
+    width: 6pt;
+    height: 6pt;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+
+  /* Page break utilities */
+  .keep { page-break-inside: avoid; break-inside: avoid; }
+
+  /* Diagram defaults */
+  .diagram {
+    margin: 8pt 0 14pt;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Banner section */
+  .banner {
+    background: var(--mint-soft);
+    border-radius: 12pt;
+    padding: 18pt 22pt;
+    margin: 4pt 0 14pt;
+    border: 1pt solid var(--mint-line);
+  }
+  .banner h3 {
+    margin-top: 0;
+    color: var(--mint-dark);
+  }
+
+  /* TOC */
+  .toc {
+    margin: 6pt 0 18pt;
+  }
+  .toc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8pt 0;
+    border-bottom: 1pt solid var(--line);
+    font-size: 11pt;
+    gap: 12pt;
+  }
+  .toc-row:last-child { border-bottom: none; }
+  .toc-row .num { color: var(--mint-dark); font-weight: 700; min-width: 24pt; }
+  .toc-row .title { flex: 1; }
+  .toc-row .pg { color: var(--muted-soft); font-variant-numeric: tabular-nums; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER -->
+<!-- ============================================================ -->
+<section class="cover">
+  <div class="cover-bg-mint"></div>
+  <div class="cover-bg-mint-2"></div>
+
+  <div>
+    <div class="cover-eyebrow">
+      <span class="rule"></span>
+      <span>Bureau Intake — strategic plan</span>
+    </div>
+    <h1 class="cover-title">
+      De Intake<br/><em>Score</em>
+    </h1>
+    <p class="cover-sub">
+      The case for building a proprietary visibility-score product. Why it exists, what it earns, how it is built, and what it takes to ship.
+    </p>
+    <div class="cover-tag">Full scope · v2</div>
+  </div>
+
+  <div class="cover-meta">
+    <div>
+      <div class="label">Prepared for</div>
+      <div class="value">Iwan Stepanova</div>
+    </div>
+    <div>
+      <div class="label">Replaces</div>
+      <div class="value">Build plan v1 (May 2026)</div>
+    </div>
+    <div>
+      <div class="label">Date</div>
+      <div class="value">May 2026</div>
+    </div>
+    <div class="cover-brand">
+      <div class="label">Brand</div>
+      <div class="value name">Bureau Intake</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONTENTS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>Contents</span>
+  </div>
+  <h2 class="section-h">What this document answers.</h2>
+
+  <p class="section-lead">
+    Version 1 of this plan answered "how" but not "why." This version leads with the case, then the product, then the build. Iwan can stop reading after page five and still have the answer.
+  </p>
+
+  <div class="toc">
+    <div class="toc-row"><span class="num">01</span><span class="title">Executive summary — the bet, in one page</span><span class="pg">p. 3</span></div>
+    <div class="toc-row"><span class="num">02</span><span class="title">Why we are building this — the case, the math, the counterfactual</span><span class="pg">p. 4</span></div>
+    <div class="toc-row"><span class="num">03</span><span class="title">The product — what it is, who uses it, how</span><span class="pg">p. 7</span></div>
+    <div class="toc-row"><span class="num">04</span><span class="title">The five signals — the inputs and the moat</span><span class="pg">p. 8</span></div>
+    <div class="toc-row"><span class="num">05</span><span class="title">System architecture — Cloudflare-native, low-cost, no DevOps</span><span class="pg">p. 9</span></div>
+    <div class="toc-row"><span class="num">06</span><span class="title">Operating model — what runs alone, what Iwan touches</span><span class="pg">p. 11</span></div>
+    <div class="toc-row"><span class="num">07</span><span class="title">Cost model — pay-as-you-go until validated</span><span class="pg">p. 12</span></div>
+    <div class="toc-row"><span class="num">08</span><span class="title">Go-to-market — how the product becomes the channel</span><span class="pg">p. 13</span></div>
+    <div class="toc-row"><span class="num">09</span><span class="title">Build phases and timeline</span><span class="pg">p. 15</span></div>
+    <div class="toc-row"><span class="num">10</span><span class="title">Risks and mitigations</span><span class="pg">p. 16</span></div>
+    <div class="toc-row"><span class="num">11</span><span class="title">Decision points and next steps</span><span class="pg">p. 17</span></div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- EXECUTIVE SUMMARY -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>01 — Executive summary</span>
+  </div>
+  <h2 class="section-h">The bet, in one page.</h2>
+
+  <p class="section-lead">
+    Bureau Intake sells local SEO services to physiotherapy practices. This plan replaces "selling a service" with "selling a number" — a 0 to 100 score that becomes the unit of conversation in the Dutch physio market, and that only Bureau Intake can calculate.
+  </p>
+
+  <div class="four-col">
+    <div class="card card-mint">
+      <h4>The bet</h4>
+      <p class="big-stat">€140k+</p>
+      <div class="big-stat-sub">additional ARR within 12 months of launch (base case)</div>
+    </div>
+    <div class="card card-mint">
+      <h4>The cost</h4>
+      <p class="big-stat">€1.8k</p>
+      <div class="big-stat-sub">total operating expense in year one</div>
+    </div>
+    <div class="card card-mint">
+      <h4>Time to live</h4>
+      <p class="big-stat">10 wks</p>
+      <div class="big-stat-sub">from go-ahead to a fully automated system in production</div>
+    </div>
+    <div class="card card-dark">
+      <h4>Iwan's time</h4>
+      <p class="big-stat">30 min</p>
+      <div class="big-stat-sub">total account setup, then ~15 min/week ongoing operations</div>
+    </div>
+  </div>
+
+  <h3>What we are actually building</h3>
+  <p>
+    A daily-updated 0 to 100 score for every physiotherapy practice in the Netherlands, computed from five proprietary signals. Five components:
+  </p>
+
+  <ul class="bullets">
+    <li><strong>Public lookup at intake-score</strong> — any physiotherapist types her practice name, sees her score and the three areas dragging it down. The form captures her email. She becomes a lead.</li>
+    <li><strong>Daily data collection</strong> — five Cloudflare Workers crawl SERPs, Google Bedrijfsprofielen, AI assistants, and 20 Dutch healthcare directories. No human touches the data.</li>
+    <li><strong>Client dashboard at portal</strong> — paying clients log in, watch their score climb, see what drives each signal.</li>
+    <li><strong>Admin at admin</strong> — Iwan adds practices, pauses them, and reads the error log. That is the whole operating surface.</li>
+    <li><strong>Annual report</strong> — once the dataset is large, "The State of Visibility in Dutch Physiotherapy 2027" becomes the inbound funnel for year two.</li>
+  </ul>
+
+  <h3>Why this works</h3>
+  <p>
+    The defensible asset is not the score formula. The defensible asset is the dataset that powers it. Every day Bureau Intake collects daily SERP positions, AI-mention rates, and review velocity for thousands of Dutch physio practices. A competitor starting six months from now is six months behind on accuracy, and the gap widens, not closes. Twelve months in, the historical data alone is worth more than a year of cold-calling could ever produce.
+  </p>
+
+  <div class="callout">
+    <strong>One-paragraph version.</strong> Bureau Intake stops being one of dozens of Dutch SEO agencies competing on price and starts being the company that owns the measurement standard for physio local visibility. The financial case (page 4), product case (page 7), and risk case (page 16) all reduce to that single move.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHY: THE CASE -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>02 — Why we are building this</span>
+  </div>
+  <h2 class="section-h">The case for the spend.</h2>
+
+  <p class="section-lead">
+    The honest version of this argument starts with the problem the current business cannot solve, then the math that changes once it can, then the risk of doing nothing.
+  </p>
+
+  <h3>What the current business cannot do</h3>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Linear growth ceiling</h4>
+      <p>Cold-call sales scale with hours on the phone. There is no leverage. Twenty hours of calls a week is a ceiling, not a starting point.</p>
+    </div>
+    <div class="card">
+      <h4>No proprietary asset</h4>
+      <p>Today, Bureau Intake's value is in Iwan's head and Iwan's calendar. If a competitor copies the website, the messaging, and the price, there is no remaining defensible layer.</p>
+    </div>
+    <div class="card">
+      <h4>Vague deliverable</h4>
+      <p>"We will improve your local SEO" is hard to price, hard to retain on, and hard to defend against a competitor pitching the same at €390.</p>
+    </div>
+    <div class="card">
+      <h4>No inbound funnel</h4>
+      <p>Every euro of revenue today required a phone call that started cold. No multiplier, no compounding, no break.</p>
+    </div>
+  </div>
+
+  <h3>What changes once the score exists</h3>
+  <p>
+    A free public lookup converts "we offer SEO" into "see your number." Anyone with a practice can self-diagnose in 30 seconds. The conversation is no longer about whether to trust Bureau Intake. It is about how to get the number up. That is a different sale.
+  </p>
+  <p>
+    Five operational levers move once that shift happens. They compound, they do not stack linearly.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tight">Lever</th>
+      <th class="col-tighter">Today</th>
+      <th class="col-tighter">After launch</th>
+      <th>Why it moves</th>
+    </tr>
+    <tr>
+      <td><strong>Inbound leads / month</strong></td>
+      <td class="num">~0</td>
+      <td class="num up">10–20</td>
+      <td>Free score lookup is irresistible self-diagnostic. Anyone scoring below 60 enters the funnel.</td>
+    </tr>
+    <tr>
+      <td><strong>Close rate on contact</strong></td>
+      <td class="num">10–15%</td>
+      <td class="num up">30–40%</td>
+      <td>Prospect arrives already knowing her problem and already trusting your methodology. The diagnosis came from you.</td>
+    </tr>
+    <tr>
+      <td><strong>Monthly churn</strong></td>
+      <td class="num">10–15%</td>
+      <td class="num down">3–5%</td>
+      <td>Clients watch their score climb every month. Cancelling means watching it fall. Hard to do.</td>
+    </tr>
+    <tr>
+      <td><strong>Avg revenue / client</strong></td>
+      <td class="num">€590</td>
+      <td class="num up">€590–€890</td>
+      <td>A "Premium" tier with full dashboard, benchmarking, AI-mention reports becomes defensible at €890.</td>
+    </tr>
+    <tr class="total-row">
+      <td><strong>Net clients at month 12</strong></td>
+      <td class="num">8–12</td>
+      <td class="num up">20–35</td>
+      <td>Compounding effect of all four levers above.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Assumptions needing real numbers.</strong> The figures above use industry-average assumptions for "current state." Iwan's three actuals — paying clients today, last-90-days conversion on cold calls, and current monthly churn — would let us replace these with a real forecast. See page 17.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHY: ROI VISUAL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>02 — Why we are building this</span>
+  </div>
+  <h2 class="section-h">Two trajectories, same starting point.</h2>
+
+  <p class="section-lead">
+    The gap between these two lines is what this plan is buying. At the end of 24 months, the with-product trajectory is somewhere between 3x and 5x the without-product trajectory, depending on which end of the conservative range plays out.
+  </p>
+
+  <svg class="diagram" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background grid -->
+    <g stroke="#E5E7EB" stroke-width="0.5">
+      <line x1="60" y1="40"  x2="700" y2="40"/>
+      <line x1="60" y1="100" x2="700" y2="100"/>
+      <line x1="60" y1="160" x2="700" y2="160"/>
+      <line x1="60" y1="220" x2="700" y2="220"/>
+      <line x1="60" y1="280" x2="700" y2="280"/>
+    </g>
+
+    <!-- Y-axis labels (ARR in k EUR) -->
+    <g font-family="DM Sans, sans-serif" font-size="9" fill="#6B7280">
+      <text x="50" y="44"  text-anchor="end">€400k</text>
+      <text x="50" y="104" text-anchor="end">€300k</text>
+      <text x="50" y="164" text-anchor="end">€200k</text>
+      <text x="50" y="224" text-anchor="end">€100k</text>
+      <text x="50" y="284" text-anchor="end">€0</text>
+    </g>
+
+    <!-- X-axis labels (months) -->
+    <g font-family="DM Sans, sans-serif" font-size="9" fill="#6B7280">
+      <text x="60"  y="298" text-anchor="middle">m 0</text>
+      <text x="220" y="298" text-anchor="middle">m 6</text>
+      <text x="380" y="298" text-anchor="middle">m 12</text>
+      <text x="540" y="298" text-anchor="middle">m 18</text>
+      <text x="700" y="298" text-anchor="middle">m 24</text>
+    </g>
+
+    <!-- Gap (filled area between the two lines) -->
+    <path d="
+      M 60,259
+      L 220,247   L 380,235   L 540,223   L 700,211
+      L 700,103   L 540,151   L 380,175   L 220,229
+      Z"
+      fill="#2ECC71" opacity="0.10"/>
+
+    <!-- "Without project" trajectory: linear, slow -->
+    <g stroke="#9CA3AF" stroke-width="2" fill="none">
+      <path d="M 60,259 L 220,247 L 380,235 L 540,223 L 700,211" stroke-dasharray="5 3"/>
+    </g>
+    <g fill="#6B7280">
+      <circle cx="60"  cy="259" r="3"/>
+      <circle cx="220" cy="247" r="3"/>
+      <circle cx="380" cy="235" r="3"/>
+      <circle cx="540" cy="223" r="3"/>
+      <circle cx="700" cy="211" r="3"/>
+    </g>
+
+    <!-- "With project" trajectory: curved up -->
+    <g stroke="#15803D" stroke-width="2.5" fill="none">
+      <path d="M 60,259 L 220,229 L 380,175 L 540,151 L 700,103"/>
+    </g>
+    <g fill="#15803D">
+      <circle cx="60"  cy="259" r="3.5"/>
+      <circle cx="220" cy="229" r="3.5"/>
+      <circle cx="380" cy="175" r="3.5"/>
+      <circle cx="540" cy="151" r="3.5"/>
+      <circle cx="700" cy="103" r="3.5"/>
+    </g>
+
+    <!-- Legend -->
+    <g font-family="DM Sans, sans-serif" font-size="9.5">
+      <line x1="80" y1="22" x2="110" y2="22" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5 3"/>
+      <text x="118" y="25" fill="#6B7280">Status quo — linear cold-call growth</text>
+
+      <line x1="380" y1="22" x2="410" y2="22" stroke="#15803D" stroke-width="2.5"/>
+      <text x="418" y="25" fill="#15803D" font-weight="600">With De Intake Score</text>
+    </g>
+
+    <!-- Annotations -->
+    <g font-family="DM Sans, sans-serif" font-size="8.5" fill="#15803D">
+      <text x="710" y="100" text-anchor="end" font-weight="600">~€330k</text>
+      <text x="710" y="208" text-anchor="end" fill="#6B7280">~€95k</text>
+    </g>
+  </svg>
+
+  <div class="three-col">
+    <div class="card">
+      <h4>Month 6</h4>
+      <p>The product is live. Inbound leads start arriving. Early clients see their first score gains. Cold-call channel is still primary, but slowly becoming secondary.</p>
+    </div>
+    <div class="card">
+      <h4>Month 12</h4>
+      <p>Inbound exceeds outbound for new client acquisition. Annual visibility report drops. First Premium-tier clients (€890) sign on. ARR is roughly 2x what it would have been.</p>
+    </div>
+    <div class="card">
+      <h4>Month 24</h4>
+      <p>The Intake Score is referenced by physio trade journals and competitors. Bureau Intake is the default vendor for Dutch physio local SEO. Inbound is the channel, outbound is optional.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>The cost of waiting.</strong> The shaded region between the two lines is what the project is buying. Twelve months of delay does not "save" the build cost — it loses the dataset's head start, which is the most expensive component to replace later. Whoever starts first gets twelve months of trend data nobody else can buy.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHY: SECONDARY EFFECTS / COUNTERFACTUAL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>02 — Why we are building this</span>
+  </div>
+  <h2 class="section-h">Second-order effects, and the cost of doing nothing.</h2>
+
+  <p class="section-lead">
+    The lever math on page 4 covers the direct ARR case. The bigger value sits in the second-order effects, and the strategic risk sits in the counterfactual. Both are worth more than the direct math suggests.
+  </p>
+
+  <h3>Second-order effects (not in the lever math)</h3>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>You own the standard</h4>
+      <p>Once 500+ Dutch practices have looked themselves up, "Intake Score" enters their vocabulary. Trade press cites it. Competitor agencies have to reference it to be taken seriously. You stop being a vendor; you become the measurement layer.</p>
+    </div>
+    <div class="card">
+      <h4>Annual report is inbound for the next year</h4>
+      <p>Year-two "State of Visibility" report becomes a press piece, an SEO asset (other physio blogs link to it), and a sales tool ("according to our 2027 data, practices that fix NAP first see X"). Cost to produce: ~40 hours. Value: a year of inbound interest.</p>
+    </div>
+    <div class="card">
+      <h4>Exit multiple changes shape</h4>
+      <p>Services agency at €100k ARR sells for 1–2x ARR if it sells at all. Specialised SaaS-adjacent business with proprietary data at €250k ARR sells for 4–8x ARR. Same person, same effort, four to ten times the eventual exit value.</p>
+    </div>
+    <div class="card">
+      <h4>You exit the price comparison</h4>
+      <p>Right now anyone selling "local SEO for €390" is your competitor. After the score exists, you are not in that comparison. You are selling something they do not have. Price floor moves up structurally.</p>
+    </div>
+  </div>
+
+  <h3>What happens if we do not build this</h3>
+
+  <table>
+    <tr>
+      <th>Horizon</th>
+      <th class="col-tight">Likely outcome (no project)</th>
+      <th>Why</th>
+    </tr>
+    <tr>
+      <td><strong>12 months</strong></td>
+      <td>10–15 clients, MRR €6–9k</td>
+      <td>Linear cold-call growth; no inbound channel; no defensible asset.</td>
+    </tr>
+    <tr>
+      <td><strong>24 months</strong></td>
+      <td>15–25 clients, MRR €9–15k</td>
+      <td>Iwan-time is the bottleneck. Cannot meaningfully scale beyond what one person can sell.</td>
+    </tr>
+    <tr>
+      <td><strong>36 months</strong></td>
+      <td>Plateau, or partial decline as commodity SEO agencies enter the niche</td>
+      <td>Competitors notice the niche, undercut on price. Without a moat, defending margin gets harder every quarter.</td>
+    </tr>
+    <tr>
+      <td><strong>Strategic position</strong></td>
+      <td>One of many small Dutch SEO shops</td>
+      <td>Indistinguishable. No proprietary data, no measurement standard, no defensible category.</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-dark">
+    <strong>The reason this needs to live.</strong> Without it, Bureau Intake is a job for one person, scaling linearly with that person's hours, with no compounding asset and no defensible position in the market. With it, Bureau Intake becomes the company everyone references when they talk about physio local visibility in the Netherlands — and the work continues even when Iwan steps away from the phone.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- THE PRODUCT -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>03 — The product</span>
+  </div>
+  <h2 class="section-h">Three user experiences, one underlying engine.</h2>
+
+  <p class="section-lead">
+    De Intake Score is one continuously-running engine that surfaces three distinct views. Each view exists for a different person, with a different goal, but they share the same data and the same daily refresh.
+  </p>
+
+  <div class="three-col">
+    <div class="card card-mint">
+      <h4>For the practice owner</h4>
+      <p>Visits intake-score, types her practice name. Sees her score, her peer percentile, the three weakest signals, and a one-paragraph diagnosis. Leaves her email to see "how to improve." Becomes a lead in the sales pipeline.</p>
+    </div>
+    <div class="card card-mint">
+      <h4>For the paying client</h4>
+      <p>Logs into the portal via email magic link. Sees a history graph of her score climbing. Drills into each signal. Sees auto-generated tasks for the month. Forwards progress to her partner or accountant.</p>
+    </div>
+    <div class="card card-mint">
+      <h4>For Iwan</h4>
+      <p>Logs into the admin. Adds new practices by pasting GBP URLs. Pauses clients who churn. Reads the error log if a parser breaks. Never enters data, never tags reviews by hand, never reads search results manually.</p>
+    </div>
+  </div>
+
+  <h3>What sets the score apart</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Versus generic SEO tools</th>
+      <th>Versus competing local SEO agencies</th>
+    </tr>
+    <tr>
+      <td>Physio-specific. Generic tools score against generic-business benchmarks. This benchmarks against other Dutch physios in the same postcode.</td>
+      <td>The competitor has no benchmark. Bureau Intake has 12 months of physio-specific Dutch data and the only AI-mention tracker in the country.</td>
+    </tr>
+    <tr>
+      <td>Includes the AI-mention rate. No generic SEO tool tracks ChatGPT/Claude/Perplexity mentions. Bureau Intake does, daily.</td>
+      <td>The competitor's deliverable is a Word doc and a phone call. Bureau Intake's deliverable is a number that updates every morning at 06:00.</td>
+    </tr>
+    <tr>
+      <td>Live. The score recalculates daily; recommendations adapt automatically as signals shift.</td>
+      <td>The competitor cannot show monthly progress because she has no measurement instrument. Renewals become harder for her every quarter.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>What the product is not.</strong> Not a CRM. Not an analytics dashboard. Not a Google rank tracker. It does one thing: produce a defensible, proprietary number that summarises a Dutch physiotherapy practice's local visibility, and then walks the practice owner through what to fix next.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- THE FIVE SIGNALS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>04 — The five signals</span>
+  </div>
+  <h2 class="section-h">What feeds the number.</h2>
+
+  <p class="section-lead">
+    Five independent inputs, each collected and parsed automatically, combined into the 0 to 100 score with a weighting Iwan can tune over time. Signal five is the moat.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tighter">#</th>
+      <th class="col-tight">Signal</th>
+      <th class="col-tighter">Weight</th>
+      <th class="col-wide">What it measures and why it is defensible</th>
+    </tr>
+    <tr>
+      <td class="num"><strong>1</strong></td>
+      <td><strong>GBP completeness</strong></td>
+      <td class="num"><strong>20%</strong></td>
+      <td>Photos, hours, posts, Q&amp;A, attributes, behandelingen, recency of profile updates. Easy to score; useful only in combination with the rest.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>2</strong></td>
+      <td><strong>Local SERP position</strong></td>
+      <td class="num"><strong>30%</strong></td>
+      <td>Daily rank for "fysio [stad]", "[behandeling] [stad]" across every postcode the practice serves. The percentile score requires 12+ months of history to be meaningful — that history is the moat.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>3</strong></td>
+      <td><strong>Review velocity</strong></td>
+      <td class="num"><strong>20%</strong></td>
+      <td>Reviews per month over trailing 90 days, average rating, sentiment of recent text. LLM sentiment uses a physio-specific lexicon you refine over time.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>4</strong></td>
+      <td><strong>NAP consistency</strong></td>
+      <td class="num"><strong>10%</strong></td>
+      <td>Naam, Adres, Phone across ~20 Dutch healthcare directories. Maintaining the 20 scrapers is significant ongoing work that nobody else is doing.</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>5</strong></td>
+      <td><strong>AI-mention rate</strong> <span class="pill">moat</span></td>
+      <td class="num"><strong>20%</strong></td>
+      <td>Daily queries to ChatGPT, Claude, Perplexity, Gemini asking "best fysio in [stad] voor [klacht]". LLM extracts which practices each AI mentions and the sentiment. <strong>Nobody in the Netherlands is systematically tracking this.</strong> Whoever starts first wins the next two years.</td>
+    </tr>
+  </table>
+
+  <h3>How the weights get tuned</h3>
+  <p>
+    Starting weights are educated guesses. Once 90 days of data is in, Iwan can correlate "score change" against "real-world client outcomes" (new patient appointments, calls received, agenda fill) and adjust. The admin panel has a slider per signal. Reweighting is a 30-second change, applied across the entire dataset.
+  </p>
+
+  <div class="callout">
+    <strong>Why not just track Google rank?</strong> Because Google rank moves slowly, swings randomly, and ignores everything that happens off-Google. The score is designed to move based on what Bureau Intake's clients can actually control, on a timeline that matches the monthly work cycle.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ARCHITECTURE -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>05 — System architecture</span>
+  </div>
+  <h2 class="section-h">Cloudflare-native. No DevOps. Near-zero ops.</h2>
+
+  <p class="section-lead">
+    Everything runs on the Cloudflare account that already hosts bureauintake.nl. No new infrastructure to manage. No separate hosting bills. No on-call rotation. The system is observable from a single dashboard.
+  </p>
+
+  <svg class="diagram" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#15803D"/>
+      </marker>
+    </defs>
+
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="20" y="30" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="46" text-anchor="middle" font-weight="600" font-size="9.5">DataForSEO API</text>
+      <text x="80" y="58" text-anchor="middle" font-size="8" fill="#6B7280">SERP results</text>
+
+      <rect x="20" y="80" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="96" text-anchor="middle" font-weight="600" font-size="9.5">Google Places API</text>
+      <text x="80" y="108" text-anchor="middle" font-size="8" fill="#6B7280">GBP data</text>
+
+      <rect x="20" y="130" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="146" text-anchor="middle" font-weight="600" font-size="9.5">OpenAI / Anthropic</text>
+      <text x="80" y="158" text-anchor="middle" font-size="8" fill="#6B7280">AI-mention queries</text>
+
+      <rect x="20" y="180" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="196" text-anchor="middle" font-weight="600" font-size="9.5">Perplexity / Gemini</text>
+      <text x="80" y="208" text-anchor="middle" font-size="8" fill="#6B7280">AI-mention queries</text>
+
+      <rect x="20" y="230" width="120" height="36" rx="6" fill="#F8F9FA" stroke="#15803D" stroke-width="0.8"/>
+      <text x="80" y="246" text-anchor="middle" font-weight="600" font-size="9.5">Directory scrapers</text>
+      <text x="80" y="258" text-anchor="middle" font-size="8" fill="#6B7280">NAP signals</text>
+    </g>
+
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="200" y="20" width="280" height="260" rx="10" fill="rgba(46,204,113,0.05)" stroke="#15803D" stroke-width="1" stroke-dasharray="3 2"/>
+      <text x="340" y="42" text-anchor="middle" font-family="Playfair Display" font-weight="700" font-size="12" fill="#15803D">Cloudflare Workers (cron)</text>
+
+      <rect x="220" y="58" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="78" text-anchor="middle" font-weight="600" font-size="9.5">serp-collector  ·  daily 03:00</text>
+
+      <rect x="220" y="98" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="118" text-anchor="middle" font-weight="600" font-size="9.5">gbp-scanner  ·  daily 03:30</text>
+
+      <rect x="220" y="138" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="158" text-anchor="middle" font-weight="600" font-size="9.5">ai-mention-collector  ·  daily 04:00</text>
+
+      <rect x="220" y="178" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="198" text-anchor="middle" font-weight="600" font-size="9.5">nap-checker  ·  weekly Sun 02:00</text>
+
+      <rect x="220" y="218" width="240" height="32" rx="5" fill="#FFFFFF" stroke="#15803D" stroke-width="0.7"/>
+      <text x="340" y="238" text-anchor="middle" font-weight="600" font-size="9.5">score-calculator + alerter  ·  daily 06:00</text>
+    </g>
+
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="520" y="120" width="170" height="60" rx="8" fill="#2ECC71" opacity="0.12" stroke="#15803D" stroke-width="1"/>
+      <text x="605" y="142" text-anchor="middle" font-family="Playfair Display" font-weight="700" font-size="12" fill="#15803D">Cloudflare D1</text>
+      <text x="605" y="160" text-anchor="middle" font-size="9" fill="#1A1A2E">snapshots · scores · alerts</text>
+      <text x="605" y="172" text-anchor="middle" font-size="8" fill="#6B7280">SQLite, free tier</text>
+    </g>
+
+    <g font-family="DM Sans, sans-serif" font-size="10" fill="#1A1A2E">
+      <rect x="200" y="310" width="120" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="0.8"/>
+      <text x="260" y="328" text-anchor="middle" font-weight="600" font-size="9.5">/intake-score</text>
+      <text x="260" y="342" text-anchor="middle" font-size="8" fill="#6B7280">public lookup</text>
+
+      <rect x="340" y="310" width="120" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="0.8"/>
+      <text x="400" y="328" text-anchor="middle" font-weight="600" font-size="9.5">/portal</text>
+      <text x="400" y="342" text-anchor="middle" font-size="8" fill="#6B7280">client dashboard</text>
+
+      <rect x="480" y="310" width="120" height="40" rx="6" fill="#FFFFFF" stroke="#2ECC71" stroke-width="1.2"/>
+      <text x="540" y="328" text-anchor="middle" font-weight="600" font-size="9.5" fill="#15803D">/admin</text>
+      <text x="540" y="342" text-anchor="middle" font-size="8" fill="#6B7280">Iwan operates</text>
+    </g>
+
+    <g stroke="#15803D" stroke-width="0.8" fill="none" marker-end="url(#ah)">
+      <line x1="140" y1="48"  x2="218" y2="74"/>
+      <line x1="140" y1="98"  x2="218" y2="114"/>
+      <line x1="140" y1="148" x2="218" y2="154"/>
+      <line x1="140" y1="198" x2="218" y2="158"/>
+      <line x1="140" y1="248" x2="218" y2="194"/>
+    </g>
+
+    <g stroke="#15803D" stroke-width="0.8" fill="none" marker-end="url(#ah)">
+      <line x1="460" y1="150" x2="518" y2="150"/>
+    </g>
+
+    <g stroke="#1A1A2E" stroke-width="0.7" fill="none" marker-end="url(#ah)">
+      <line x1="600" y1="180" x2="260" y2="306"/>
+      <line x1="605" y1="180" x2="400" y2="306"/>
+      <line x1="610" y1="180" x2="540" y2="306"/>
+    </g>
+  </svg>
+
+  <h3>Tech choices and why</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Layer</th>
+      <th>Choice</th>
+      <th>Why</th>
+    </tr>
+    <tr>
+      <td>Compute</td>
+      <td>Cloudflare Workers (cron + HTTP)</td>
+      <td>Free tier covers our daily volume. Same account as the site. Cron triggers built in.</td>
+    </tr>
+    <tr>
+      <td>Database</td>
+      <td>Cloudflare D1 (managed SQLite)</td>
+      <td>Free up to 5GB. Zero ops. Single-region fine — not latency sensitive.</td>
+    </tr>
+    <tr>
+      <td>Queues</td>
+      <td>Cloudflare Queues</td>
+      <td>Rate-limits SERP and LLM calls. Avoids upstream-API bans.</td>
+    </tr>
+    <tr>
+      <td>Auth</td>
+      <td>Cloudflare Access (magic links)</td>
+      <td>No password to manage. Iwan logs in via email.</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>Resend</td>
+      <td>100 emails/day free. Alerts + weekly reports.</td>
+    </tr>
+    <tr>
+      <td>Frontend</td>
+      <td>Astro (same repo)</td>
+      <td>New routes /intake-score, /portal, /admin alongside existing pages.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- ARCHITECTURE: DATA HANDLING -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>05 — System architecture (continued)</span>
+  </div>
+  <h2 class="section-h">Data handling, security, observability.</h2>
+
+  <p class="section-lead">
+    What gets stored, who can see it, and how the system tells Iwan when something is wrong.
+  </p>
+
+  <h3>What we store, and what we do not</h3>
+  <div class="two-col">
+    <div class="card card-mint">
+      <h4>What we store</h4>
+      <ul class="bullets">
+        <li>Practice name, address, phone, GBP URL (all public information)</li>
+        <li>Daily SERP positions for tracked queries</li>
+        <li>GBP completeness snapshot, review count, average rating</li>
+        <li>Sentiment scores derived from public review text</li>
+        <li>AI-assistant responses to physio queries</li>
+        <li>Computed daily score + signal-level breakdown</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>What we do not store</h4>
+      <ul class="bullets">
+        <li>Full text of patient reviews (only sentiment scores and excerpts shown to the practice owner)</li>
+        <li>Personal data about patients (we never see it)</li>
+        <li>Anything the practice itself has not made public</li>
+        <li>Credit card or financial information (handled by the payment provider, never touches our database)</li>
+        <li>Email addresses for non-clients beyond what they themselves submitted to the public form</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>GDPR posture</h3>
+  <p>
+    All data we collect is already publicly available. Practice information comes from Google Bedrijfsprofielen and healthcare directories. SERP positions come from public Google results. AI-assistant responses are reactions to public queries. No patient data is in scope. The legal basis for processing public business data of physiotherapy practices is the legitimate interest of providing them with a visibility analysis, and we offer a clear opt-out path from our admin.
+  </p>
+
+  <h3>Observability</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Surface</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>Cloudflare Workers dashboard</td>
+      <td>Per-Worker execution log, error rate, average duration. Bureau Intake sees this without configuration.</td>
+    </tr>
+    <tr>
+      <td>D1 query metrics</td>
+      <td>Storage usage, read/write counts. Free tier limits become visible long before they are hit.</td>
+    </tr>
+    <tr>
+      <td>Error log (/admin)</td>
+      <td>Plain-language list of any parser failures, API rejections, score-calculation anomalies. Iwan reads this weekly.</td>
+    </tr>
+    <tr>
+      <td>Discord webhook</td>
+      <td>Real-time alerts for score drops, new sub-3-star reviews, system errors. Optional, configurable per client.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Failure mode design.</strong> Every external API call is wrapped in retry-with-backoff. If a directory's HTML changes and the parser breaks, the system marks that signal as "stale" for that practice and lowers its weight in the score temporarily. The score never silently lies. Iwan sees the stale-signal flag in /admin within 24 hours.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- OPERATING MODEL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>06 — Operating model</span>
+  </div>
+  <h2 class="section-h">What runs alone. What Iwan touches.</h2>
+
+  <p class="section-lead">
+    The system collects, scores, alerts, and reports on its own every day. Iwan's involvement is intentionally small. Three buttons in the admin and an inbox for alerts.
+  </p>
+
+  <h3>The daily run</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Worker</th>
+      <th class="col-tighter">Cadence</th>
+      <th>Behaviour</th>
+    </tr>
+    <tr>
+      <td><strong>serp-collector</strong></td>
+      <td>Daily 03:00</td>
+      <td>Queries DataForSEO for "fysio [stad]" plus behandelingen across each tracked postcode. Stores top-10 results.</td>
+    </tr>
+    <tr>
+      <td><strong>gbp-scanner</strong></td>
+      <td>Daily 03:30</td>
+      <td>Fetches Google Places data per practice. Scores completeness, computes review velocity, runs LLM sentiment on the latest 10 reviews.</td>
+    </tr>
+    <tr>
+      <td><strong>ai-mention-collector</strong></td>
+      <td>Daily 04:00</td>
+      <td>Asks ChatGPT, Claude, Perplexity, Gemini physio queries per city. An LLM parses each answer and logs every practice name that appears, with sentiment.</td>
+    </tr>
+    <tr>
+      <td><strong>nap-checker</strong></td>
+      <td>Weekly Sun 02:00</td>
+      <td>Visits 20 healthcare directories per practice. LLM normalises name, address, phone. Flags divergence from canonical GBP.</td>
+    </tr>
+    <tr>
+      <td><strong>score-calculator</strong></td>
+      <td>Daily 06:00</td>
+      <td>Reads all signals, applies weighted formula, writes daily snapshot, computes peer percentile.</td>
+    </tr>
+    <tr>
+      <td><strong>alerter</strong></td>
+      <td>Daily 06:30</td>
+      <td>Detects score drops &gt;5pts, new sub-3★ reviews, competitor entries to top-3, AI-mention disappearances. Emails Iwan + Discord webhook.</td>
+    </tr>
+  </table>
+
+  <h3>What Iwan actually touches</h3>
+  <ul class="steps">
+    <li>
+      <strong>Add a practice</strong>
+      Paste a Google Bedrijfsprofiel URL. The system pulls everything itself, starts monitoring, returns the first score within 24 hours.
+    </li>
+    <li>
+      <strong>Pause or resume a practice</strong>
+      Toggle off when a client churns, on when they return. Historical data is preserved.
+    </li>
+    <li>
+      <strong>Read the error log</strong>
+      Only populates when a parser breaks. Each entry is a clear "this needs a fix when you have a moment." Never urgent, never silent.
+    </li>
+    <li>
+      <strong>Tune weights (rarely)</strong>
+      Sliders in /admin for the five signal weights. Changes apply retroactively across the whole dataset. Iwan touches this maybe twice in year one.
+    </li>
+  </ul>
+
+  <div class="callout callout-dark">
+    <strong>The total operating surface.</strong> No spreadsheets. No manual review tagging. No "let me check what Perplexity said today." No NAP variations counted by hand. Every signal is collected, parsed, normalised, and scored without a human ever entering or judging data. Iwan reads alerts and adds clients. Everything else is on cron.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- COST MODEL -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>07 — Cost model</span>
+  </div>
+  <h2 class="section-h">Pay-as-you-go until validated.</h2>
+
+  <p class="section-lead">
+    Every external service is on a free tier or pay-per-use until validation. There is no fixed monthly commitment until paying clients absorb the cost. The pilot runs at roughly the price of a Netflix subscription.
+  </p>
+
+  <h3>Pilot stage cost breakdown</h3>
+  <table>
+    <tr>
+      <th>Service</th>
+      <th class="col-tight">Pilot cost</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Cloudflare Workers + D1 + Queues + KV + R2</td>
+      <td><span class="free">€0</span></td>
+      <td>Free tier covers thousands of cron runs and millions of DB reads.</td>
+    </tr>
+    <tr>
+      <td>Cloudflare Access (admin auth)</td>
+      <td><span class="free">€0</span></td>
+      <td>Free up to 50 users.</td>
+    </tr>
+    <tr>
+      <td>Google Places API</td>
+      <td><span class="free">€0</span></td>
+      <td>$200/month Google Maps Platform credit covers our pilot volume.</td>
+    </tr>
+    <tr>
+      <td>Cloudflare Workers AI (sentiment, parsing)</td>
+      <td><span class="free">€0</span></td>
+      <td>Free tier covers ~10k requests/day on small models.</td>
+    </tr>
+    <tr>
+      <td>Resend (alert emails)</td>
+      <td><span class="free">€0</span></td>
+      <td>100 emails/day free.</td>
+    </tr>
+    <tr>
+      <td>DataForSEO (SERP API)</td>
+      <td><span class="pay">€2–5</span></td>
+      <td>$0.60 per 100 SERP queries, pay-as-you-go. Pilot: ~1500 queries/month.</td>
+    </tr>
+    <tr>
+      <td>OpenAI + Anthropic + Perplexity APIs</td>
+      <td><span class="pay">€1–3</span></td>
+      <td>Pay-as-you-go. ~30 queries/day across providers.</td>
+    </tr>
+    <tr class="total-row">
+      <td><strong>Pilot total</strong></td>
+      <td><strong class="ok">€3–8 / month</strong></td>
+      <td>Real number, not optimistic.</td>
+    </tr>
+  </table>
+
+  <h3>Ramp path</h3>
+  <table>
+    <tr>
+      <th>Stage</th>
+      <th class="col-tight">Practices tracked</th>
+      <th class="col-tight">Monthly cost</th>
+      <th>Trigger to graduate</th>
+    </tr>
+    <tr>
+      <td><strong>Pilot</strong></td>
+      <td>Bureau Intake + 2–3 samples</td>
+      <td><span class="ok">€3–8</span></td>
+      <td>First paying client signs on for the score deliverable</td>
+    </tr>
+    <tr>
+      <td><strong>Early</strong></td>
+      <td>5–10</td>
+      <td><span class="ok">€10–20</span></td>
+      <td>Operating cost feels invisible against MRR</td>
+    </tr>
+    <tr>
+      <td><strong>Scale</strong></td>
+      <td>20+</td>
+      <td><span class="ok">€60–100</span></td>
+      <td>DataForSEO flat tier becomes cheaper than per-query</td>
+    </tr>
+    <tr>
+      <td><strong>Mature</strong></td>
+      <td>50+</td>
+      <td><span class="ok">€150–250</span></td>
+      <td>Bureau Intake covers all of NL — annual report becomes a real product on its own</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Revenue context.</strong> At 20 clients × €590, monthly revenue is €11,800. Operating cost at scale (€100) is 0.8% of revenue. At 50 clients × €790 average tier, monthly revenue is €39,500 against €250 operating cost — well under 1% of revenue. Margin is real and structurally protected.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- GO-TO-MARKET -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>08 — Go-to-market</span>
+  </div>
+  <h2 class="section-h">How the product becomes the channel.</h2>
+
+  <p class="section-lead">
+    The product is also the marketing. The free public lookup is the funnel. The dashboard is the retention. The annual report is the press. None of these are separate spend lines — they are emergent from the product existing.
+  </p>
+
+  <h3>Phase A — Pre-launch (weeks 1–8 of build)</h3>
+  <ul class="bullets">
+    <li><strong>Silent data collection.</strong> The Workers start running before any public surface exists. By the time /intake-score goes live, the system already has 8 weeks of signal history for every practice in scope.</li>
+    <li><strong>Soft launch with existing clients.</strong> Iwan adds his current paying clients first. They get private access to /portal and see their scores. Their feedback shapes the recommendation copy.</li>
+    <li><strong>Seed cities.</strong> Pick 5 Dutch cities (Amsterdam, Utrecht, Den Haag, Rotterdam, Alkmaar) and track every physio practice in each. By launch day, scores exist for ~150 practices Bureau Intake has never spoken to.</li>
+  </ul>
+
+  <h3>Phase B — Launch (week 10)</h3>
+  <ul class="bullets">
+    <li><strong>/intake-score goes public.</strong> Anyone can look up any tracked practice's score. Practice owners who score under 60 see a "fix this in 90 days" offer with email capture.</li>
+    <li><strong>Outreach to seeded practices.</strong> The 150 already-tracked practices receive a short cold email: "we have analysed your visibility, here is your free report." Conversion much higher than a generic cold call because the report is concrete.</li>
+    <li><strong>Single Dutch trade journal partnership.</strong> Submit one piece to ParaMedisch or Fysio Magazine explaining the score methodology. Free distribution, instant credibility.</li>
+  </ul>
+
+  <h3>Phase C — Year-one growth (months 4–12)</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Channel</th>
+      <th>Mechanic</th>
+      <th>Expected contribution</th>
+    </tr>
+    <tr>
+      <td>Free lookup tool</td>
+      <td>Practice owner self-diagnoses, leaves email, enters sales pipeline</td>
+      <td><strong>~50%</strong> of new leads</td>
+    </tr>
+    <tr>
+      <td>SEO content</td>
+      <td>Blog posts that rank for "lokale SEO fysiotherapie" link to /intake-score</td>
+      <td><strong>~15%</strong> of new leads</td>
+    </tr>
+    <tr>
+      <td>Trade press / referrals</td>
+      <td>Existing clients refer peers, trade journals cite the methodology</td>
+      <td><strong>~20%</strong> of new leads</td>
+    </tr>
+    <tr>
+      <td>Cold outreach (warmed)</td>
+      <td>Iwan still calls, but with a personalised score report in hand. Conversion much higher than today.</td>
+      <td><strong>~15%</strong> of new leads</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>The role of cold calling changes, but does not disappear.</strong> Today cold calling is the only channel and the conversion is low. After launch, cold calling is one of four channels, but every call starts with a personalised, data-backed report. Calls per closed client drops 4–5x. Iwan still calls — he just closes more of them.</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- GO-TO-MARKET: PRICING -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>08 — Go-to-market (continued)</span>
+  </div>
+  <h2 class="section-h">Pricing strategy.</h2>
+
+  <p class="section-lead">
+    Today Bureau Intake has one tier at €590/month. After the score launches, there is a path to a three-tier structure that captures more value from clients who want depth without scaring off the budget-conscious ones who do not.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tighter">Tier</th>
+      <th class="col-tight">Price</th>
+      <th>Includes</th>
+      <th class="col-tight">Target</th>
+    </tr>
+    <tr>
+      <td><strong>Free</strong></td>
+      <td><span class="free">€0</span></td>
+      <td>One-time score lookup at /intake-score. Three weakest signals. Email capture for "how to improve."</td>
+      <td>Lead funnel. Anyone in NL with a practice.</td>
+    </tr>
+    <tr>
+      <td><strong>Standard</strong></td>
+      <td><span class="num">€590/mo</span></td>
+      <td>Current Bureau Intake service plus client dashboard at /portal. Daily score updates. Monthly auto-generated tasks. Email alerts.</td>
+      <td>Single-location practices wanting full coverage of the basics.</td>
+    </tr>
+    <tr>
+      <td><strong>Premium</strong></td>
+      <td><span class="num up">€890/mo</span></td>
+      <td>Everything in Standard plus quarterly competitor analysis, monthly AI-mention report, custom annual report for the practice, priority response on alerts.</td>
+      <td>Larger practices, multi-location chains, practices with a marketing budget.</td>
+    </tr>
+  </table>
+
+  <h3>How the tiering rolls out</h3>
+  <p>
+    Existing clients stay on €590 grandfathered. New clients post-launch are offered Standard or Premium. After 6 months of Premium running, Standard clients receive a one-time upgrade offer with two-month Premium trial. Conservative assumption: 25–35% of clients eventually move to Premium. That alone adds 12–18% to average revenue per client.
+  </p>
+
+  <h3>Revenue sensitivity</h3>
+  <table>
+    <tr>
+      <th>Scenario</th>
+      <th class="col-tight">Clients at m12</th>
+      <th class="col-tight">% on Premium</th>
+      <th class="col-tight">Avg ARPU</th>
+      <th class="col-tight">MRR</th>
+      <th class="col-tight">ARR</th>
+    </tr>
+    <tr>
+      <td>Conservative</td>
+      <td class="num">20</td>
+      <td class="num">20%</td>
+      <td class="num">€650</td>
+      <td class="num">€13.0k</td>
+      <td class="num"><strong>€156k</strong></td>
+    </tr>
+    <tr>
+      <td>Base</td>
+      <td class="num">25</td>
+      <td class="num">30%</td>
+      <td class="num">€680</td>
+      <td class="num">€17.0k</td>
+      <td class="num"><strong>€204k</strong></td>
+    </tr>
+    <tr>
+      <td>Optimistic</td>
+      <td class="num">35</td>
+      <td class="num">40%</td>
+      <td class="num">€710</td>
+      <td class="num">€24.9k</td>
+      <td class="num"><strong>€298k</strong></td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Reading this table.</strong> The base case adds roughly €150k ARR over a do-nothing baseline, which itself was €50–80k. The optimistic case (which is still inside conservative product-market assumptions for a category-defining tool) more than triples the business in a year.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BUILD PHASES -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>09 — Build phases and timeline</span>
+  </div>
+  <h2 class="section-h">From zero to operating, in sequenced steps.</h2>
+
+  <p class="section-lead">
+    Each phase ends with something Iwan can see and review. No "big bang" build. Every two to three days there is progress to look at and steer.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tighter">Phase</th>
+      <th class="col-tight">Output</th>
+      <th class="col-wide">Scope</th>
+      <th>Effort</th>
+    </tr>
+    <tr>
+      <td class="num"><strong>0</strong></td>
+      <td>Foundation</td>
+      <td>Cloudflare Workers project, D1 schema (practices, signals, snapshots, alerts), Cloudflare Access for /admin, base CI.</td>
+      <td>~3 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>1</strong></td>
+      <td>Collection</td>
+      <td>All four collector Workers running on cron + Queues. Data flowing into D1. No UI yet, but database fills up.</td>
+      <td>~7 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>2</strong></td>
+      <td>Scoring + alerts</td>
+      <td>Score formula, percentile calculation, daily snapshot pipeline, alerter via email + Discord webhook.</td>
+      <td>~3 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>3</strong></td>
+      <td>Public /intake-score</td>
+      <td>Lookup form, results page with signal breakdown + recommendation, email capture wired to sales pipeline.</td>
+      <td>~5 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>4</strong></td>
+      <td>Client /portal</td>
+      <td>Per-client authenticated dashboard. Score history graph, per-signal drilldowns, auto-generated monthly task list.</td>
+      <td>~5 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>5</strong></td>
+      <td>Admin /admin</td>
+      <td>Three-button operating console, weights tuning panel, error log.</td>
+      <td>~2 days</td>
+    </tr>
+    <tr>
+      <td class="num"><strong>6</strong></td>
+      <td>GTM activation</td>
+      <td>Trade-press outreach, first cold-email batch using auto-generated reports, social proof page on bureauintake.nl.</td>
+      <td>~2 days</td>
+    </tr>
+    <tr class="total-row">
+      <td></td>
+      <td><strong>Total agent effort</strong></td>
+      <td>From empty to fully operating system, including public surfaces and GTM activation.</td>
+      <td><strong>~27 days</strong></td>
+    </tr>
+  </table>
+
+  <h3>Calendar timeline</h3>
+  <svg class="diagram" viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg">
+    <g font-family="DM Sans, sans-serif" font-size="9" fill="#6B7280">
+      <text x="20" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">Phase</text>
+      <text x="20" y="48">Foundation</text>
+      <text x="20" y="68">Collection</text>
+      <text x="20" y="88">Scoring + alerts</text>
+      <text x="20" y="108">Public /intake-score</text>
+      <text x="20" y="128">Client /portal</text>
+      <text x="20" y="148">Admin /admin</text>
+      <text x="20" y="168">GTM activation</text>
+    </g>
+    <g font-family="DM Sans, sans-serif" font-size="9" fill="#6B7280">
+      <text x="150" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w1</text>
+      <text x="210" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w2</text>
+      <text x="270" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w3</text>
+      <text x="330" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w4</text>
+      <text x="390" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w5</text>
+      <text x="450" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w6</text>
+      <text x="510" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w7</text>
+      <text x="570" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w8</text>
+      <text x="630" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w9</text>
+      <text x="690" y="20" font-weight="600" fill="#1A1A2E" font-size="9.5">w10</text>
+    </g>
+    <g stroke="#E5E7EB" stroke-width="0.5">
+      <line x1="140" y1="28" x2="720" y2="28"/>
+      <line x1="140" y1="48" x2="720" y2="48"/>
+      <line x1="140" y1="68" x2="720" y2="68"/>
+      <line x1="140" y1="88" x2="720" y2="88"/>
+      <line x1="140" y1="108" x2="720" y2="108"/>
+      <line x1="140" y1="128" x2="720" y2="128"/>
+      <line x1="140" y1="148" x2="720" y2="148"/>
+      <line x1="140" y1="168" x2="720" y2="168"/>
+    </g>
+    <g fill="#15803D">
+      <rect x="140" y="40" width="60" height="14" rx="3"/>
+      <rect x="200" y="60" width="120" height="14" rx="3"/>
+      <rect x="320" y="80" width="60" height="14" rx="3"/>
+      <rect x="380" y="100" width="100" height="14" rx="3"/>
+      <rect x="480" y="120" width="100" height="14" rx="3"/>
+      <rect x="580" y="140" width="40" height="14" rx="3"/>
+      <rect x="620" y="160" width="80" height="14" rx="3"/>
+    </g>
+  </svg>
+
+  <p class="note">Working sessions of 2–4 hours, three times per week. Total calendar time: 10 weeks. Phase boundaries get a 15-minute review with Iwan.</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- RISKS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>10 — Risks and mitigations</span>
+  </div>
+  <h2 class="section-h">What can go wrong, and what we do about it.</h2>
+
+  <p class="section-lead">
+    The honest list. Most of these are mitigated by the architecture or the phasing. None of them is a project-killer on its own. The combination of two or three at once is what matters — addressed in the contingency section below.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tight">Risk</th>
+      <th class="col-tighter">Likelihood</th>
+      <th>Impact and mitigation</th>
+    </tr>
+    <tr>
+      <td><strong>Upstream API price changes</strong></td>
+      <td><span class="pill">Medium</span></td>
+      <td>DataForSEO or LLM providers raise prices, doubling costs. Mitigation: the architecture supports swapping providers with one config change. Multiple LLM providers already in rotation.</td>
+    </tr>
+    <tr>
+      <td><strong>Directory HTML changes</strong></td>
+      <td><span class="pill">High</span></td>
+      <td>Healthcare directories occasionally change their pages, breaking NAP scrapers. Mitigation: parsers degrade gracefully, signal marked stale rather than missing. Fix is a 30-minute job per parser; expected 2–4 times/year total.</td>
+    </tr>
+    <tr>
+      <td><strong>Google policy on Places API</strong></td>
+      <td><span class="pill">Low</span></td>
+      <td>Google changes Maps Platform pricing or terms. Mitigation: GBP data is one signal of five; the score can absorb a 20% increase or partial loss of this signal without breaking.</td>
+    </tr>
+    <tr>
+      <td><strong>Slow product-market fit</strong></td>
+      <td><span class="pill">Medium</span></td>
+      <td>Practices ignore the free lookup, conversion rate underperforms. Mitigation: each phase is independently valuable. Even with poor inbound conversion, the dashboard improves client retention enough to justify the build.</td>
+    </tr>
+    <tr>
+      <td><strong>Competitor copies the idea</strong></td>
+      <td><span class="pill">Low</span></td>
+      <td>Another agency notices and builds something similar. Mitigation: 12 months of historical data is the moat. They start at month one; you are at month 13. The gap widens.</td>
+    </tr>
+    <tr>
+      <td><strong>Iwan unavailable mid-build</strong></td>
+      <td><span class="pill">Low</span></td>
+      <td>Vacation, illness, business event takes Iwan out of the loop. Mitigation: agent work continues against the existing plan. Decision points are scheduled, not constant — most weeks need ~30 minutes of Iwan's input.</td>
+    </tr>
+    <tr>
+      <td><strong>GDPR complaint from a tracked practice</strong></td>
+      <td><span class="pill">Low</span></td>
+      <td>A practice owner objects to being tracked without consent. Mitigation: a public opt-out form removes a practice within 24 hours. Architecture supports this from day one. All data is already public.</td>
+    </tr>
+    <tr>
+      <td><strong>AI assistants change behaviour</strong></td>
+      <td><span class="pill">Medium</span></td>
+      <td>ChatGPT/Claude/Perplexity change how they return local recommendations, devaluing the AI-mention signal. Mitigation: signal weights are tunable. If one AI becomes unreliable, drop it; the other three remain.</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-dark">
+    <strong>What would actually kill this project.</strong> Two scenarios. First: Google launches its own "physio visibility score" inside Google Bedrijfsprofiel before Bureau Intake's tool reaches critical mass — unlikely (Google has not built vertical-specific scoring in any of its other markets). Second: Iwan loses motivation to operate the system after launch — entirely a human factor, not a technical one. Mitigated by keeping operations to 15 minutes/week and by the inbound funnel feeding visible wins.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- DECISION POINTS / NEXT STEPS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>11 — Decision points and next steps</span>
+  </div>
+  <h2 class="section-h">What is needed from Iwan to open Phase 0.</h2>
+
+  <p class="section-lead">
+    Roughly 30 minutes of account setup, a few decisions on naming and pricing, and one go-ahead message. The agent does everything else from there.
+  </p>
+
+  <h3>Setup checklist (one-time)</h3>
+  <ul class="steps">
+    <li>
+      <strong>Create a DataForSEO account</strong>
+      ~10 minutes. Pay-as-you-go billing, credit card on file. The agent receives only the API key — billing stays with Iwan.
+    </li>
+    <li>
+      <strong>Activate Google Cloud + enable Places API</strong>
+      ~15 minutes. Same Google account as Workspace. The $200/month free credit applies automatically once billing is on.
+    </li>
+    <li>
+      <strong>Create accounts at OpenAI, Anthropic, Perplexity</strong>
+      ~10 minutes total. Pay-as-you-go with $5–10 starting credit. Total pilot LLM spend will be cents per month.
+    </li>
+    <li>
+      <strong>Confirm the open decisions below</strong>
+      ~5 minutes. Three small choices.
+    </li>
+    <li>
+      <strong>Send go-ahead</strong>
+      One message: "open Phase 0." Build starts.
+    </li>
+  </ul>
+
+  <h3>Open decisions needing Iwan's call</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Decision</th>
+      <th>Options</th>
+      <th>Agent's default</th>
+    </tr>
+    <tr>
+      <td><strong>Subdomain or subpath</strong></td>
+      <td>intake-score.bureauintake.nl (cleaner, easier to spin off) or bureauintake.nl/intake-score (simpler today)</td>
+      <td>Subpath, migrate if it grows</td>
+    </tr>
+    <tr>
+      <td><strong>Public lookup gating</strong></td>
+      <td>Fully free (email captured for "how to improve") or email-gated (must enter email to see score)</td>
+      <td>Fully free, email captured for full report</td>
+    </tr>
+    <tr>
+      <td><strong>Pricing tiers timing</strong></td>
+      <td>Launch with Standard + Premium tiers from day one, or hold Premium for month 6</td>
+      <td>Standard only at launch, add Premium after first 5 clients on Standard</td>
+    </tr>
+    <tr>
+      <td><strong>Three actual numbers</strong></td>
+      <td>Current clients, last-90-days cold-call conversion rate, current monthly churn</td>
+      <td>Plug into the math tables on pp. 4 and 14 to produce a real forecast</td>
+    </tr>
+  </table>
+
+  <h3>What happens in week one of the build</h3>
+  <table>
+    <tr>
+      <td class="col-tighter"><strong>Day 1</strong></td>
+      <td>Workers project scaffolded, D1 schema designed, Cloudflare Access wired up. /admin is live (empty) by end of day.</td>
+    </tr>
+    <tr>
+      <td><strong>Day 2</strong></td>
+      <td>First Worker (gbp-scanner) running on cron. Bureau Intake itself is the first tracked practice.</td>
+    </tr>
+    <tr>
+      <td><strong>Day 3–4</strong></td>
+      <td>serp-collector live. SERP positions for "fysio Alkmaar" and related queries recorded daily.</td>
+    </tr>
+    <tr>
+      <td><strong>Day 5–7</strong></td>
+      <td>ai-mention-collector live. ChatGPT, Claude, Perplexity, Gemini queried daily for "fysio in Alkmaar." Results parsed and stored.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>End of week one.</strong> The system already holds more proprietary data about Dutch physiotherapy local visibility than any competing agency in the country. No UI yet — but the moat is already being dug.
+  </div>
+
+  <div class="banner">
+    <h3>Bottom line</h3>
+    <p>Build cost is small. Operating cost is invisible against revenue. Time-to-live is ten weeks. Iwan's time is 30 minutes of setup and 15 minutes a week thereafter. The upside is a doubling or tripling of ARR within twelve months and a structural shift in what kind of business Bureau Intake becomes. The downside, if the inbound channel underperforms, is still a meaningful improvement in retention and pricing power on the existing client base.</p>
+    <p style="margin-bottom: 0;"><strong>The decision is whether Bureau Intake wants to remain a one-person service agency competing on price, or become the company that owns the measurement standard for Dutch physiotherapy local visibility. Both are valid. Only one is hard to copy.</strong></p>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>De Intake Score — Follow-up to Iwan's questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #2ECC71;
+    --mint-dark: #15803D;
+    --mint-soft: rgba(46, 204, 113, 0.08);
+    --mint-line: rgba(46, 204, 113, 0.18);
+    --primary: #1A1A2E;
+    --muted: #4B5563;
+    --muted-soft: #6B7280;
+    --line: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.14);
+    --bg: #FFFFFF;
+    --warn: #B45309;
+  }
+
+  @page {
+    size: A4;
+    margin: 20mm 18mm 18mm 18mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #6B7280;
+    }
+    @bottom-left {
+      content: "Bureau Intake — follow-up";
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #6B7280;
+    }
+  }
+  @page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--primary);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* Cover */
+  .cover {
+    page-break-after: always;
+    height: 297mm;
+    padding: 28mm 22mm;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-bg-mint {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: var(--mint);
+    opacity: 0.08;
+  }
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mint-dark);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-eyebrow .rule { width: 36px; height: 1.5pt; background: var(--mint); }
+  .cover-title {
+    font-size: 44pt;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-top: 28pt;
+    position: relative;
+    z-index: 1;
+    max-width: 160mm;
+  }
+  .cover-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mint-dark);
+  }
+  .cover-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13pt;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 140mm;
+    margin-top: 18pt;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-questions {
+    margin-top: 30pt;
+    position: relative;
+    z-index: 1;
+    padding: 16pt 18pt;
+    border-left: 3pt solid var(--mint);
+    background: var(--mint-soft);
+    border-radius: 0 8pt 8pt 0;
+  }
+  .cover-questions .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mint-dark);
+    font-weight: 700;
+    margin-bottom: 10pt;
+  }
+  .cover-questions p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--primary);
+    line-height: 1.4;
+    margin: 0 0 6pt;
+  }
+  .cover-questions p:last-child { margin-bottom: 0; }
+  .cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 24pt;
+    border-top: 1pt solid var(--line);
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-soft);
+    margin-bottom: 4pt;
+    font-weight: 600;
+  }
+  .cover-meta .value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11pt;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  .cover-brand .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 14pt;
+    font-weight: 700;
+  }
+
+  /* Generic page */
+  .page {
+    page-break-after: always;
+  }
+  .page:last-of-type { page-break-after: auto; }
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14pt;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mint-dark);
+  }
+  .section-eyebrow .rule { width: 24px; height: 1.5pt; background: var(--mint); }
+  .section-h {
+    font-size: 24pt;
+    line-height: 1.15;
+    margin-bottom: 14pt;
+  }
+  .section-h em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mint-dark);
+  }
+  .section-lead {
+    font-size: 12pt;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 165mm;
+    margin-bottom: 22pt;
+  }
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 18pt 0 8pt;
+  }
+  p { margin: 0 0 9pt; }
+
+  /* TL;DR card */
+  .tldr {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12pt;
+    margin: 6pt 0 18pt;
+  }
+  .tldr-item {
+    border: 1pt solid var(--mint-line);
+    background: var(--mint-soft);
+    border-radius: 8pt;
+    padding: 14pt 16pt;
+  }
+  .tldr-item h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mint-dark);
+    margin: 0 0 8pt;
+  }
+  .tldr-item .head {
+    font-family: 'Playfair Display', serif;
+    font-size: 18pt;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--primary);
+    margin-bottom: 8pt;
+  }
+  .tldr-item .head em {
+    font-style: italic;
+    color: var(--mint-dark);
+    font-weight: 400;
+  }
+  .tldr-item p {
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin: 6pt 0 18pt;
+  }
+  th {
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mint-dark);
+    padding: 10pt 10pt 10pt 0;
+    border-bottom: 1.5pt solid var(--line-strong);
+    vertical-align: bottom;
+  }
+  td {
+    padding: 9pt 10pt 9pt 0;
+    border-bottom: 1pt solid var(--line);
+    vertical-align: top;
+  }
+  td:last-child, th:last-child { padding-right: 0; }
+  tr:last-child td { border-bottom: none; }
+  .num { font-variant-numeric: tabular-nums; }
+  .col-tight { width: 18%; }
+  .col-tighter { width: 12%; }
+  .col-wide { width: 42%; }
+  .total-row td { font-weight: 700; padding-top: 12pt; border-top: 1.5pt solid var(--line-strong); }
+
+  /* Marks */
+  .up { color: var(--mint-dark); font-weight: 600; }
+  .down { color: var(--warn); font-weight: 600; }
+  .ok { color: var(--mint-dark); font-weight: 700; }
+
+  /* Callouts */
+  .callout {
+    border-left: 3pt solid var(--mint);
+    padding: 12pt 16pt;
+    background: var(--mint-soft);
+    border-radius: 0 8pt 8pt 0;
+    margin: 14pt 0;
+    font-size: 10pt;
+  }
+  .callout strong { color: var(--mint-dark); }
+  .callout-dark {
+    background: var(--primary);
+    border-left-color: var(--mint);
+    color: #FFFFFF;
+  }
+  .callout-dark strong { color: var(--mint); }
+
+  /* Two-col */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14pt;
+    margin: 6pt 0 14pt;
+  }
+  .card {
+    border: 1pt solid var(--line);
+    border-radius: 8pt;
+    padding: 14pt 16pt;
+    background: var(--bg);
+  }
+  .card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mint-dark);
+    margin: 0 0 6pt;
+  }
+
+  /* Pill */
+  .pill {
+    display: inline-block;
+    padding: 2pt 8pt;
+    border-radius: 99pt;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER -->
+<!-- ============================================================ -->
+<section class="cover">
+  <div class="cover-bg-mint"></div>
+
+  <div>
+    <div class="cover-eyebrow">
+      <span class="rule"></span>
+      <span>Follow-up · in reply to your questions</span>
+    </div>
+    <h1 class="cover-title">
+      ROI, the goal,<br/>
+      and the <em>reason to live.</em>
+    </h1>
+    <p class="cover-sub">
+      A focused two-page answer to the three questions raised on the build plan.
+    </p>
+
+    <div class="cover-questions">
+      <div class="label">Iwan's questions, verbatim</div>
+      <p>"What's the ROI of this project?"</p>
+      <p>"What is the goal here?"</p>
+      <p>"What gives it reason to live?"</p>
+    </div>
+  </div>
+
+  <div class="cover-meta">
+    <div>
+      <div class="label">For</div>
+      <div class="value">Iwan Stepanova</div>
+    </div>
+    <div>
+      <div class="label">In reply to</div>
+      <div class="value">Build plan v1 (May 2026)</div>
+    </div>
+    <div>
+      <div class="label">Companion to</div>
+      <div class="value">Strategic plan v2</div>
+    </div>
+    <div class="cover-brand">
+      <div class="label">Brand</div>
+      <div class="value name">Bureau Intake</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: TL;DR + THE MATH -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>Answer · part one</span>
+  </div>
+  <h2 class="section-h">Three answers, one page.</h2>
+
+  <p class="section-lead">
+    The v1 build plan answered "how" but never answered "why." Here are the three answers in their shortest form. The detail behind each one lives in the strategic plan v2 that accompanies this document.
+  </p>
+
+  <div class="tldr">
+    <div class="tldr-item">
+      <h4>ROI</h4>
+      <div class="head">€70k–€150k <em>additional</em> ARR in year one.</div>
+      <p>Against operating cost of roughly €1,800 per year. Payback in weeks, not years. The build itself is mostly agent work, not paid headcount.</p>
+    </div>
+    <div class="tldr-item">
+      <h4>The goal</h4>
+      <div class="head">Stop selling a service. <em>Sell a number.</em></div>
+      <p>A 0-to-100 score that becomes the unit of conversation in the Dutch physio market, and that only Bureau Intake can calculate.</p>
+    </div>
+    <div class="tldr-item">
+      <h4>Reason to live</h4>
+      <div class="head">Own the standard, <em>or compete on price forever.</em></div>
+      <p>Generic SEO is a commodity. Whoever owns the measurement standard owns the category. Build it now, become the reference. Wait, and somebody else will.</p>
+    </div>
+  </div>
+
+  <h3>Where the ARR delta comes from</h3>
+  <p>
+    Five operational levers move when "we offer SEO" becomes "see your number." They compound, they do not stack linearly. The table is calibrated with industry averages for the current state — Iwan's actual numbers (see page 3) sharpen these into a real forecast.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tight">Lever</th>
+      <th class="col-tighter">Today</th>
+      <th class="col-tighter">After launch</th>
+      <th>Why it moves</th>
+    </tr>
+    <tr>
+      <td><strong>Inbound leads / month</strong></td>
+      <td class="num">~0</td>
+      <td class="num up">10–20</td>
+      <td>Free score lookup is an irresistible self-diagnostic. Anyone scoring below 60 enters the funnel.</td>
+    </tr>
+    <tr>
+      <td><strong>Close rate on contact</strong></td>
+      <td class="num">10–15%</td>
+      <td class="num up">30–40%</td>
+      <td>Prospect arrives knowing her problem and trusting your methodology. The diagnosis came from you.</td>
+    </tr>
+    <tr>
+      <td><strong>Monthly churn</strong></td>
+      <td class="num">10–15%</td>
+      <td class="num down">3–5%</td>
+      <td>Clients watch the number climb. Cancelling means watching it fall. Hard to do.</td>
+    </tr>
+    <tr>
+      <td><strong>Avg revenue / client</strong></td>
+      <td class="num">€590</td>
+      <td class="num up">€590–€890</td>
+      <td>A Premium tier with full dashboard, benchmarking, AI-mention reports becomes defensible at €890.</td>
+    </tr>
+    <tr class="total-row">
+      <td><strong>Net clients at m12</strong></td>
+      <td class="num">8–12</td>
+      <td class="num up">20–35</td>
+      <td>Compound of all four levers above.</td>
+    </tr>
+    <tr class="total-row">
+      <td><strong>ARR at m12</strong></td>
+      <td class="num">€55–85k</td>
+      <td class="num up">€140–275k</td>
+      <td>Same business, different shape.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>Payback math.</strong> Year-one operating cost is around €1,800. Year-one ARR delta is between €55k and €190k depending on which end of the range plays out. That is between 30x and 100x return on operating cost — and the cost itself is bounded, while the upside compounds in years two and three.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 2: SECONDARY EFFECTS + REASON -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>Answer · part two</span>
+  </div>
+  <h2 class="section-h">The bigger value is not on the napkin.</h2>
+
+  <p class="section-lead">
+    The lever math on page 1 is the direct ARR case. Four second-order effects sit underneath it that are not in the table — and that, together, are worth more than the direct math.
+  </p>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>You own the standard</h4>
+      <p>Once 500+ Dutch practices have looked themselves up on /intake-score, "Intake Score" becomes the language. Competitor agencies have to reference your number to be taken seriously. You stop being a vendor; you become the measurement layer.</p>
+    </div>
+    <div class="card">
+      <h4>Annual report = a year of inbound</h4>
+      <p>"The State of Visibility in Dutch Physiotherapy 2027" becomes a press piece, a citable SEO asset, and a sales tool. Cost to produce: ~40 hours. Value: inbound interest for the next twelve months.</p>
+    </div>
+    <div class="card">
+      <h4>Exit multiple changes shape</h4>
+      <p>A services agency at €100k ARR sells for 1–2x ARR if it sells at all. A specialised SaaS-adjacent business with proprietary data at €250k ARR sells for 4–8x ARR. Same person, same effort, four to ten times the eventual exit value.</p>
+    </div>
+    <div class="card">
+      <h4>Exit the price comparison</h4>
+      <p>Today, anyone selling local SEO at €390 undercuts you. After the score exists, you are not in that comparison. You are selling something they do not have. The price floor moves up structurally.</p>
+    </div>
+  </div>
+
+  <h3>The reason to live, in one paragraph</h3>
+  <p>
+    If Iwan does nothing, in 24 months Bureau Intake is roughly 15-25 clients, MRR €9-15k, indistinguishable from twenty other small Dutch SEO shops, fully dependent on cold-call output, growing linearly with how many hours one person can spend on the phone. If Iwan builds this, in 24 months Bureau Intake owns the metric the Dutch physio industry uses to measure itself, has 50+ clients on a higher tier, generates the majority of new leads inbound, and is a credible acquisition target for adjacent verticals (dental marketing groups, healthcare martech, Dutch wellness platforms).
+  </p>
+
+  <div class="callout callout-dark">
+    <strong>The reason this needs to live.</strong> Without it, Bureau Intake is a job for one person, scaling linearly with that person's hours, with no compounding asset and no defensible position in the market. With it, Bureau Intake becomes the company everyone references when they talk about physio local visibility in the Netherlands — and the work continues even when Iwan steps away from the phone.
+  </div>
+
+  <h3>How to read the two answers together</h3>
+  <table>
+    <tr>
+      <th class="col-tight">Lens</th>
+      <th>Short answer</th>
+    </tr>
+    <tr>
+      <td><strong>ROI</strong></td>
+      <td>Direct: €70–150k additional ARR year one. Indirect: 4–10x exit-multiple shift. Payback: weeks.</td>
+    </tr>
+    <tr>
+      <td><strong>The goal</strong></td>
+      <td>Convert Bureau Intake from a hours-bound service agency into a category-defining tool company for Dutch physio local SEO.</td>
+    </tr>
+    <tr>
+      <td><strong>Reason to live</strong></td>
+      <td>The window to own a measurement standard is open right now. In 18 months it will not be. This is a one-shot move.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 3: WHAT WOULD SHARPEN THIS -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="section-eyebrow">
+    <span class="rule"></span>
+    <span>Answer · part three</span>
+  </div>
+  <h2 class="section-h">Three numbers from Iwan would replace assumptions with forecast.</h2>
+
+  <p class="section-lead">
+    The math on page 1 uses industry-average assumptions for Bureau Intake's current state. Three of Iwan's actual numbers would turn that table from a model into a forecast.
+  </p>
+
+  <table>
+    <tr>
+      <th class="col-tight">Number</th>
+      <th>What it sharpens</th>
+      <th>Why</th>
+    </tr>
+    <tr>
+      <td><strong>Current paying clients and MRR</strong></td>
+      <td>Anchors the "today" column. Determines whether m12 base case is €140k or €270k ARR.</td>
+      <td>The model assumes 5 clients / €35k baseline. If Iwan is at 12, year-one outcomes scale up proportionally.</td>
+    </tr>
+    <tr>
+      <td><strong>Last-90-days cold-call conversion rate</strong></td>
+      <td>Anchors the "today" close-rate row. Defines how much room there is for the inbound funnel to outperform.</td>
+      <td>If the current rate is already 25%, the gain from warm leads is smaller; if it is 5%, the gain is much larger.</td>
+    </tr>
+    <tr>
+      <td><strong>Monthly churn (or avg client lifetime)</strong></td>
+      <td>Anchors the retention assumption. Drives both year-one and year-two ARR projections.</td>
+      <td>The score-as-KPI effect on retention is the single biggest indirect lever. Knowing today's number gives a real measurement.</td>
+    </tr>
+  </table>
+
+  <h3>Recommended next move</h3>
+  <p>
+    Paste those three numbers in a reply and the agent rebuilds page 1 of this document with real values. The strategic plan v2 also gets a sharpened "lever math" section. If Iwan prefers to keep the current numbers under wraps, the existing model holds as a directional case — but real numbers make the case much harder to argue with.
+  </p>
+
+  <div class="callout">
+    <strong>Companion document.</strong> The strategic plan v2 (plan-intake-score-strategic.pdf) holds the full picture — case, product, architecture, costs, go-to-market, build phases, risks, decision points. This follow-up is the elevator version of the case section. Read this for the answer, read v2 for everything else.
+  </div>
+
+  <div class="callout callout-dark">
+    <strong>One sentence to end on.</strong> The build cost is bounded and small; the upside is bounded only by how thoroughly Bureau Intake commits to becoming the measurement layer for Dutch physiotherapy local SEO before someone else does.
+  </div>
+</section>
+
+</body>
+</html>

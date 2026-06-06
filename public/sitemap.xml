@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  @astrojs/sitemap emits sitemap-index.xml + sitemap-0.xml, so the conventional
+  /sitemap.xml path 404s. This static index lives at /sitemap.xml and delegates
+  to the auto-generated sitemap-0.xml (which @astrojs/sitemap keeps fresh on
+  every build), so /sitemap.xml resolves without going stale.
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://bureauintake.nl/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>

@@ -1,33 +1,27 @@
 ---
+// Formspree form ID for bureauintake.nl (notifications -> hallo@bureauintake.nl).
+// Public by design (it ships in the page HTML), so it's safe to hardcode here.
+// Replaces the old Netlify Forms backend, which can't work on Cloudflare Pages.
+const FORMSPREE_FORM_ID = import.meta.env.PUBLIC_FORMSPREE_FORM_ID ?? 'mnjywpjo';
+const formAction = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
+const formspreeConfigured = FORMSPREE_FORM_ID !== 'YOUR_FORMSPREE_FORM_ID';
 ---
-
-<!--
-  FORM BACKEND: Netlify Forms
-  - Works automatically on Netlify hosting (no config needed)
-  - Submissions land in Netlify dashboard → Forms
-  - Add email notifications in: Netlify → Site → Forms → Notifications
-
-  NOT on Netlify? Use Formspree instead:
-  1. Create account at formspree.io, create a form, copy the ID
-  2. Change the form action to: action="https://formspree.io/f/YOUR_ID"
-  3. Remove data-netlify and the hidden input below
-  4. Change the fetch URL in the script to: 'https://formspree.io/f/YOUR_ID'
--->
 
 <form
   id="contact-form"
-  name="contact"
   method="POST"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
+  action={formAction}
+  data-formspree-configured={formspreeConfigured}
   class="space-y-5"
   novalidate
 >
-  <!-- Netlify hidden fields -->
-  <input type="hidden" name="form-name" value="contact" />
+  <!-- Honeypot — Formspree silently drops submissions that fill _gotcha -->
   <p style="display:none" aria-hidden="true">
-    <label>Niet invullen: <input name="bot-field" /></label>
+    <label>Niet invullen: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
   </p>
+
+  <!-- Onderwerp van de e-mail die we ontvangen -->
+  <input type="hidden" name="_subject" value="Nieuw bericht via bureauintake.nl" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
     <!-- Naam -->
@@ -169,6 +163,7 @@
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const feedback = document.getElementById('form-feedback') as HTMLElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const formspreeConfigured = form?.dataset.formspreeConfigured === 'true';
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -187,25 +182,35 @@
       return;
     }
 
+    if (!formspreeConfigured) {
+      showFeedback('Het formulier is nog niet geconfigureerd. Mail ons direct op hallo@bureauintake.nl.', false);
+      return;
+    }
+
     submitBtn.textContent = 'Versturen...';
     submitBtn.disabled = true;
 
     try {
-      const data = new FormData(form);
-      const response = await fetch('/', {
+      const response = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
       });
 
       if (response.ok) {
         showFeedback('Bedankt! We nemen zo snel mogelijk contact met je op.', true);
         form.reset();
       } else {
-        throw new Error('Network response was not ok');
+        const result = (await response.json().catch(() => null)) as { errors?: { message: string }[] } | null;
+        throw new Error(result?.errors?.[0]?.message ?? 'Er ging iets mis. Probeer het opnieuw.');
       }
-    } catch {
-      showFeedback('Er ging iets mis. Probeer het opnieuw of mail ons direct op hallo@bureauintake.nl.', false);
+    } catch (error) {
+      showFeedback(
+        error instanceof Error
+          ? error.message
+          : 'Er ging iets mis. Probeer het opnieuw of mail ons direct op hallo@bureauintake.nl.',
+        false
+      );
     } finally {
       submitBtn.textContent = 'Verstuur';
       submitBtn.disabled = false;

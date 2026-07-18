@@ -49,5 +49,13 @@ export default defineConfig({
   },
 
   integrations: [sitemap(), flatSitemap()],
-  adapter: cloudflare(),
+  // Static brochure site — no Astro sessions, no runtime image optimization
+  // (images are plain <img>/<picture>, not astro:assets). A bare cloudflare()
+  // adapter auto-adds a SESSION KV binding (with no id) + an IMAGES binding,
+  // which make the Cloudflare Worker deploy FAIL (the account has neither
+  // resource). imageService:'passthrough' drops IMAGES; giving sessions an
+  // explicit non-KV driver (unused here) stops the adapter injecting the
+  // SESSION KV binding. Deploy then needs no account-specific resources.
+  session: { driver: 'memory' },
+  adapter: cloudflare({ imageService: 'passthrough' }),
 });

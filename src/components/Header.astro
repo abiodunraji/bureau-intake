@@ -25,7 +25,7 @@ function isActive(href: string): boolean {
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href={url('/')} id="site-logo" aria-label="Bureau Intake — home" style="display: inline-flex; align-items: center; text-decoration: none; transition: opacity 0.2s ease;">
+    <a href={url('/')} aria-label="Bureau Intake — home" style="display: inline-flex; align-items: center; text-decoration: none;">
       <picture>
         <source srcset={url('/logo-bi.webp')} type="image/webp" />
         <img src={url('/logo-bi.png')} alt="Bureau Intake" width="167" height="36" fetchpriority="high" decoding="async" style="height: 36px; width: 167px; display: block;" />
@@ -107,7 +107,6 @@ function isActive(href: string): boolean {
   const toggle = document.getElementById('menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   const overlay = document.getElementById('nav-overlay');
-  const logo = document.getElementById('site-logo');
   const h1 = document.getElementById('hamburger-1');
   const h2 = document.getElementById('hamburger-2');
   const h3 = document.getElementById('hamburger-3');
@@ -131,12 +130,11 @@ function isActive(href: string): boolean {
     document.body.style.overflow = 'hidden';
     toggle?.setAttribute('aria-expanded', 'true');
     mobileNav?.removeAttribute('inert');
-    // Hide the logo while the drawer is open so the panel edge never cuts
-    // across it (the mobile eyesore Iwan flagged).
-    if (logo) {
-      logo.style.opacity = '0';
-      logo.style.pointerEvents = 'none';
-    }
+    // Give the header its solid (scrolled-style) white base while the drawer
+    // is open, so the panel edge never cuts across a transparent logo. The
+    // eyesore only happens at the top, where the header is otherwise
+    // transparent; when already scrolled it stays solid and looks clean.
+    header?.classList.add('nav-scrolled');
     if (h1 && h2 && h3) {
       h1.style.transform = 'rotate(45deg) translate(5px, 5px)';
       h2.style.opacity = '0';
@@ -151,10 +149,9 @@ function isActive(href: string): boolean {
     document.body.style.overflow = '';
     toggle?.setAttribute('aria-expanded', 'false');
     mobileNav?.setAttribute('inert', '');
-    if (logo) {
-      logo.style.opacity = '';
-      logo.style.pointerEvents = '';
-    }
+    // Drop the solid base only if we're actually at the top; keep it when the
+    // page is scrolled (where the scroll handler owns it anyway).
+    if (window.scrollY <= 20) header?.classList.remove('nav-scrolled');
     if (h1 && h2 && h3) {
       h1.style.transform = '';
       h2.style.opacity = '';

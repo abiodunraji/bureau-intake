@@ -263,18 +263,41 @@ const fullGraph = {
     <!-- Scroll reveal (deferred past first paint to avoid blocking LCP) -->
     <script>
       const initReveal = () => {
-        const revealEls = document.querySelectorAll('.reveal');
+        const revealEls = Array.from(document.querySelectorAll('.reveal'));
+        const reveal = (el: Element) => el.classList.add('visible');
         const revealObs = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                reveal(entry.target);
+                revealObs.unobserve(entry.target);
               }
             });
           },
           { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
         );
         revealEls.forEach((el) => revealObs.observe(el));
+
+        // Safety net: this observer is deferred (requestIdleCallback), so it can
+        // miss elements the user has already scrolled to before it initializes —
+        // leaving whole sections stuck at opacity:0 (the dark stats section did
+        // exactly this in production). Directly reveal anything whose top has
+        // entered the viewport, on init and on scroll, so content is never left
+        // permanently invisible regardless of observer timing.
+        const sweep = () => {
+          for (let i = revealEls.length - 1; i >= 0; i--) {
+            const el = revealEls[i];
+            if (el.classList.contains('visible')) {
+              revealEls.splice(i, 1);
+            } else if (el.getBoundingClientRect().top < window.innerHeight - 40) {
+              reveal(el);
+              revealEls.splice(i, 1);
+            }
+          }
+          if (!revealEls.length) window.removeEventListener('scroll', sweep);
+        };
+        sweep();
+        window.addEventListener('scroll', sweep, { passive: true });
       };
       if ('requestIdleCallback' in window) {
         (window as any).requestIdleCallback(initReveal, { timeout: 500 });

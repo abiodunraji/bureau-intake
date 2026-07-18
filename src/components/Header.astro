@@ -130,6 +130,11 @@ function isActive(href: string): boolean {
     document.body.style.overflow = 'hidden';
     toggle?.setAttribute('aria-expanded', 'true');
     mobileNav?.removeAttribute('inert');
+    // Give the header its solid (scrolled-style) white base while the drawer
+    // is open, so the panel edge never cuts across a transparent logo. The
+    // eyesore only happens at the top, where the header is otherwise
+    // transparent; when already scrolled it stays solid and looks clean.
+    header?.classList.add('nav-scrolled');
     if (h1 && h2 && h3) {
       h1.style.transform = 'rotate(45deg) translate(5px, 5px)';
       h2.style.opacity = '0';
@@ -144,6 +149,9 @@ function isActive(href: string): boolean {
     document.body.style.overflow = '';
     toggle?.setAttribute('aria-expanded', 'false');
     mobileNav?.setAttribute('inert', '');
+    // Drop the solid base only if we're actually at the top; keep it when the
+    // page is scrolled (where the scroll handler owns it anyway).
+    if (window.scrollY <= 20) header?.classList.remove('nav-scrolled');
     if (h1 && h2 && h3) {
       h1.style.transform = '';
       h2.style.opacity = '';

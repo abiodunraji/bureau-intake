@@ -87,6 +87,11 @@
     line-height: 1.12;
     letter-spacing: -0.02em;
     color: var(--color-primary);
+    /* Long Dutch compounds (e.g. "fysiotherapiepraktijken") overflow a phone
+       width and visually break text-align:center — hyphenate/wrap them so
+       centered headings stay centered on mobile. lang="nl" drives hyphens. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   body {
@@ -115,6 +120,16 @@ body.perf-paused *::after {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Never hide content from users who opt out of motion (or if the reveal JS
+   fails to run) — show it outright rather than leave it stuck at opacity:0. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Stagger delays */

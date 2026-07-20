@@ -63,7 +63,10 @@ const year = new Date().getFullYear();
     <!-- Bottom bar -->
     <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2" style="border-top: 1px solid rgba(255,255,255,0.08);">
       <p class="text-xs" style="color: #A0A6B0;">© {year} Bureau Intake. Alle rechten voorbehouden.</p>
-      <p class="text-xs" style="color: #A0A6B0;">KvK: 90576063</p>
+      <div class="flex items-center gap-4">
+        <a href={url('/cookiebeleid')} class="text-xs transition-colors duration-200 hover:text-[var(--color-accent)]" style="color: #A0A6B0;">Cookiebeleid</a>
+        <p class="text-xs" style="color: #A0A6B0;">KvK: 90576063</p>
+      </div>
     </div>
   </div>
 </footer>

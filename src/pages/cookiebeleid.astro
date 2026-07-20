@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Cookiebeleid — Bureau Intake"
+  description="Welke cookies Bureau Intake gebruikt en hoe je jouw toestemming beheert."
+>
+  <section class="legal">
+    <h1>Cookiebeleid</h1>
+    <p class="legal__meta">Laatst bijgewerkt: juli 2026</p>
+
+    <p>
+      Dit cookiebeleid legt uit welke cookies en vergelijkbare technieken
+      <strong>Bureau Intake</strong> op <a href="https://bureauintake.nl">bureauintake.nl</a>
+      gebruikt, waarom we dat doen en hoe je jouw keuze op elk moment kunt aanpassen.
+    </p>
+
+    <h2>Wat zijn cookies?</h2>
+    <p>
+      Cookies zijn kleine tekstbestanden die een website op je apparaat plaatst wanneer je die
+      bezoekt. Ze zorgen er bijvoorbeeld voor dat een site goed werkt of dat we kunnen meten hoe
+      bezoekers de site gebruiken.
+    </p>
+
+    <h2>Welke cookies gebruiken we?</h2>
+
+    <h3>Functionele cookies — altijd actief</h3>
+    <p>
+      Deze zijn nodig om de website te laten werken en om je cookiekeuze te onthouden. Hiervoor is
+      geen toestemming vereist. Ze verwerken geen persoonsgegevens voor analyse of advertenties.
+    </p>
+
+    <h3>Analytische cookies — alleen met jouw toestemming</h3>
+    <p>
+      Via <strong>Google Tag Manager</strong> en <strong>Google Analytics</strong> meten we
+      geanonimiseerd hoe bezoekers de site gebruiken, zodat we hem kunnen verbeteren. Deze cookies
+      worden <strong>pas geplaatst nadat je op &ldquo;Accepteren&rdquo; hebt geklikt</strong>.
+      Weiger je, of maak je geen keuze, dan worden er geen analytische cookies geplaatst — we
+      gebruiken Google Consent Mode, die standaard op &ldquo;geweigerd&rdquo; staat.
+    </p>
+
+    <h2>Jouw toestemming beheren</h2>
+    <p>
+      Je kunt je keuze op elk moment wijzigen of intrekken. Klik op de knop hieronder; de
+      cookiemelding verschijnt dan opnieuw zodat je opnieuw kunt kiezen.
+    </p>
+    <button id="cc-reset" type="button" class="legal__btn">Cookievoorkeuren wijzigen</button>
+
+    <h2>Bewaartermijn</h2>
+    <p>
+      Analytische cookies van Google Analytics worden maximaal 24 maanden bewaard. Je cookiekeuze
+      bewaren we lokaal in je browser totdat je die wist of aanpast.
+    </p>
+
+    <h2>Vragen?</h2>
+    <p>
+      Neem gerust contact op via <a href="mailto:hallo@bureauintake.nl">hallo@bureauintake.nl</a>.
+      Bureau Intake is ingeschreven bij de KvK onder nummer 90576063. Meer over hoe Google gegevens
+      verwerkt lees je in het
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacybeleid van Google</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 6rem;
+  }
+  .legal__meta {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+  }
+  .legal h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 0.75rem; }
+  .legal h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+  .legal h3 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+  .legal p { color: #3f4650; line-height: 1.7; margin-bottom: 1rem; }
+  .legal a { color: var(--color-accent-text); text-decoration: underline; text-underline-offset: 2px; }
+  .legal__btn {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffffff;
+    background: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+  }
+  .legal__btn:hover { background: var(--color-accent-hover); }
+</style>
+
+<script>
+  document.getElementById('cc-reset')?.addEventListener('click', () => {
+    try { localStorage.removeItem('bi-consent'); } catch { /* ignore */ }
+    location.reload();
+  });
+</script>

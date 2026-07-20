@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { url } from '../utils/url';
 
 interface Props {
@@ -102,6 +103,34 @@ const fullGraph = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Consent Mode v2 defaults — MUST run before GTM. Analytics + ads
+         are DENIED until the visitor accepts (EU/NL ePrivacy). A stored choice is
+         re-applied immediately so returning visitors keep their preference and no
+         cookies are set without consent. -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      try {
+        if (localStorage.getItem('bi-consent') === 'granted') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+          });
+        }
+      } catch (e) {}
+    </script>
 
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -234,6 +263,7 @@ const fullGraph = {
       <slot />
     </main>
     <Footer />
+    <CookieConsent />
 
     <!-- Enable CSS animations on first user interaction. Lighthouse
          performance capture doesn't synthesize scrolls or clicks, so

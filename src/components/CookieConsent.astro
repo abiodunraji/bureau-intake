@@ -1,0 +1,114 @@
+---
+import { url } from '../utils/url';
+---
+
+<div id="cookie-consent" class="cc" role="dialog" aria-live="polite" aria-label="Cookievoorkeuren" hidden>
+  <p class="cc__title">Cookies op deze website</p>
+  <p class="cc__text">
+    We gebruiken functionele cookies om de site te laten werken en &mdash; alleen met jouw
+    toestemming &mdash; analytische cookies om te begrijpen hoe de site wordt gebruikt en die te
+    verbeteren. Meer weten? Lees ons <a href={url('/cookiebeleid')}>cookiebeleid</a>.
+  </p>
+  <div class="cc__actions">
+    <button type="button" id="cc-decline" class="cc__btn cc__btn--ghost">Weigeren</button>
+    <button type="button" id="cc-accept" class="cc__btn cc__btn--solid">Accepteren</button>
+  </div>
+</div>
+
+<style>
+  .cc {
+    position: fixed;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 9999;
+    width: min(24rem, calc(100vw - 2.5rem));
+    background: #ffffff;
+    border: 1px solid #e6e8e3;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(26, 26, 46, 0.16);
+    padding: 1.25rem 1.35rem 1.15rem;
+    font-family: var(--font-body);
+    animation: cc-in 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes cc-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .cc { animation: none; } }
+
+  .cc__title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    margin: 0 0 0.4rem;
+  }
+  .cc__text {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: #55606b;
+    margin: 0 0 1rem;
+  }
+  .cc__text a {
+    color: var(--color-accent-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cc__actions { display: flex; gap: 0.6rem; }
+  .cc__btn {
+    flex: 1;
+    padding: 0.6rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  }
+  .cc__btn--solid {
+    background: var(--color-accent);
+    color: #ffffff;
+    border: 1px solid var(--color-accent);
+  }
+  .cc__btn--solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+  .cc__btn--ghost {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1px solid #d5d9d2;
+  }
+  .cc__btn--ghost:hover { background: #f3f4f0; }
+
+  @media (max-width: 480px) {
+    .cc { left: 0.75rem; right: 0.75rem; bottom: 0.75rem; width: auto; }
+  }
+</style>
+
+<script>
+  (() => {
+    const el = document.getElementById('cookie-consent');
+    if (!el) return;
+
+    let stored: string | null = null;
+    try { stored = localStorage.getItem('bi-consent'); } catch { /* private mode */ }
+    if (!stored) el.hidden = false;
+
+    function update(granted: boolean) {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      function gtag(...args: unknown[]) { (window as any).dataLayer.push(args); }
+      gtag('consent', 'update', {
+        ad_storage: granted ? 'granted' : 'denied',
+        ad_user_data: granted ? 'granted' : 'denied',
+        ad_personalization: granted ? 'granted' : 'denied',
+        analytics_storage: granted ? 'granted' : 'denied',
+      });
+    }
+
+    function choose(granted: boolean) {
+      try { localStorage.setItem('bi-consent', granted ? 'granted' : 'denied'); } catch { /* ignore */ }
+      update(granted);
+      if (el) el.hidden = true;
+    }
+
+    document.getElementById('cc-accept')?.addEventListener('click', () => choose(true));
+    document.getElementById('cc-decline')?.addEventListener('click', () => choose(false));
+  })();
+</script>

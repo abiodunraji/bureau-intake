@@ -87,11 +87,20 @@
     line-height: 1.12;
     letter-spacing: -0.02em;
     color: var(--color-primary);
-    /* Long Dutch compounds (e.g. "fysiotherapiepraktijken") overflow a phone
-       width and visually break text-align:center — hyphenate/wrap them so
-       centered headings stay centered on mobile. lang="nl" drives hyphens. */
+    /* Let a genuinely-too-long word wrap rather than overflow, but do NOT
+       auto-hyphenate at desktop widths — there the browser would insert ugly
+       breaks like "pa-tiënten" / "fysi-otherapeut" even with room to spare. */
     overflow-wrap: break-word;
-    hyphens: auto;
+  }
+
+  /* Long Dutch compounds (e.g. "fysiotherapiepraktijken") only overflow / break
+     text-align:center on narrow screens. Enable auto-hyphenation there ONLY, so
+     mobile headings stay centered while desktop headings never hyphenate.
+     lang="nl" drives the hyphenation dictionary. */
+  @media (max-width: 640px) {
+    h1, h2, h3, h4 {
+      hyphens: auto;
+    }
   }
 
   body {

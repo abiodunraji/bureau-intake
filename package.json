@@ -11,6 +11,8 @@
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "generate-types": "wrangler types",
+    "test": "npm run build && npm run test:built",
+    "test:built": "node --test \"tests/*.test.mjs\"",
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {

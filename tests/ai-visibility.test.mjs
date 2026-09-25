@@ -199,6 +199,16 @@ describe('(b) the article on what online marketing costs', () => {
     assert.ok(!title(html).includes(SHY));
     assert.ok(!JSON.stringify(jsonLdNodes(html)).includes(SHY));
   });
+
+  // At 390px the source link "support.google.com/business/answer/7039811" is one
+  // 385px token with no hyphen to break at; it ran to x=440 and the article's
+  // overflow clipped the end off. Measured in headless Chrome (25 Sep 2026).
+  // This guards the rule that fixes it: article links may break inside a word.
+  test('article links may wrap inside a word, so a long source URL is never cut off on a phone', () => {
+    const rule = articleHtml().match(/\.prose-bi a\{([^}]*)\}/);
+    assert.ok(rule, 'no .prose-bi a rule in the article page');
+    assert.match(rule[1], /overflow-wrap:\s*anywhere/, `.prose-bi a must set overflow-wrap:anywhere: ${rule[1]}`);
+  });
 });
 
 describe('(c) both pages can be found', () => {

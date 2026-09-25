@@ -153,6 +153,9 @@ const schemaGraph = [
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     transition: color 0.2s ease;
+    /* A URL used as link text can be one token wider than a phone
+       (support.google.com/business/answer/7039811); let it wrap, not clip. */
+    overflow-wrap: anywhere;
   }
   .prose-bi a:hover {
     color: var(--color-primary);

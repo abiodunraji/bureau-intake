@@ -155,7 +155,8 @@ export function pricingCard() {
     amount: Number(price[1]),
     unit: price[2],
     priceText: `€${price[1]}`,
-    terms: terms[1].split('·').map((t) => t.trim()).filter(Boolean),
+    // &nbsp; in the source keeps each term whole on a phone; read it as a plain space.
+    terms: normalize(decode(terms[1])).split('·').map((t) => t.trim()).filter(Boolean),
     includes: [...includesBlock[1].matchAll(/'([^']+)'/g)].map((m) => m[1]),
   };
 }

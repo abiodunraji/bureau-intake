@@ -4,7 +4,8 @@
 //
 // Every fact here repeats something the site already says. Keep it that way:
 //   price + terms        -> src/components/Pricing.astro (price card)
-//   gratis proefmaand    -> src/pages/index.astro (meta description)
+//   gratis proefmaand    -> src/pages/index.astro (meta description); still offered,
+//                           confirmed by the owner, Iwan Stepanova, on 25 Sep 2026
 //   what is included     -> Pricing.astro includes, Services.astro, HowItWorks.astro
 //   no notice, no fine   -> src/data/faqs.ts
 //   webdesign separate   -> Services.astro (own card), src/pages/webdesign.astro (no price)

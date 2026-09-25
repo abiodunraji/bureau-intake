@@ -33,7 +33,8 @@ const DUTCH_DATE = /\b\d{1,2} (januari|februari|maart|april|mei|juni|juli|august
 const card = pricingCard();
 const lower = (s) => s.toLowerCase();
 
-// The trial month is stated in the homepage meta description (src/pages/index.astro).
+// The trial month is stated in the homepage meta description (src/pages/index.astro),
+// and the owner, Iwan Stepanova, confirmed on 25 Sep 2026 that it is still offered.
 // A new page may only repeat it while that source still says it.
 const homepageSaysTrial = /gratis proefmaand/i.test(source('src/pages/index.astro'));
 

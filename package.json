@@ -16,22 +16,21 @@
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.7.0",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/cloudflare": "^14.3.3",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource/dm-sans": "^5.2.8",
     "@fontsource/playfair-display": "^5.2.8",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.4.7",
+    "astro": "^7.3.5",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "wrangler": "^4.87.0"
+    "wrangler": "^4.140.0"
   },
   "overrides": {
-    "vite": "^7",
     "esbuild": "^0.28.1",
-    "ws": "^8.20.1",
-    "devalue": "^5.8.1"
+    "ws": "^8.21.0",
+    "devalue": "^5.9.2"
   }
 }

@@ -40,12 +40,27 @@ export default defineConfig({
   site: 'https://bureauintake.nl',
   trailingSlash: 'always',
 
+  // Astro 7 changed the default to 'jsx', which drops the whitespace between
+  // tags written on separate lines ("HomeWebdesignBlog", "30 januari 20262 min
+  // lezen"). `true` keeps the rule this markup was written for (Astro 6's
+  // default): whitespace is squeezed to one space, never removed.
+  // Tailwind reads this file for class names; a word here that names a
+  // utility adds that utility's rule to every page.
+  compressHTML: true,
+
   build: {
     inlineStylesheets: 'always',
   },
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Vite 8 minifies CSS with Lightning CSS, which strips prefixes it
+      // judges unneeded: it drops `-webkit-hyphens: auto` from the phone
+      // heading rule in global.css, and Safari before 17 only hyphenates with
+      // the prefix. esbuild is the minifier this CSS shipped with on Vite 7.
+      cssMinify: 'esbuild',
+    },
   },
 
   integrations: [sitemap(), flatSitemap()],

@@ -2,6 +2,13 @@
 import { url } from '../utils/url';
 import { faqs } from '../data/faqs';
 
+interface Props {
+  // /tarief/ shows this same price card, without the homepage heading and FAQ,
+  // so the price, terms and inclusions exist in one place only.
+  cardOnly?: boolean;
+}
+const { cardOnly = false } = Astro.props;
+
 const includes = [
   'Zichtbaar worden in Google Maps en AI-zoekmachines',
   'Een professioneel en compleet Google Bedrijfsprofiel',
@@ -11,10 +18,15 @@ const includes = [
 ];
 ---
 
-<section style="padding: 100px 24px; background: white;" aria-labelledby="pricing-heading">
+<section
+  style={cardOnly ? 'padding: 64px 24px 88px; background: white;' : 'padding: 100px 24px; background: white;'}
+  aria-labelledby={cardOnly ? undefined : 'pricing-heading'}
+  aria-label={cardOnly ? 'Tarief' : undefined}
+>
   <div style="max-width: 680px; margin: 0 auto;">
 
     <!-- Header -->
+    {!cardOnly && (
     <div class="reveal" style="text-align: center; margin-bottom: 48px;">
       <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase;">Tarief</span>
       <h2 id="pricing-heading" style="font-family: var(--font-heading); font-size: clamp(26px, 4vw, 40px); font-weight: 700; line-height: 1.15; margin-top: 12px; margin-bottom: 12px; letter-spacing: -0.02em;">
@@ -24,6 +36,7 @@ const includes = [
         Twee extra patiënten per maand? Dat is break-even.
       </p>
     </div>
+    )}
 
     <!-- Pricing card -->
     <div class="reveal reveal-delay-1">
@@ -69,6 +82,7 @@ const includes = [
     </div>
 
     <!-- FAQ -->
+    {!cardOnly && (
     <div class="reveal reveal-delay-2" style="margin-top: 48px;">
       <h3 style="font-family: var(--font-body); font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 20px;">Veelgestelde vragen</h3>
 
@@ -89,7 +103,18 @@ const includes = [
           </div>
         ))}
       </div>
+
+      <a
+        href={url('/tarief/')}
+        style="display: inline-flex; align-items: center; gap: 6px; margin-top: 24px; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-accent-text); text-decoration: none; transition: color 0.2s ease;"
+        onmouseover="this.style.color='var(--color-accent-hover)'"
+        onmouseout="this.style.color='var(--color-accent-text)'"
+      >
+        Alles over het tarief en de voorwaarden
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
+    )}
   </div>
 </section>
 

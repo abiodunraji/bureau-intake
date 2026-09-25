@@ -1,0 +1,119 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/Pricing.astro';
+import CTABlock from '../components/CTABlock.astro';
+import { url } from '../utils/url';
+import { headingText } from '../utils/blog';
+import { tariefFaqs } from '../data/tarief';
+
+const ARTICLE_ID = 'wat-kost-online-marketing-voor-een-fysiotherapiepraktijk';
+const article = await getEntry('blog', ARTICLE_ID);
+if (!article) throw new Error(`/tarief/ links to blog post "${ARTICLE_ID}", which does not exist`);
+
+const pageTitle = 'Wat kost Bureau Intake? Tarief en voorwaarden';
+
+// The FAQPage is built from the same list the page renders, so the schema can
+// never say more than the page shows. The price itself lives on the homepage
+// Service/Offer (#local-seo-service); this page points to it, not a second Offer.
+const schemaGraph = [
+  {
+    "@type": "FAQPage",
+    "@id": "https://bureauintake.nl/tarief/#faq",
+    "url": "https://bureauintake.nl/tarief/",
+    "name": pageTitle,
+    "isPartOf": { "@id": "https://bureauintake.nl/#website" },
+    "about": { "@id": "https://bureauintake.nl/#local-seo-service" },
+    "inLanguage": "nl-NL",
+    "mainEntity": tariefFaqs.map(({ question, answer }) => ({
+      "@type": "Question",
+      "name": question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": answer,
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description="Bureau Intake kost €590 per maand: maandelijks opzegbaar, geen jaarcontract, geen opstartkosten, gratis proefmaand. Wat je krijgt en hoe je begint."
+  schemaGraph={schemaGraph}
+>
+
+  <!-- Page hero -->
+  <section style="padding-top: 132px; padding-bottom: 0; background: var(--color-white); position: relative; overflow: hidden; text-align: center;">
+    <div class="morph-blob" aria-hidden="true" style="position: absolute; width: 480px; height: 480px; top: -80px; right: -100px; background: var(--color-accent); opacity: 0.035; pointer-events: none;"></div>
+    <div class="morph-blob-slow" aria-hidden="true" style="position: absolute; width: 300px; height: 300px; bottom: 0; left: -80px; background: var(--color-accent); opacity: 0.025; pointer-events: none;"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 pb-12 md:pb-16" style="text-align: center;">
+      <p style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-text); margin-bottom: 14px;">Tarief</p>
+      <h1 style="font-size: clamp(2.25rem, 5vw, 3.5rem); max-width: 760px; margin: 0 auto 16px; letter-spacing: -0.02em; line-height: 1.12;">
+        Wat kost Bureau Intake?
+      </h1>
+      <p style="font-size: 17px; color: var(--color-muted); max-width: 520px; line-height: 1.65; margin: 0 auto;">
+        Bureau Intake is een marketingbureau voor fysiotherapiepraktijken. Hier lees je wat het kost, wat je ervoor krijgt en waar je aan toe bent.
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <div style="height: 1px; background: linear-gradient(to right, var(--color-accent), rgba(46,204,113,0.08), transparent);"></div>
+  </div>
+
+  <!-- The homepage price card itself, so price, terms and inclusions live in one place -->
+  <Pricing cardOnly />
+
+  <!-- Q&As: always open (not an accordion), so every answer is readable in full -->
+  <section style="padding: 80px 24px; background: var(--color-light);" aria-labelledby="tarief-faq-heading">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <div class="reveal" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase;">Veelgestelde vragen</span>
+      </div>
+      <h2 class="reveal reveal-delay-1" id="tarief-faq-heading" style="font-size: clamp(22px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 28px;">
+        Vragen over het tarief.
+      </h2>
+
+      <div>
+        {tariefFaqs.map((faq) => (
+          <div style="padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,0.06);">
+            <h3 class="faq-question" style="font-family: var(--font-body); font-size: 17px; font-weight: 700; line-height: 1.4; letter-spacing: 0; color: var(--color-primary); margin-bottom: 8px;">{faq.question}</h3>
+            <p class="faq-body" style="font-family: var(--font-body); font-size: 15px; line-height: 1.7; color: var(--color-muted); margin: 0;">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Read next: the cost article -->
+  <section style="padding: 72px 24px 88px; background: var(--color-white);">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <div style="width: 28px; height: 1.5px; background: var(--color-accent);"></div>
+        <span style="font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--color-accent-text); text-transform: uppercase;">Lees ook</span>
+      </div>
+      <a
+        href={url(`/blog/${article.id}/`)}
+        style="display: flex; flex-direction: column; padding: 24px 26px 28px; border-radius: 12px; background: var(--color-white); border: 1px solid rgba(0,0,0,0.06); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;"
+        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'; this.style.borderColor='rgba(46,204,113,0.2)';"
+        onmouseout="this.style.transform=''; this.style.boxShadow=''; this.style.borderColor='rgba(0,0,0,0.06)';"
+      >
+        <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 700; line-height: 1.25; color: var(--color-primary); margin: 0 0 10px;">
+          {headingText(article.data.title)}
+        </h3>
+        <p style="font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--color-muted); margin: 0 0 16px;">
+          {article.data.description}
+        </p>
+        <span style="font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--color-accent-text);">
+          Lees het artikel →
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <CTABlock />
+</BaseLayout>

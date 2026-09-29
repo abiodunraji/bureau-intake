@@ -41,7 +41,7 @@ export const tariefFaqs = [
   {
     question: 'Wat is Bureau Intake?',
     answer:
-      'Bureau Intake is een marketingbureau dat uitsluitend werkt voor fysiotherapiepraktijken in Nederland. Wij maken praktijken zichtbaar in Google, Google Maps en AI-zoekmachines. Het bureau is gevestigd in Alkmaar en opgericht door Iwan Stepanova.',
+      'Bureau Intake is een marketingbureau dat uitsluitend werkt voor fysiotherapiepraktijken in Nederland. Wij maken praktijken zichtbaar in Google, Google Maps en AI-zoekmachines. Het bureau is gevestigd in Heerhugowaard en opgericht door Iwan Stepanova.',
   },
   {
     question: 'Hoe begin ik?',

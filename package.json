@@ -26,11 +26,14 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "wrangler": "^4.140.0"
+    "wrangler": "^4.152.0"
   },
   "overrides": {
     "esbuild": "^0.28.1",
     "ws": "^8.21.0",
-    "devalue": "^5.9.2"
+    "devalue": "^5.9.2",
+    "miniflare": {
+      "undici": "^7.30.1"
+    }
   }
 }
